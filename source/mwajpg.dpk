@@ -1,0 +1,77 @@
+package mwajpg;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+{$IFDEF DESIGNTIME}
+{$DESIGNONLY}
+{$LIBPREFIX 'dcl'}
+{$ELSE}
+{$LIBPREFIX ''}
+{$ENDIF}
+{$IFDEF VER140}
+{$LIBSUFFIX 'D6'}
+{$ENDIF}
+{$IFDEF VER150}
+{$LIBSUFFIX 'D7'}
+{$ENDIF}
+{$IFDEF VER170}
+{$LIBSUFFIX 'D2005'}
+{$ENDIF}
+{$IFDEF VER180}
+{$LIBSUFFIX 'D2006'}
+{$ENDIF}
+{$IFDEF VER185}
+{$LIBSUFFIX 'D2007'}
+{$ENDIF}
+
+requires
+  {$IFDEF QREPORTS}
+  {$IFDEF VER185}
+  QR4RunD2007,
+  {$ELSE}
+  {$IFDEF VER180}
+  QR4StdRunD2006
+  {$ENDIF}{$ENDIF}{$ENDIF}
+  rtl,
+  vcl,
+  vclx,
+  dbrtl,
+  vcldb,
+  bdertl,
+  designide;
+
+contains
+  {$IFDEF DESIGNTIME}
+  jpegreg2 in 'source\jpegreg2.pas',
+  {$ENDIF}
+ {$IFDEF QREPORTS}
+  mwaQRjpg in 'source\mwaQRjpg.pas',
+  {$ENDIF}
+  jpeglib in 'source\jpeglib.pas',
+  mwadbjpg in 'source\mwadbjpg.pas',
+  mwajpeg in 'source\mwajpeg.pas',
+  mwajpgpe in 'source\mwajpgpe.pas';
+
+end.

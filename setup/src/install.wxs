@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: install.wxs,v 1.1.1.1 2007-08-08 08:52:15 tony Exp $ -->
+<?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
+<?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
+<?ifdef EVALUATION?>
+<?define ProductName="MWA JPEG Component Library (Evaluation)"?>
+<?define ProductCode="6999F4C9-A03E-42A7-8398-FAE71944CD5E"?>
+<?define Licence="docs\Shrware\licence.htm"?>
+<?define UpgradeCode="$(var.FullUpgradeCode)" ?>
+<?else?>
+<?define ProductName="MWA JPEG Component Library"?>
+<?define ProductCode="EA630D5C-19EB-48D0-BBD6-B36A3638EA9E"?>
+<?define Licence="docs\Registrd\licence.htm"?>
+<?define UpgradeCode="$(var.EvalUpgradeCode)" ?>
+<?endif?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+
+  <Product Name='$(var.ProductName)'
+  			Id='$(var.ProductCode)'
+    		Language='1033' Codepage='1252' Version='$(env.JPEGVERSION)'
+			Manufacturer='MWA Software' UpgradeCode="$(var.UpgradeCode)">
+
+  <Package Id='????????-????-????-????-????????????' Keywords='Installer,MSI,Database,firebird'
+      Description="MWA JPEG Component Library Installation Package"  Platforms="Intel"
+      Comments='None' Manufacturer='MWA Software'
+      InstallerVersion='200' Languages='1033' Compressed='no' SummaryCodepage='1252' />
+
+<!-- Remove previous products with same upgrade code -->
+
+  <Upgrade Id='$(var.UPGRADECODE)'>
+      <UpgradeVersion IncludeMaximum='yes' Maximum='$(var.PREVPRODUCTVERSION)' />
+  </Upgrade>
+
+<!-- This upgrade tag is used to detect an existing installation and abort if so.
+     Needed for minor upgrades where Windows Installer checks have to
+     be overridden. Note that small updates will not work because of this section.-->
+
+  <Upgrade Id='$(var.UPGRADECODE)'>
+      <UpgradeVersion OnlyDetect='yes' Property='CURRENTVERSIONFOUND'
+        IncludeMinimum='yes' Minimum='$(env.RELEASE)' />
+  </Upgrade>
+
+  <CustomAction Id='AlreadyUpdated'
+    Error='MWA JPEG Component Library has already been updated to $(env.RELEASE) or newer.' />
+
+  <InstallExecuteSequence>
+    <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>CURRENTVERSIONFOUND</Custom>
+    <RemoveExistingProducts Before="InstallInitialize" />
+  </InstallExecuteSequence>
+
+  <!-- If we are installing the Registered User Version then remove the evaluation version -->
+
+  <?ifndef EVALUATION?>
+  <Upgrade Id='$(var.EvalUpgradeCode)'>
+      <UpgradeVersion IncludeMaximum='yes' Maximum='$(env.RELEASE)' />
+  </Upgrade>
+  <?endif?>
+
+  <Media Id='1' />
+
+  <Directory Id='TARGETDIR' Name='SourceDir'>
+    <Directory Id="CommonAppDataFolder" Name="CAppData" LongName="CommonAppData">
+      <Directory Id="MWAAppDataFolder" Name="mwasoft" LongName="MWA Software">
+        <Directory Id="JPEGSupport" Name="JPEG Component Library" >
+		  <Component Id="jpeghelp" Guid="PUT-GUID-HERE" DiskId="1">
+            <File Id="mwajpeghlp" Name="mwajpeg.hlp" KeyPath="yes"
+				  Source="$(env.JPEGDIR)\help\mwajpeg.hlp" >
+              <Shortcut Id="startmenuhelp" Directory="ProgramMenuDir" Name="Help"
+                  LongName="Online Help" WorkingDirectory='JPEGSupport' />
+			</File>
+            <File Id="mwajpegcnt" Name="mwajpeg.cnt"
+				  Source="$(env.JPEGDIR)\help\mwajpeg.cnt" />
+          </Component>
+		  <Component Id="jpeglicence" Guid="PUT-GUID-HERE" DiskId="1">
+		    <File Id="licencehtm" Name="licence.htm" KeyPath="yes"
+				  Source="$(env.JPEGDIR)\$(var.Licence)" >
+              <Shortcut Id="startmenulicence" Directory="ProgramMenuDir" Name="licence"
+                  LongName="Software Licence" WorkingDirectory='JPEGSupport' />
+			</File>
+          </Component>
+		</Directory>
+      </Directory>
+    </Directory>
+    <Directory Id="PersonalFolder" Name="Personal">
+      <Directory Id="MWASoftware" Name="mwasoft" LongName="MWA Software"/>
+	    <Directory Id="INSTALLDIR" Name="MWA JPEG Component Library" >
+  	      <Directory Id="JPEGExamples" Name="examples" LongName="JPEG Examples" />
+	      <Directory Id="JPEGSource" Name="source"  />
+		</Directory>
+    </Directory>
+    <Directory Id="ProgramMenuFolder" Name="PMenu" LongName="Programs">
+      <Directory Id="ProgramMenuDir" Name='MWAJPEG' LongName="MWA JPEG Component Library" />
+    </Directory>
+  </Directory>
+
+  <!-- Search for a Supported Version of Delphi or C++ Builder -->
+
+  <Property Id="DELPHI6">
+    <RegistrySearch Id="D6" Root="HKLM" Key="SOFTWARE\Borland\Delphi\6.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+  <Property Id="DELPHI7">
+    <RegistrySearch Id="D7" Root="HKLM" Key="SOFTWARE\Borland\Delphi\7.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+  <Property Id="CBUILDER5">
+    <RegistrySearch Id="CB5" Root="HKLM" Key="SOFTWARE\Borland\C++Builder\5.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+  <Property Id="CBUILDER6">
+    <RegistrySearch Id="CB6" Root="HKLM" Key="SOFTWARE\Borland\C++Builder\6.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+  <Property Id="DELPHI2005">
+    <RegistrySearch Id="D2005" Root="HKLM" Key="SOFTWARE\Borland\BDS\3.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+  <Property Id="BDS2006">
+    <RegistrySearch Id="B2006" Root="HKLM" Key="SOFTWARE\Borland\BDS\4.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+
+  <Feature Id='JPEGComponents' Level='1' Title="MWA JPEG Components"
+			Description="The MWA JPEG Components JPEG enable the Delphi/C++Builder IDE and support Data Aware access to JPEG images"
+			Display="collapse" ConfigurableDirectory='INSTALLDIR'>
+    <ComponentGroupRef Id="Delphi2007" />
+	<ComponentRef Id="jpeglicence" />
+  </Feature>
+  <Feature Id="Examples" Level='1' Title='Examples'
+           Description="These example Programs  show  showing how to use the JPEG Components'
+		   Display="collapse" >
+  </Feature>
+  <Feature Id="HelpFile" Level='1' Title="Help File" Display="collapse" >
+	<ComponentRef Id="jpeghelp" />
+  </Feature>
+
+</Wix>

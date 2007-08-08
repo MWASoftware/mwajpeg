@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: source.wxs,v 1.1.1.1 2007-08-08 08:52:15 tony Exp $ -->
+
+<!-- This Fragment installs the JPEG Source Code Files -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+
+ <Fragment>
+   <DirectoryRef Id="JPEGSource">
+        <Component Id="component0" DiskId="1" Guid="3E63EF94-B805-44DA-A54B-A3B24ACCD346">
+          <File Id="file0" Name="build.bat" Source="$(env.source)\build.bat" />
+          <File Id="file3" Name="Mwajpg.cfg" Source="$(env.source)\Mwajpg.cfg" />
+          <File Id="file4" Name="mwajpg.dpk" Source="$(env.source)\mwajpg.dpk" />
+          <File Id="file5" Name="mwajpg.mak" Source="$(env.source)\mwajpg.mak" />
+          <File Id="file6" Name="mwajpg.res" Source="$(env.source)\mwajpg.res" />
+        </Component>
+        <Directory Id="directory1" Name="common">
+          <Component Id="component1" DiskId="1" Guid="78737442-9A2F-471E-9619-08154DEE7D3E">
+            <File Id="file7" Name="jmorecfg.inc" Source="$(env.source)\common\jmorecfg.inc" />
+            <File Id="file9" Name="jpeglib.pas" Source="$(env.source)\common\jpeglib.pas" />
+            <File Id="file12" Name="jpegreg2.pas" Source="$(env.source)\common\jpegreg2.pas" />
+            <File Id="file13" Name="jpeg_reg.dcr" Source="$(env.source)\common\jpeg_reg.dcr" />
+            <File Id="file17" Name="mwadbjpg.pas" Source="$(env.source)\common\mwadbjpg.pas" />
+            <File Id="file20" Name="mwajpeg.pas" Source="$(env.source)\common\mwajpeg.pas" />
+            <File Id="file22" Name="mwajpgpe.pas" Source="$(env.source)\common\mwajpgpe.pas" />
+            <File Id="file23" Name="mwaQRjpg.pas" Source="$(env.source)\common\mwaQRjpg.pas" />
+          </Component>
+          <Directory Id="directory2" Name="cbuilder">
+            <Component Id="component2" DiskId="1" Guid="F604A6CA-28BD-4A95-978B-01FD2BB4EFA0">
+              <File Id="file26" Name="jpeg_reg.cpp" Source="$(env.source)\common\cbuilder\jpeg_reg.cpp" />
+              <File Id="file27" Name="mwajpg.cpp" Source="$(env.source)\common\cbuilder\mwajpg.cpp" />
+              <File Id="file28" Name="mwajpgpe.cpp" Source="$(env.source)\common\cbuilder\mwajpgpe.cpp" />
+              <File Id="file29" Name="mwajpgpe.h" Source="$(env.source)\common\cbuilder\mwajpgpe.h" />
+              <File Id="file30" Name="mwaQRjpg.cpp" Source="$(env.source)\common\cbuilder\mwaQRjpg.cpp" />
+              <File Id="file31" Name="mwaQRjpg.h" Source="$(env.source)\common\cbuilder\mwaQRjpg.h" />
+            </Component>
+          </Directory>
+        </Directory>
+        <Directory Id="directory3" Name="jpeg-6b">
+          <Component Id="component3" DiskId="1" Guid="A88C1B5D-40DB-4EA8-AA62-946B6692833C">
+            <File Id="file32" Name="ansi2knr.1" Source="$(env.source)\jpeg-6b\ansi2knr.1" />
+            <File Id="file33" Name="ansi2knr.c" Source="$(env.source)\jpeg-6b\ansi2knr.c" />
+            <File Id="file34" Name="cderror.h" Source="$(env.source)\jpeg-6b\cderror.h" />
+            <File Id="file35" Name="cdjpeg.c" Source="$(env.source)\jpeg-6b\cdjpeg.c" />
+            <File Id="file36" Name="cdjpeg.h" Source="$(env.source)\jpeg-6b\cdjpeg.h" />
+            <File Id="file37" Name="change.log" Source="$(env.source)\jpeg-6b\change.log" />
+            <File Id="file38" Name="cjpeg.1" Source="$(env.source)\jpeg-6b\cjpeg.1" />
+            <File Id="file39" Name="cjpeg.c" Source="$(env.source)\jpeg-6b\cjpeg.c" />
+            <File Id="file40" Name="ckconfig.c" Source="$(env.source)\jpeg-6b\ckconfig.c" />
+            <File Id="file41" Name="CONFIG_1.GUE" LongName="config.guess" Source="$(env.source)\jpeg-6b\config.guess" />
+            <File Id="file42" Name="config.sub" Source="$(env.source)\jpeg-6b\config.sub" />
+            <File Id="file43" Name="CONFIG_1" LongName="configure" Source="$(env.source)\jpeg-6b\configure" />
+            <File Id="file44" Name="djpeg.1" Source="$(env.source)\jpeg-6b\djpeg.1" />
+            <File Id="file45" Name="djpeg.c" Source="$(env.source)\jpeg-6b\djpeg.c" />
+            <File Id="file46" Name="example.c" Source="$(env.source)\jpeg-6b\example.c" />
+            <File Id="file47" Name="INSTAL_1" LongName="install-sh" Source="$(env.source)\jpeg-6b\install-sh" />
+            <File Id="file48" Name="jcapimin.c" Source="$(env.source)\jpeg-6b\jcapimin.c" />
+            <File Id="file49" Name="jcapistd.c" Source="$(env.source)\jpeg-6b\jcapistd.c" />
+            <File Id="file50" Name="jccoefct.c" Source="$(env.source)\jpeg-6b\jccoefct.c" />
+            <File Id="file51" Name="jccolor.c" Source="$(env.source)\jpeg-6b\jccolor.c" />
+            <File Id="file52" Name="jcdctmgr.c" Source="$(env.source)\jpeg-6b\jcdctmgr.c" />
+            <File Id="file53" Name="jchuff.c" Source="$(env.source)\jpeg-6b\jchuff.c" />
+            <File Id="file54" Name="jchuff.h" Source="$(env.source)\jpeg-6b\jchuff.h" />
+            <File Id="file55" Name="jcinit.c" Source="$(env.source)\jpeg-6b\jcinit.c" />
+            <File Id="file56" Name="jcmainct.c" Source="$(env.source)\jpeg-6b\jcmainct.c" />
+            <File Id="file57" Name="jcmarker.c" Source="$(env.source)\jpeg-6b\jcmarker.c" />
+            <File Id="file58" Name="jcmaster.c" Source="$(env.source)\jpeg-6b\jcmaster.c" />
+            <File Id="file59" Name="jcomapi.c" Source="$(env.source)\jpeg-6b\jcomapi.c" />
+            <File Id="file60" Name="jconfig.cfg" Source="$(env.source)\jpeg-6b\jconfig.cfg" />
+            <File Id="file61" Name="jconfig.dj" Source="$(env.source)\jpeg-6b\jconfig.dj" />
+            <File Id="file62" Name="jconfig.h" Source="$(env.source)\jpeg-6b\jconfig.h" />
+            <File Id="file63" Name="jconfig.mac" Source="$(env.source)\jpeg-6b\jconfig.mac" />
+            <File Id="file64" Name="JCONFI_1.MAN" LongName="jconfig.manx" Source="$(env.source)\jpeg-6b\jconfig.manx" />
+            <File Id="file65" Name="jconfig.mc6" Source="$(env.source)\jpeg-6b\jconfig.mc6" />
+            <File Id="file66" Name="jconfig.sas" Source="$(env.source)\jpeg-6b\jconfig.sas" />
+            <File Id="file67" Name="jconfig.st" Source="$(env.source)\jpeg-6b\jconfig.st" />
+            <File Id="file68" Name="jconfig.vc" Source="$(env.source)\jpeg-6b\jconfig.vc" />
+            <File Id="file69" Name="jconfig.vms" Source="$(env.source)\jpeg-6b\jconfig.vms" />
+            <File Id="file70" Name="jconfig.wat" Source="$(env.source)\jpeg-6b\jconfig.wat" />
+            <File Id="file71" Name="jcparam.c" Source="$(env.source)\jpeg-6b\jcparam.c" />
+            <File Id="file72" Name="jcphuff.c" Source="$(env.source)\jpeg-6b\jcphuff.c" />
+            <File Id="file73" Name="jcprepct.c" Source="$(env.source)\jpeg-6b\jcprepct.c" />
+            <File Id="file74" Name="jcsample.c" Source="$(env.source)\jpeg-6b\jcsample.c" />
+            <File Id="file75" Name="jctrans.c" Source="$(env.source)\jpeg-6b\jctrans.c" />
+            <File Id="file76" Name="jdapimin.c" Source="$(env.source)\jpeg-6b\jdapimin.c" />
+            <File Id="file77" Name="jdapistd.c" Source="$(env.source)\jpeg-6b\jdapistd.c" />
+            <File Id="file78" Name="jdatadst.c" Source="$(env.source)\jpeg-6b\jdatadst.c" />
+            <File Id="file79" Name="jdatasrc.c" Source="$(env.source)\jpeg-6b\jdatasrc.c" />
+            <File Id="file80" Name="jdcoefct.c" Source="$(env.source)\jpeg-6b\jdcoefct.c" />
+            <File Id="file81" Name="jdcolor.c" Source="$(env.source)\jpeg-6b\jdcolor.c" />
+            <File Id="file82" Name="jdct.h" Source="$(env.source)\jpeg-6b\jdct.h" />
+            <File Id="file83" Name="jddctmgr.c" Source="$(env.source)\jpeg-6b\jddctmgr.c" />
+            <File Id="file84" Name="jdhuff.c" Source="$(env.source)\jpeg-6b\jdhuff.c" />
+            <File Id="file85" Name="jdhuff.h" Source="$(env.source)\jpeg-6b\jdhuff.h" />
+            <File Id="file86" Name="jdinput.c" Source="$(env.source)\jpeg-6b\jdinput.c" />
+            <File Id="file87" Name="jdmainct.c" Source="$(env.source)\jpeg-6b\jdmainct.c" />
+            <File Id="file88" Name="jdmarker.c" Source="$(env.source)\jpeg-6b\jdmarker.c" />
+            <File Id="file89" Name="jdmaster.c" Source="$(env.source)\jpeg-6b\jdmaster.c" />
+            <File Id="file90" Name="jdmerge.c" Source="$(env.source)\jpeg-6b\jdmerge.c" />
+            <File Id="file91" Name="jdphuff.c" Source="$(env.source)\jpeg-6b\jdphuff.c" />
+            <File Id="file92" Name="jdpostct.c" Source="$(env.source)\jpeg-6b\jdpostct.c" />
+            <File Id="file93" Name="jdsample.c" Source="$(env.source)\jpeg-6b\jdsample.c" />
+            <File Id="file94" Name="jdtrans.c" Source="$(env.source)\jpeg-6b\jdtrans.c" />
+            <File Id="file95" Name="jerror.c" Source="$(env.source)\jpeg-6b\jerror.c" />
+            <File Id="file96" Name="jerror.h" Source="$(env.source)\jpeg-6b\jerror.h" />
+            <File Id="file97" Name="jfdctflt.c" Source="$(env.source)\jpeg-6b\jfdctflt.c" />
+            <File Id="file98" Name="jfdctfst.c" Source="$(env.source)\jpeg-6b\jfdctfst.c" />
+            <File Id="file99" Name="jfdctint.c" Source="$(env.source)\jpeg-6b\jfdctint.c" />
+            <File Id="file100" Name="jidctflt.c" Source="$(env.source)\jpeg-6b\jidctflt.c" />
+            <File Id="file101" Name="jidctfst.c" Source="$(env.source)\jpeg-6b\jidctfst.c" />
+            <File Id="file102" Name="jidctint.c" Source="$(env.source)\jpeg-6b\jidctint.c" />
+            <File Id="file103" Name="jidctred.c" Source="$(env.source)\jpeg-6b\jidctred.c" />
+            <File Id="file104" Name="jinclude.h" Source="$(env.source)\jpeg-6b\jinclude.h" />
+            <File Id="file105" Name="jmemansi.c" Source="$(env.source)\jpeg-6b\jmemansi.c" />
+            <File Id="file106" Name="jmemdos.c" Source="$(env.source)\jpeg-6b\jmemdos.c" />
+            <File Id="file107" Name="jmemdosa.asm" Source="$(env.source)\jpeg-6b\jmemdosa.asm" />
+            <File Id="file108" Name="jmemmac.c" Source="$(env.source)\jpeg-6b\jmemmac.c" />
+            <File Id="file109" Name="jmemmgr.c" Source="$(env.source)\jpeg-6b\jmemmgr.c" />
+            <File Id="file110" Name="jmemname.c" Source="$(env.source)\jpeg-6b\jmemname.c" />
+            <File Id="file111" Name="jmemnobs.c" Source="$(env.source)\jpeg-6b\jmemnobs.c" />
+            <File Id="file112" Name="jmemsys.h" Source="$(env.source)\jpeg-6b\jmemsys.h" />
+            <File Id="file113" Name="jmorecfg.h" Source="$(env.source)\jpeg-6b\jmorecfg.h" />
+            <File Id="file114" Name="jpegint.h" Source="$(env.source)\jpeg-6b\jpegint.h" />
+            <File Id="file115" Name="jpeglib.h" Source="$(env.source)\jpeg-6b\jpeglib.h" />
+            <File Id="file116" Name="jpegtran.1" Source="$(env.source)\jpeg-6b\jpegtran.1" />
+            <File Id="file117" Name="jpegtran.c" Source="$(env.source)\jpeg-6b\jpegtran.c" />
+            <File Id="file118" Name="jquant1.c" Source="$(env.source)\jpeg-6b\jquant1.c" />
+            <File Id="file119" Name="jquant2.c" Source="$(env.source)\jpeg-6b\jquant2.c" />
+            <File Id="file120" Name="jutils.c" Source="$(env.source)\jpeg-6b\jutils.c" />
+            <File Id="file121" Name="jversion.h" Source="$(env.source)\jpeg-6b\jversion.h" />
+            <File Id="file122" Name="ltconfig" Source="$(env.source)\jpeg-6b\ltconfig" />
+            <File Id="file123" Name="ltmain.sh" Source="$(env.source)\jpeg-6b\ltmain.sh" />
+            <File Id="file124" Name="makcjpeg.st" Source="$(env.source)\jpeg-6b\makcjpeg.st" />
+            <File Id="file125" Name="makdjpeg.st" Source="$(env.source)\jpeg-6b\makdjpeg.st" />
+            <File Id="file126" Name="makeapps.ds" Source="$(env.source)\jpeg-6b\makeapps.ds" />
+            <File Id="file127" Name="MAKEFI_1.ANS" LongName="makefile.ansi" Source="$(env.source)\jpeg-6b\makefile.ansi" />
+            <File Id="file128" Name="makefile.bcc" Source="$(env.source)\jpeg-6b\makefile.bcc" />
+            <File Id="file129" Name="makefile.cfg" Source="$(env.source)\jpeg-6b\makefile.cfg" />
+            <File Id="file130" Name="makefile.dj" Source="$(env.source)\jpeg-6b\makefile.dj" />
+            <File Id="file131" Name="MAKEFI_1.MAN" LongName="makefile.manx" Source="$(env.source)\jpeg-6b\makefile.manx" />
+            <File Id="file132" Name="makefile.mc6" Source="$(env.source)\jpeg-6b\makefile.mc6" />
+            <File Id="file133" Name="makefile.mms" Source="$(env.source)\jpeg-6b\makefile.mms" />
+            <File Id="file134" Name="makefile.sas" Source="$(env.source)\jpeg-6b\makefile.sas" />
+            <File Id="file135" Name="MAKEFI_1.UNI" LongName="makefile.unix" Source="$(env.source)\jpeg-6b\makefile.unix" />
+            <File Id="file136" Name="makefile.vc" Source="$(env.source)\jpeg-6b\makefile.vc" />
+            <File Id="file137" Name="makefile.vms" Source="$(env.source)\jpeg-6b\makefile.vms" />
+            <File Id="file138" Name="makefile.wat" Source="$(env.source)\jpeg-6b\makefile.wat" />
+            <File Id="file139" Name="makelib.ds" Source="$(env.source)\jpeg-6b\makelib.ds" />
+            <File Id="file140" Name="makeproj.mac" Source="$(env.source)\jpeg-6b\makeproj.mac" />
+            <File Id="file141" Name="makljpeg.st" Source="$(env.source)\jpeg-6b\makljpeg.st" />
+            <File Id="file142" Name="maktjpeg.st" Source="$(env.source)\jpeg-6b\maktjpeg.st" />
+            <File Id="file143" Name="makvms.opt" Source="$(env.source)\jpeg-6b\makvms.opt" />
+            <File Id="file144" Name="rdbmp.c" Source="$(env.source)\jpeg-6b\rdbmp.c" />
+            <File Id="file145" Name="rdcolmap.c" Source="$(env.source)\jpeg-6b\rdcolmap.c" />
+            <File Id="file146" Name="rdgif.c" Source="$(env.source)\jpeg-6b\rdgif.c" />
+            <File Id="file147" Name="rdjpgcom.1" Source="$(env.source)\jpeg-6b\rdjpgcom.1" />
+            <File Id="file148" Name="rdjpgcom.c" Source="$(env.source)\jpeg-6b\rdjpgcom.c" />
+            <File Id="file149" Name="rdppm.c" Source="$(env.source)\jpeg-6b\rdppm.c" />
+            <File Id="file150" Name="rdrle.c" Source="$(env.source)\jpeg-6b\rdrle.c" />
+            <File Id="file151" Name="rdswitch.c" Source="$(env.source)\jpeg-6b\rdswitch.c" />
+            <File Id="file152" Name="rdtarga.c" Source="$(env.source)\jpeg-6b\rdtarga.c" />
+            <File Id="file153" Name="README" Source="$(env.source)\jpeg-6b\README" />
+            <File Id="file154" Name="testimg.bmp" Source="$(env.source)\jpeg-6b\testimg.bmp" />
+            <File Id="file155" Name="testimg.jpg" Source="$(env.source)\jpeg-6b\testimg.jpg" />
+            <File Id="file156" Name="testimg.ppm" Source="$(env.source)\jpeg-6b\testimg.ppm" />
+            <File Id="file157" Name="testimgp.jpg" Source="$(env.source)\jpeg-6b\testimgp.jpg" />
+            <File Id="file158" Name="testorig.jpg" Source="$(env.source)\jpeg-6b\testorig.jpg" />
+            <File Id="file159" Name="testprog.jpg" Source="$(env.source)\jpeg-6b\testprog.jpg" />
+            <File Id="file160" Name="transupp.c" Source="$(env.source)\jpeg-6b\transupp.c" />
+            <File Id="file161" Name="transupp.h" Source="$(env.source)\jpeg-6b\transupp.h" />
+            <File Id="file162" Name="wrbmp.c" Source="$(env.source)\jpeg-6b\wrbmp.c" />
+            <File Id="file163" Name="wrgif.c" Source="$(env.source)\jpeg-6b\wrgif.c" />
+            <File Id="file164" Name="wrjpgcom.1" Source="$(env.source)\jpeg-6b\wrjpgcom.1" />
+            <File Id="file165" Name="wrjpgcom.c" Source="$(env.source)\jpeg-6b\wrjpgcom.c" />
+            <File Id="file166" Name="wrppm.c" Source="$(env.source)\jpeg-6b\wrppm.c" />
+            <File Id="file167" Name="wrrle.c" Source="$(env.source)\jpeg-6b\wrrle.c" />
+            <File Id="file168" Name="wrtarga.c" Source="$(env.source)\jpeg-6b\wrtarga.c" />
+          </Component>
+        </Directory>
+        <Directory Id="directory4" Name="obj">
+          <Component Id="component4" DiskId="1" Guid="EA32C7A6-AB7D-4357-84AE-3C79610F559E">
+            <File Id="file169" Name="JCAPIMIN.OBJ" Source="$(env.source)\obj\JCAPIMIN.OBJ" />
+            <File Id="file170" Name="JCAPISTD.OBJ" Source="$(env.source)\obj\JCAPISTD.OBJ" />
+            <File Id="file171" Name="JCCOEFCT.OBJ" Source="$(env.source)\obj\JCCOEFCT.OBJ" />
+            <File Id="file172" Name="JCCOLOR.OBJ" Source="$(env.source)\obj\JCCOLOR.OBJ" />
+            <File Id="file173" Name="JCDCTMGR.OBJ" Source="$(env.source)\obj\JCDCTMGR.OBJ" />
+            <File Id="file174" Name="JCHUFF.OBJ" Source="$(env.source)\obj\JCHUFF.OBJ" />
+            <File Id="file175" Name="JCINIT.OBJ" Source="$(env.source)\obj\JCINIT.OBJ" />
+            <File Id="file176" Name="JCMAINCT.OBJ" Source="$(env.source)\obj\JCMAINCT.OBJ" />
+            <File Id="file177" Name="JCMARKER.OBJ" Source="$(env.source)\obj\JCMARKER.OBJ" />
+            <File Id="file178" Name="JCMASTER.OBJ" Source="$(env.source)\obj\JCMASTER.OBJ" />
+            <File Id="file179" Name="JCOMAPI.OBJ" Source="$(env.source)\obj\JCOMAPI.OBJ" />
+            <File Id="file180" Name="JCPARAM.OBJ" Source="$(env.source)\obj\JCPARAM.OBJ" />
+            <File Id="file181" Name="JCPHUFF.OBJ" Source="$(env.source)\obj\JCPHUFF.OBJ" />
+            <File Id="file182" Name="JCPREPCT.OBJ" Source="$(env.source)\obj\JCPREPCT.OBJ" />
+            <File Id="file183" Name="JCSAMPLE.OBJ" Source="$(env.source)\obj\JCSAMPLE.OBJ" />
+            <File Id="file184" Name="JCTRANS.OBJ" Source="$(env.source)\obj\JCTRANS.OBJ" />
+            <File Id="file185" Name="JDAPIMIN.OBJ" Source="$(env.source)\obj\JDAPIMIN.OBJ" />
+            <File Id="file186" Name="JDAPISTD.OBJ" Source="$(env.source)\obj\JDAPISTD.OBJ" />
+            <File Id="file187" Name="JDCOEFCT.OBJ" Source="$(env.source)\obj\JDCOEFCT.OBJ" />
+            <File Id="file188" Name="JDCOLOR.OBJ" Source="$(env.source)\obj\JDCOLOR.OBJ" />
+            <File Id="file189" Name="JDDCTMGR.OBJ" Source="$(env.source)\obj\JDDCTMGR.OBJ" />
+            <File Id="file190" Name="JDHUFF.OBJ" Source="$(env.source)\obj\JDHUFF.OBJ" />
+            <File Id="file191" Name="JDINPUT.OBJ" Source="$(env.source)\obj\JDINPUT.OBJ" />
+            <File Id="file192" Name="JDMAINCT.OBJ" Source="$(env.source)\obj\JDMAINCT.OBJ" />
+            <File Id="file193" Name="JDMARKER.OBJ" Source="$(env.source)\obj\JDMARKER.OBJ" />
+            <File Id="file194" Name="JDMASTER.OBJ" Source="$(env.source)\obj\JDMASTER.OBJ" />
+            <File Id="file195" Name="JDMERGE.OBJ" Source="$(env.source)\obj\JDMERGE.OBJ" />
+            <File Id="file196" Name="JDPHUFF.OBJ" Source="$(env.source)\obj\JDPHUFF.OBJ" />
+            <File Id="file197" Name="JDPOSTCT.OBJ" Source="$(env.source)\obj\JDPOSTCT.OBJ" />
+            <File Id="file198" Name="JDSAMPLE.OBJ" Source="$(env.source)\obj\JDSAMPLE.OBJ" />
+            <File Id="file199" Name="JDTRANS.OBJ" Source="$(env.source)\obj\JDTRANS.OBJ" />
+            <File Id="file200" Name="JERROR.OBJ" Source="$(env.source)\obj\JERROR.OBJ" />
+            <File Id="file201" Name="JFDCTFLT.OBJ" Source="$(env.source)\obj\JFDCTFLT.OBJ" />
+            <File Id="file202" Name="JFDCTFST.OBJ" Source="$(env.source)\obj\JFDCTFST.OBJ" />
+            <File Id="file203" Name="JFDCTINT.OBJ" Source="$(env.source)\obj\JFDCTINT.OBJ" />
+            <File Id="file204" Name="JIDCTFLT.OBJ" Source="$(env.source)\obj\JIDCTFLT.OBJ" />
+            <File Id="file205" Name="JIDCTFST.OBJ" Source="$(env.source)\obj\JIDCTFST.OBJ" />
+            <File Id="file206" Name="JIDCTINT.OBJ" Source="$(env.source)\obj\JIDCTINT.OBJ" />
+            <File Id="file207" Name="JIDCTRED.OBJ" Source="$(env.source)\obj\JIDCTRED.OBJ" />
+            <File Id="file208" Name="JMEMMGR.OBJ" Source="$(env.source)\obj\JMEMMGR.OBJ" />
+            <File Id="file209" Name="JMEMNOBS.OBJ" Source="$(env.source)\obj\JMEMNOBS.OBJ" />
+            <File Id="file210" Name="JQUANT1.OBJ" Source="$(env.source)\obj\JQUANT1.OBJ" />
+            <File Id="file211" Name="JQUANT2.OBJ" Source="$(env.source)\obj\JQUANT2.OBJ" />
+            <File Id="file212" Name="JUTILS.OBJ" Source="$(env.source)\obj\JUTILS.OBJ" />
+          </Component>
+        </Directory>
+   </DirectoryRef>
+ </Fragment>
+
+</Wix>
