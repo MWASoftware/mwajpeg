@@ -29,7 +29,7 @@
 #include "jpeglib.hpp"
 #include "mwadbjpg.hpp"
 #include <vcl\typinfo.hpp>
-#pragma resource "common\\jpeg_reg.dcr"
+#pragma resource "source\\jpeg_reg.dcr"
 #if __TCPLUSPLUS__ == 0x0520
 #define PACKAGE
 #pragma link "mwajpeg.obj"

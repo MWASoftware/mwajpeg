@@ -48,12 +48,12 @@ package mwajpg;
 
 requires
   {$IFDEF QREPORTS}
-  {$IFDEF VER185}
-  QR4RunD2007,
-  {$ELSE}
-  {$IFDEF VER180}
-  QR4StdRunD2006
-  {$ENDIF}{$ENDIF}{$ENDIF}
+  {$IFNDEF VER185}
+  {$IFNDEF VER180}
+  {$IFNDEF VER170}
+  qrpt,
+  {$ENDIF}{$ENDIF} {$ENDIF}
+  {$ENDIF}
   rtl,
   vcl,
   vclx,
