@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.2 2007-08-08 13:12:29 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.3 2007-08-08 14:02:35 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -85,7 +85,7 @@
           </Component>
 		  <Component Id="jpeglicence" Guid="6666D26D-3EE3-4EBD-9967-C3246AC4578F" DiskId="1">
 		    <File Id="licencehtm" Name="licence.htm" KeyPath="yes"
-				  Source="$(env.JPEGDIR)\$(var.Licence)" >
+				  Source="$(var.Licence)" >
               <Shortcut Id="startmenulicence" Directory="ProgramMenuDir" Name="licence"
                   LongName="Software Licence" WorkingDirectory='JPEGSupport' />
 			</File>

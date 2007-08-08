@@ -4,7 +4,7 @@ package mwajpg;
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO ON}
+{$DEBUGINFO OFF}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
@@ -22,13 +22,13 @@ package mwajpg;
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$RUNONLY}
-{$IMPLICITBUILD ON}
+{$IMPLICITBUILD OFF}
 {$IFDEF DESIGNTIME}
 {$DESIGNONLY}
 {$LIBPREFIX 'dcl'}
 {$ELSE}
 {$LIBPREFIX ''}
+{$RUNONLY}
 {$ENDIF}
 {$IFDEF VER140}
 {$LIBSUFFIX 'D6'}
@@ -54,12 +54,12 @@ requires
   qrpt,
   {$ENDIF}{$ENDIF} {$ENDIF}
   {$ENDIF}
-  rtl,
+  {$IFDEF DESIGNTIME}
+  vcljpg,
+  {$ENDIF}
   vcl,
-  vclx,
   dbrtl,
   vcldb,
-  bdertl,
   designide;
 
 contains
