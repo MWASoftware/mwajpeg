@@ -18,7 +18,8 @@ call :mkdir release\evaluation
 call :mkdir release\full
 call :mkdir release\singleimage
 
-
+pcopy source\source\mwajpeg.pas .
+pause
 "%WIX%\candle" setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\Registrd\Licence.rtf license.rtf
@@ -29,7 +30,7 @@ IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\shrware\Licence.rtf license.rtf
 "%WIX%\light" -out release\evaluation\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi2007.wixobj %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
-del license.rtf
+del license.rtf mwajpeg.pas
 
 call :MKSINGLEIMAGE full mwajpegfull Full
 call :MKSINGLEIMAGE evaluation mwajpegevaluation Evaluation
