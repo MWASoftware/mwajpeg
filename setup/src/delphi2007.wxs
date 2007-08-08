@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2007.wxs,v 1.2 2007-08-08 13:12:29 tony Exp $ -->
+<!-- $Id: delphi2007.wxs,v 1.3 2007-08-08 18:19:39 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2007 -->
 
 <?define guidJPEGBPL="BF443AB1-06E0-4EA7-B349-7728A6910C15"?>
-<?define guidMWAQRJPEG="6E5F98E1-04E6-485E-8130-62DBE9F57594"?>
+<?define guidJPEGQRBPL="BF443AB1-06E0-4EA7-B349-7728A6910C15"?>
+<?define guidMWAQRJPEG="FC398FA5-D4BE-4427-AF23-9C02E25B4FAA"?>
 <?define guidQR4RTDCP="6DCDF31B-A28E-44FA-91C4-17FDDEF86347"?>
 <?define guidQR4runtime="87AF0B0D-B81F-4C8C-83DC-CC1D211538E9"?>
 <?define guidRTDCP="96680930-F20B-44D2-988F-A1938912D468"?>
-<?define STDruntimeguid="D737DB7C-2BB0-4FA3-B69B-488CE620D06E"?>
+<?define guidSTDruntime="D737DB7C-2BB0-4FA3-B69B-488CE620D06E"?>
+<?define guidDCPJPEGDCP="16625A67-05EA-484D-804C-A3003A2BB857"?>
+<?define guidQRDCPJPEGDCP="5AB24BA9-1A48-4A19-A972-AC9457E48427"?>
 
 <?ifdef EVALUATION?>
 <?define dcuDir="source\evaluationUnits\d11"?>
@@ -32,48 +35,56 @@
 
   <Property Id="QR4D2007">
     <RegistrySearch Id="QRROOTVER185" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
-                      Name="RootDir" Type="directory" />
+                      Name="RootDir" Type="directory" >
 	  <DirectorySearch Id="QR4RunVER185" Path="QuickRep" Depth="1">
 	   <DirectorySearch Id="QR4RunbplVER185" Path="bpl" Depth="1">
-        <FileSearch Id="QR4RunVER185" Name="QR4DesignD2007.bpl" />
+        <FileSearch Id="QR4RunbplVER185" LongName="QR4DesignD2007.bpl" />
  	   </DirectorySearch>
 	  </DirectorySearch>
     </RegistrySearch>
   </Property>
 
-  <Custom Action Id="SetInstallDirVER185" Property="DelphiDirVER185"
-                 Value="[INSTALLDIRVER185]"/>
+  <CustomAction Id="SetInstallDirVER185" Directory="DelphiDirVER185"
+                 Value="[INSTALLDIRD2007]"/>
   <InstallExecuteSequence>
-    <Custom Action='SetDephi2007Dir' After='CostFinalize'>INSTALLDIRD2007</Custom>
+    <Custom Action='SetInstallDirVER185' After='CostFinalize'>INSTALLDIRD2007</Custom>
   </InstallExecuteSequence>
 
   <DirectoryRef Id="TARGETDIR">
-    <Directory Id="DelphiDirVER185" Name="Delphi">
+    <Directory Id="DelphiDirVER185" Name="Delphi11" LongName="Delphi2007">
 	  <Directory Id="bindirVER185" Name="bin">
 	   <Component Id="DesignTimePkgeVER185" Guid="$(var.guidJPEGBPL)" DiskId="1">
 	     <Condition>INSTALLDIRD2007 and not QR4D2007</Condition>
   	     <File Id="dcljpg11bpl" Name="dcljpg11.bpl" LongName="dclmwajpgD2007.bpl"
-	   	     Source="source\Packages\dclmwajpgD2007.bpl">
-	       <Registry Id="Add2PackageList" Action="createKeyAndRemoveKeyOnUninstall"
-		 		   Root="HKLM" Type="string"
+	   	     Source="source\Packages\dclmwajpgD2007.bpl"/>
+	     <Registry Id="AddStd2PackageListVER185"
+		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\5.0\Known Packages"
 				   Name="[#dcljpg11bpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
-	     </File>
 	   </Component>
 	   <Component Id="DesignTimePkgeQRVER185" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
 	     <Condition>INSTALLDIRD2007 and QR4D2007</Condition>
   	     <File Id="dcljpg11qrbpl" Name="dcljpg11.bpl" LongName="dclmwajpgD2007.bpl"
-	   	     Source="source\Packages\QR\dclmwajpgD2007.bpl">
-	       <Registry Id="Add2PackageList" Action="createKeyAndRemoveKeyOnUninstall"
-		 		   Root="HKLM" Type="string"
+	   	     Source="source\Packages\QR\dclmwajpgD2007.bpl"/>
+	     <Registry Id="AddQR2PackageListVER185"
+		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\5.0\Known Packages"
 				   Name="[#dcljpg11qrbpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
-	     </File>
 	   </Component>
 	  </Directory>
-	  <Directory Id=libdirVER185" Name="lib">
+	  <Directory Id="libdirVER185" Name="lib">
+	    <Component Id="dcljpgdcpVER185" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRD2007 and not QR4D2007</Condition>
+		  <File Id="dclmwajpgVER185" Name="dclmjpg.dcp" LongName="dclmwajpg.dcp"
+		  	    Source="source\Packages\d11\dclmwajpg.dcp" />
+ 	    </Component>
+	    <Component Id="dcljpgqrdcpVER185" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRD2007 and QR4D2007</Condition>
+		  <File Id="dclmwajpgqrVER185" Name="dclmjpq.dcp" LongName="dclmwajpg.dcp"
+		  	    Source="source\Packages\QR\d11\dclmwajpg.dcp" />
+ 	    </Component>
 	    <Component Id="jpeglibVER185" Guid="$(var.guidJPEGLIB)" DiskId="1">
 	     <Condition>INSTALLDIRD2007</Condition>
 		  <File Id="jpeglibdcuVER185" Name="jpeglib.dcu"
@@ -115,7 +126,7 @@
             <File Id="mwajpgdcpVER185" Name="mwajpg.dcp"
 			      Source="source\Packages\d11\mwajpg.dcp" />
           </Component>
-          <Component Id="STDruntimeVER185" DiskId="1" Guid="$(var.STDruntimeguid)">
+          <Component Id="STDruntimeVER185" DiskId="1" Guid="$(var.guidSTDruntime)">
  	        <Condition>INSTALLDIRD2007</Condition>
             <File Id="mwajpgD2007bplVER185" Name="mwajpg11.bpl" LongName="mwajpgD2007.bpl"
 			      Source="source\Packages\mwajpgD2007.bpl" />
@@ -127,16 +138,19 @@
   </DirectoryRef>
 
   <ComponentGroup Id="Delphi2007" >
-    <ComponentRef Id="DesignTimePkgeVER185">
-    <ComponentRef Id="DesignTimePkgeQRVER185">
-    <ComponentRef Id="jpeglibVER185">
-    <ComponentRef Id="mwajpegVER185">
-    <ComponentRef Id="mwadbjpgVER185">
+    <ComponentRef Id="DesignTimePkgeVER185"/>
+    <ComponentRef Id="DesignTimePkgeQRVER185"/>
+    <ComponentRef Id="jpeglibVER185"/>
+    <ComponentRef Id="mwajpegVER185"/>
+    <ComponentRef Id="mwadbjpgVER185"/>
+    <ComponentRef Id="mwaQRjpgVER185"/>
+    <ComponentRef Id="dcljpgdcpVER185"/>
+    <ComponentRef Id="dcljpgqrdcpVER185"/>
     <?ifndef EVALUATION?>
-    <ComponentRef Id="QR4BPLVER185">
-    <ComponentRef Id="QR4runtimeVER185">
-    <ComponentRef Id="RTDCPVER185">
-    <ComponentRef Id="STDruntimeVER185">
+    <ComponentRef Id="QR4RTDCPVER185"/>
+    <ComponentRef Id="QR4runtimeVER185"/>
+    <ComponentRef Id="RTDCPVER185"/>
+    <ComponentRef Id="STDruntimeVER185"/>
     <?endif?>
   </ComponentGroup>
 

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: examples.wxs,v 1.1 2007-08-08 18:19:39 tony Exp $ -->
+<!-- This fragment specifies the example programs -->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+  <Fragment>
+    <DirectoryRef Id="JPEGExamples">
+        <Directory Id="ExampleDir1" Name="db">
+          <Directory Id="ExampleDir2" Name="qr">
+            <Directory Id="ExampleDir3" Name="cbuilder">
+              <Component Id="ExDbQrCb" DiskId="1" Guid="D73FF10D-152F-4939-81C1-1554C207F445">
+			    <Shortcut Id="ExamplesDirShortCut" Target="[JPEGExamples]" Name="Examples"
+					      LongName="JPEG Demonstration Programs"
+						  Directory="ProgramMenuDir" />
+                <File Id="Examplefile0" Name="about.cpp" Source="Examples\db\qr\cbuilder\about.cpp" />
+                <File Id="Examplefile1" Name="about.dfm" Source="Examples\db\qr\cbuilder\about.dfm" />
+                <File Id="Examplefile2" Name="about.h" Source="Examples\db\qr\cbuilder\about.h" />
+                <File Id="Examplefile3" Name="DBdemo.bpr" Source="Examples\db\qr\cbuilder\DBdemo.bpr" />
+                <File Id="Examplefile4" Name="DBdemo.cpp" Source="Examples\db\qr\cbuilder\DBdemo.cpp" />
+                <File Id="Examplefile5" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
+                <File Id="Examplefile6" Name="dbGrDemo.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo.bpr" />
+                <File Id="Examplefile7" Name="dbGrDemo.cpp" Source="Examples\db\qr\cbuilder\dbGrDemo.cpp" />
+                <File Id="Examplefile8" Name="dbGrDemo.res" Source="Examples\db\dbDemo.res" />
+                <File Id="Examplefile9" Name="dblistvr.cpp" Source="Examples\db\qr\cbuilder\dblistvr.cpp" />
+                <File Id="Examplefile10" Name="dblistvr.dfm" Source="Examples\db\qr\cbuilder\dblistvr.dfm" />
+                <File Id="Examplefile11" Name="dblistvr.h" Source="Examples\db\qr\cbuilder\dblistvr.h" />
+                <File Id="Examplefile12" Name="jpegdata.cpp" Source="Examples\db\qr\cbuilder\jpegdata.cpp" />
+                <File Id="Examplefile13" Name="jpegdata.dfm" Source="Examples\db\qr\cbuilder\jpegdata.dfm" />
+                <File Id="Examplefile14" Name="jpegdata.h" Source="Examples\db\qr\cbuilder\jpegdata.h" />
+                <File Id="Examplefile15" Name="Jpegdemo.cpp" Source="Examples\db\qr\cbuilder\Jpegdemo.cpp" />
+                <File Id="Examplefile16" Name="Jpegs.db" Source="Examples\db\Jpegs.db" />
+                <File Id="Examplefile17" Name="Jpegs.MB" Source="Examples\db\Jpegs.MB" />
+                <File Id="Examplefile18" Name="jpegview.cpp" Source="Examples\db\qr\cbuilder\jpegview.cpp" />
+                <File Id="Examplefile19" Name="jpegview.dfm" Source="Examples\db\qr\cbuilder\jpegview.dfm" />
+                <File Id="Examplefile20" Name="jpegview.h" Source="Examples\db\qr\cbuilder\jpegview.h" />
+                <File Id="Examplefile21" Name="progress.cpp" Source="Examples\db\qr\cbuilder\progress.cpp" />
+                <File Id="Examplefile22" Name="progress.dfm" Source="Examples\db\qr\cbuilder\progress.dfm" />
+                <File Id="Examplefile23" Name="progress.h" Source="Examples\db\qr\cbuilder\progress.h" />
+                <File Id="Examplefile24" Name="Report.cpp" Source="Examples\db\qr\cbuilder\Report.cpp" />
+                <File Id="Examplefile25" Name="Report.dfm" Source="Examples\db\qr\cbuilder\Report.dfm" />
+                <File Id="Examplefile26" Name="Report.h" Source="Examples\db\qr\cbuilder\Report.h" />
+              </Component>
+            </Directory>
+            <Directory Id="ExampleDir4" Name="delphi">
+              <Component Id="ExDbQrDelphi" DiskId="1" Guid="5F9D03B5-045E-429D-B946-B1C001656281">
+                <File Id="Examplefile27" Name="about.dfm" Source="Examples\db\qr\delphi\about.dfm" />
+                <File Id="Examplefile28" Name="about.pas" Source="Examples\db\qr\delphi\about.pas" />
+                <File Id="Examplefile29" Name="DBdemo.dpr" Source="Examples\db\qr\delphi\DBdemo.dpr" />
+                <File Id="Examplefile30" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
+                <File Id="Examplefile31" Name="DBGrDemo.dpr" Source="Examples\db\qr\delphi\DBGrDemo.dpr" />
+                <File Id="Examplefile32" Name="DBGrDemo.res" Source="Examples\db\DBDemo.res" />
+                <File Id="Examplefile33" Name="DBListvr.dfm" Source="Examples\db\qr\delphi\DBListvr.dfm" />
+                <File Id="Examplefile34" Name="DBListvr.pas" Source="Examples\db\qr\delphi\DBListvr.pas" />
+                <File Id="Examplefile35" Name="JpegData.dfm" Source="Examples\db\qr\delphi\JpegData.dfm" />
+                <File Id="Examplefile36" Name="JpegData.pas" Source="Examples\db\qr\delphi\JpegData.pas" />
+                <File Id="Examplefile37" Name="Jpegs.db" Source="Examples\db\Jpegs.db" />
+                <File Id="Examplefile38" Name="Jpegs.MB" Source="Examples\db\Jpegs.MB" />
+                <File Id="Examplefile39" Name="progress.dfm" Source="Examples\db\qr\delphi\progress.dfm" />
+                <File Id="Examplefile40" Name="progress.pas" Source="Examples\db\qr\delphi\progress.pas" />
+                <File Id="Examplefile41" Name="Report.dfm" Source="Examples\db\qr\delphi\Report.dfm" />
+                <File Id="Examplefile42" Name="Report.pas" Source="Examples\db\qr\delphi\Report.pas" />
+                <File Id="Examplefile43" Name="sdimain.dfm" Source="Examples\db\qr\delphi\sdimain.dfm" />
+                <File Id="Examplefile44" Name="sdimain.pas" Source="Examples\db\qr\delphi\sdimain.pas" />
+              </Component>
+            </Directory>
+          </Directory>
+          <Directory Id="ExampleDir6" Name="std">
+            <Directory Id="ExampleDir7" Name="cbuilder">
+              <Component Id="Exdbstdcb" DiskId="1" Guid="023B612E-D710-4F54-8526-4E5F684445D7">
+                <File Id="Examplefile49" Name="about.cpp" Source="Examples\db\std\cbuilder\about.cpp" />
+                <File Id="Examplefile50" Name="about.dfm" Source="Examples\db\std\cbuilder\about.dfm" />
+                <File Id="Examplefile51" Name="about.h" Source="Examples\db\std\cbuilder\about.h" />
+                <File Id="Examplefile52" Name="DBdemo.bpr" Source="Examples\db\std\cbuilder\DBdemo.bpr" />
+                <File Id="Examplefile53" Name="DBdemo.cpp" Source="Examples\db\std\cbuilder\DBdemo.cpp" />
+                <File Id="Examplefile54" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
+                <File Id="Examplefile55" Name="dbGrDemo.bpr" Source="Examples\db\std\cbuilder\dbGrDemo.bpr" />
+                <File Id="Examplefile56" Name="dbGrDemo.cpp" Source="Examples\db\std\cbuilder\dbGrDemo.cpp" />
+                <File Id="Examplefile57" Name="dbGrDemo.res" Source="Examples\db\dbDemo.res" />
+                <File Id="Examplefile58" Name="dblistvr.cpp" Source="Examples\db\std\cbuilder\dblistvr.cpp" />
+                <File Id="Examplefile59" Name="dblistvr.dfm" Source="Examples\db\std\cbuilder\dblistvr.dfm" />
+                <File Id="Examplefile60" Name="dblistvr.h" Source="Examples\db\std\cbuilder\dblistvr.h" />
+                <File Id="Examplefile61" Name="jpegdata.cpp" Source="Examples\db\std\cbuilder\jpegdata.cpp" />
+                <File Id="Examplefile62" Name="jpegdata.dfm" Source="Examples\db\std\cbuilder\jpegdata.dfm" />
+                <File Id="Examplefile63" Name="jpegdata.h" Source="Examples\db\std\cbuilder\jpegdata.h" />
+                <File Id="Examplefile64" Name="Jpegdemo.cpp" Source="Examples\db\std\cbuilder\Jpegdemo.cpp" />
+                <File Id="Examplefile65" Name="Jpegs.db" Source="Examples\db\Jpegs.db" />
+                <File Id="Examplefile66" Name="Jpegs.MB" Source="Examples\db\Jpegs.MB" />
+                <File Id="Examplefile67" Name="jpegview.cpp" Source="Examples\db\std\cbuilder\jpegview.cpp" />
+                <File Id="Examplefile68" Name="jpegview.dfm" Source="Examples\db\std\cbuilder\jpegview.dfm" />
+                <File Id="Examplefile69" Name="jpegview.h" Source="Examples\db\std\cbuilder\jpegview.h" />
+                <File Id="Examplefile70" Name="progress.cpp" Source="Examples\db\std\cbuilder\progress.cpp" />
+                <File Id="Examplefile71" Name="progress.dfm" Source="Examples\db\std\cbuilder\progress.dfm" />
+                <File Id="Examplefile72" Name="progress.h" Source="Examples\db\std\cbuilder\progress.h" />
+              </Component>
+            </Directory>
+            <Directory Id="ExampleDir8" Name="delphi">
+              <Component Id="ExdbstdDelphi" DiskId="1" Guid="CB319197-32E4-4078-80FF-C1D02BBB6AED">
+                <File Id="Examplefile73" Name="about.dfm" Source="Examples\db\std\delphi\about.dfm" />
+                <File Id="Examplefile74" Name="about.pas" Source="Examples\db\std\delphi\about.pas" />
+                <File Id="Examplefile75" Name="DBdemo.dpr" Source="Examples\db\std\delphi\DBdemo.dpr" />
+                <File Id="Examplefile76" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
+                <File Id="Examplefile77" Name="DBGrDemo.dpr" Source="Examples\db\std\delphi\DBGrDemo.dpr" />
+                <File Id="Examplefile78" Name="DBGrDemo.RES" Source="Examples\db\DBDemo.RES" />
+                <File Id="Examplefile79" Name="DBListvr.dfm" Source="Examples\db\std\delphi\DBListvr.dfm" />
+                <File Id="Examplefile80" Name="DBListvr.pas" Source="Examples\db\std\delphi\DBListvr.pas" />
+                <File Id="Examplefile81" Name="JpegData.dfm" Source="Examples\db\std\delphi\JpegData.dfm" />
+                <File Id="Examplefile82" Name="JpegData.pas" Source="Examples\db\std\delphi\JpegData.pas" />
+                <File Id="Examplefile83" Name="Jpegs.db" Source="Examples\db\Jpegs.db" />
+                <File Id="Examplefile84" Name="Jpegs.MB" Source="Examples\db\Jpegs.MB" />
+                <File Id="Examplefile85" Name="progress.dfm" Source="Examples\db\std\delphi\progress.dfm" />
+                <File Id="Examplefile86" Name="progress.pas" Source="Examples\db\std\delphi\progress.pas" />
+                <File Id="Examplefile87" Name="Report.dfm" Source="Examples\db\std\delphi\Report.dfm" />
+                <File Id="Examplefile88" Name="Report.pas" Source="Examples\db\std\delphi\Report.pas" />
+                <File Id="Examplefile89" Name="sdimain.dfm" Source="Examples\db\std\delphi\sdimain.dfm" />
+                <File Id="Examplefile90" Name="sdimain.pas" Source="Examples\db\std\delphi\sdimain.pas" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+        <Directory Id="ExampleDir9" Name="Viewer">
+          <Directory Id="ExampleDir10" Name="cbuilder">
+            <Component Id="ExViewerCB" DiskId="1" Guid="0F4F673E-FC81-48CE-B537-1007A6EFAB59">
+              <File Id="Examplefile91" Name="about.cpp" Source="Examples\Viewer\cbuilder\about.cpp" />
+              <File Id="Examplefile92" Name="about.dfm" Source="Examples\Viewer\cbuilder\about.dfm" />
+              <File Id="Examplefile93" Name="about.h" Source="Examples\Viewer\cbuilder\about.h" />
+              <File Id="Examplefile94" Name="jpegdemo.bpr" Source="Examples\Viewer\cbuilder\jpegdemo.bpr" />
+              <File Id="Examplefile95" Name="jpegdemo.cpp" Source="Examples\Viewer\cbuilder\jpegdemo.cpp" />
+              <File Id="Examplefile96" Name="jpegdemo.RES" Source="Examples\Viewer\jpegdemo.RES" />
+              <File Id="Examplefile97" Name="jpegview.cpp" Source="Examples\Viewer\cbuilder\jpegview.cpp" />
+              <File Id="Examplefile98" Name="jpegview.dfm" Source="Examples\Viewer\cbuilder\jpegview.dfm" />
+              <File Id="Examplefile99" Name="jpegview.h" Source="Examples\Viewer\cbuilder\jpegview.h" />
+              <File Id="Examplefile100" Name="progress.cpp" Source="Examples\Viewer\cbuilder\progress.cpp" />
+              <File Id="Examplefile101" Name="progress.dfm" Source="Examples\Viewer\cbuilder\progress.dfm" />
+              <File Id="Examplefile102" Name="progress.h" Source="Examples\Viewer\cbuilder\progress.h" />
+              <File Id="Examplefile103" Name="Test.jpg" Source="Examples\Viewer\Test.jpg" />
+              <File Id="Examplefile104" Name="test.rc" Source="Examples\Viewer\test.rc" />
+            </Component>
+          </Directory>
+          <Directory Id="ExampleDir11" Name="delphi">
+            <Component Id="ExViewerDelphi" DiskId="1" Guid="CE6EF22B-E242-4869-8DF9-75EEB96AB3C7">
+              <File Id="Examplefile105" Name="ABOUT.dfm" Source="Examples\Viewer\delphi\ABOUT.dfm" />
+              <File Id="Examplefile106" Name="ABOUT.PAS" Source="Examples\Viewer\delphi\ABOUT.PAS" />
+              <File Id="Examplefile107" Name="jpegdemo.dpr" Source="Examples\Viewer\delphi\jpegdemo.dpr" />
+              <File Id="Examplefile108" Name="jpegdemo.RES" Source="Examples\Viewer\jpegdemo.RES" />
+              <File Id="Examplefile109" Name="progress.dfm" Source="Examples\Viewer\delphi\progress.dfm" />
+              <File Id="Examplefile110" Name="progress.pas" Source="Examples\Viewer\delphi\progress.pas" />
+              <File Id="Examplefile111" Name="SDIMAIN.dfm" Source="Examples\Viewer\delphi\SDIMAIN.dfm" />
+              <File Id="Examplefile112" Name="SDIMAIN.PAS" Source="Examples\Viewer\delphi\SDIMAIN.PAS" />
+              <File Id="Examplefile113" Name="Test.jpg" Source="Examples\Viewer\Test.jpg" />
+              <File Id="Examplefile114" Name="test.RES" Source="Examples\Viewer\test.RES" />
+            </Component>
+          </Directory>
+        </Directory>
+    </DirectoryRef>
+
+	<ComponentGroup Id="Examples">
+	  <ComponentRef Id="ExDbQrCb"/>
+	  <ComponentRef Id="ExDbQrDelphi"/>
+	  <ComponentRef Id="Exdbstdcb"/>
+	  <ComponentRef Id="ExdbstdDelphi"/>
+	  <ComponentRef Id="ExViewerCB"/>
+	  <ComponentRef Id="ExViewerDelphi"/>
+	</ComponentGroup>
+  </Fragment>
+</Wix>

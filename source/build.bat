@@ -39,9 +39,9 @@ IF NOT EXIST "%D6%\bin\dcc32.exe" goto D7
 "%D6%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D6 
 IF ERRORLEVEL 1 goto Quit
 move dclmwajpgD6.bpl Packages
-del mwajpg.dcp
+move mwajpg.dcp Packages\D6\dclmwajpg.dcp
 
-"%D6%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /M /Z- /OObj /UUnits\D6 /NUnits\D6
+"%D6%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D6 /NUnits\D6
 IF ERRORLEVEL 1 goto Quit
 move mwajpgd6.bpl Packages
 move mwajpg.dcp Packages\D6\mwajpg.dcp
@@ -53,7 +53,8 @@ rem MAKE Delphi 7
 IF NOT EXIST "%D7%\bin\dcc32.exe" goto D9
 "%D7%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D7 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
-"%D7%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /M /Z- /OObj /UUnits\D7 /NUnits\D7 /LEPackages /LNPackages\D7
+move mwajpg.dcp Packages\D7\dclmwajpg.dcp
+"%D7%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D7 /NUnits\D7 /LEPackages /LNPackages\D7
 IF ERRORLEVEL 1 goto Quit
 del Units\D7\jpegreg2.dcu Units\D7\mwajpg.dcu
 
@@ -63,15 +64,15 @@ rem MAKE Delphi 2005
 If NOT EXIST "%D9%\bin\QR4runDX.dcp" goto D9QRSTD
 "%D9%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignDX -u"%D9%\bin" /OObj /NUnits\D9  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
+move mwajpg.dcp Packages\QR\D9\dclmwajpg.dcp
 "%D9%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runDX -u"%D9%\bin" /OObj /NUnits\D9 /LNPackages\QR\D9 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D9STD
 IF NOT EXIST "%D9%\bin\dcc32.exe" goto D10
 "%D9%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D9 /LEPackages
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
-"%D9%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /M /Z- /OObj /UUnits\D9 /NUnits\D9 /LNPackages\D9 /LEPackages
+move mwajpg.dcp Packages\D9\dclmwajpg.dcp
+"%D9%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D9 /NUnits\D9 /LNPackages\D9 /LEPackages
 IF ERRORLEVEL 1 goto Quit
 del Units\D9\jpegreg2.dcu Units\D9\mwajpg.dcu
 
@@ -81,23 +82,23 @@ rem MAKE Delphi 2006
 If NOT EXIST "%D10%\QuickRep\bpl\QR4runD2006.dcp" goto D10QRSTD
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
+move mwajpg.dcp Packages\QR\D10\dclmwajpg.dcp
 "%D10%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10 /LNPackages\QR\D10 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D10QRSTD
 If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10QRSTD
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdDesignD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
+move mwajpg.dcp Packages\QRstd\D10\dclmwajpg.dcp
 "%D10%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdRunD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10 /LNPackages\QRstd\D10 /LEPackages\QRstd
 IF ERRORLEVEL 1 goto Quit
 :D10STD
 IF NOT EXIST "%D10%\bin\dcc32.exe" goto D11
 "%D10%\bin\dcc32" source\mwadbjpg.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0Units\d10 /NHUnits\d10 /NOUnits\d10
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /OObj /M /Z- /UUnits\d10 /LEPackages 
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /OObj /B /Z- /UUnits\d10 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
-"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /M /Z- /OObj /UUnits\D10 /NUnits\D10 /LNPackages\D10 /LEPackages
+move mwajpg.dcp Packages\D10\dclmwajpg.dcp
+"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D10 /NUnits\D10 /LNPackages\D10 /LEPackages
 IF ERRORLEVEL 1 goto Quit
 del Units\D10\jpegreg2.dcu Units\D10\mwajpg.dcu
 
@@ -109,14 +110,14 @@ IF NOT EXIST "%D11%\bin\dcc32.exe" goto CB5
 If NOT EXIST "%D11%\QuickRep\bpl\QR4runD2007.dcp" goto D11STD
 "%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
+move mwajpg.dcp Packages\QR\D11\dclmwajpg.dcp
 "%D11%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11 /LNPackages\QR\D11 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D11STD
-"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D11 /LEPackages
+"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D11 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
-del mwajpg.dcp
-"%D11%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /M /Z- /OObj /UUnits\D11 /NUnits\D11 /LNPackages\D11 /LEPackages
+move mwajpg.dcp Packages\D11\dclmwajpg.dcp
+"%D11%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D11 /NUnits\D11 /LNPackages\D11 /LEPackages
 IF ERRORLEVEL 1 goto Quit
 del Units\D11\jpegreg2.dcu Units\D11\mwajpg.dcu
 
@@ -135,7 +136,7 @@ rename source\jpeglib.pas _jpeglib.pas
 "%CB5%\bin\make" -B PDEFS=DESIGNTIME;CBUILDER5;QREPORTS;%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5
 IF ERRORLEVEL 1 goto QUIT1
 move mwajpg.bpl Packages\dclmwajpgcb5.bpl
-del mwajpg.bpi
+move mwajpg.bpi Packages\cb5\dclmwajpg.bpi
 "%CB5%\bin\make" -B PDEFS=CBUILDER5;QREPORTS;%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas
@@ -158,7 +159,7 @@ rename source\jpeglib.pas _jpeglib.pas
 "%CB6%\bin\make" -B PDEFS=DESIGNTIME;CBUILDER5;QREPORTS;%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB6 -DUNITDIR=Units\cb6
 IF ERRORLEVEL 1 goto QUIT1
 move mwajpg.bpl Packages\dclmwajpgcb6.bpl
-del mwajpg.bpi
+move mwajpg.bpi Packages\cb6\dclmwajpg.bpi
 "%CB6%\bin\make" -B PDEFS=CBUILDER5;QREPORTS;%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB6 -DUNITDIR=Units\cb6 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas

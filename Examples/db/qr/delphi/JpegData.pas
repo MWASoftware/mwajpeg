@@ -28,7 +28,7 @@ implementation
 
 procedure TDataModule1.DataModule1Create(Sender: TObject);
 begin
-  Table1.TableName := ExtractFilePath(Application.Exename)+Table1.TableName;
+  Table1.TableName := ExtractShortPathName(ExtractFilePath(Application.Exename)+Table1.TableName);
   if not FileExists(Table1.TableName) then
     Table1.CreateTable;
   Table1.Open
