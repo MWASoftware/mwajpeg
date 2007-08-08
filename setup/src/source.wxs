@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: source.wxs,v 1.1.1.1 2007-08-08 08:52:15 tony Exp $ -->
+<!-- $Id: source.wxs,v 1.2 2007-08-08 13:12:29 tony Exp $ -->
 
 <!-- This Fragment installs the JPEG Source Code Files -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
 
  <Fragment>
    <DirectoryRef Id="JPEGSource">
-        <Component Id="component0" DiskId="1" Guid="3E63EF94-B805-44DA-A54B-A3B24ACCD346">
+        <Component Id="BuildCpts" DiskId="1" Guid="3E63EF94-B805-44DA-A54B-A3B24ACCD346">
           <File Id="file0" Name="build.bat" Source="$(env.source)\build.bat" />
           <File Id="file3" Name="Mwajpg.cfg" Source="$(env.source)\Mwajpg.cfg" />
           <File Id="file4" Name="mwajpg.dpk" Source="$(env.source)\mwajpg.dpk" />
           <File Id="file5" Name="mwajpg.mak" Source="$(env.source)\mwajpg.mak" />
           <File Id="file6" Name="mwajpg.res" Source="$(env.source)\mwajpg.res" />
         </Component>
-        <Directory Id="directory1" Name="common">
-          <Component Id="component1" DiskId="1" Guid="78737442-9A2F-471E-9619-08154DEE7D3E">
-            <File Id="file7" Name="jmorecfg.inc" Source="$(env.source)\common\jmorecfg.inc" />
-            <File Id="file9" Name="jpeglib.pas" Source="$(env.source)\common\jpeglib.pas" />
-            <File Id="file12" Name="jpegreg2.pas" Source="$(env.source)\common\jpegreg2.pas" />
-            <File Id="file13" Name="jpeg_reg.dcr" Source="$(env.source)\common\jpeg_reg.dcr" />
-            <File Id="file17" Name="mwadbjpg.pas" Source="$(env.source)\common\mwadbjpg.pas" />
-            <File Id="file20" Name="mwajpeg.pas" Source="$(env.source)\common\mwajpeg.pas" />
-            <File Id="file22" Name="mwajpgpe.pas" Source="$(env.source)\common\mwajpgpe.pas" />
-            <File Id="file23" Name="mwaQRjpg.pas" Source="$(env.source)\common\mwaQRjpg.pas" />
+        <Directory Id="directory1" Name="source">
+          <Component Id="mwajpgcmpts" DiskId="1" Guid="78737442-9A2F-471E-9619-08154DEE7D3E">
+            <File Id="file7" Name="jmorecfg.inc" Source="$(env.source)\source\jmorecfg.inc" />
+            <File Id="file9" Name="jpeglib.pas" Source="$(env.source)\source\jpeglib.pas" />
+            <File Id="file12" Name="jpegreg2.pas" Source="$(env.source)\source\jpegreg2.pas" />
+            <File Id="file13" Name="jpeg_reg.dcr" Source="$(env.source)\source\jpeg_reg.dcr" />
+            <File Id="file17" Name="mwadbjpg.pas" Source="$(env.source)\source\mwadbjpg.pas" />
+            <File Id="file20" Name="mwajpeg.pas" Source="$(env.source)\source\mwajpeg.pas" />
+            <File Id="file22" Name="mwajpgpe.pas" Source="$(env.source)\source\mwajpgpe.pas" />
+            <File Id="file23" Name="mwaQRjpg.pas" Source="$(env.source)\source\mwaQRjpg.pas" />
           </Component>
           <Directory Id="directory2" Name="cbuilder">
-            <Component Id="component2" DiskId="1" Guid="F604A6CA-28BD-4A95-978B-01FD2BB4EFA0">
-              <File Id="file26" Name="jpeg_reg.cpp" Source="$(env.source)\common\cbuilder\jpeg_reg.cpp" />
-              <File Id="file27" Name="mwajpg.cpp" Source="$(env.source)\common\cbuilder\mwajpg.cpp" />
-              <File Id="file28" Name="mwajpgpe.cpp" Source="$(env.source)\common\cbuilder\mwajpgpe.cpp" />
-              <File Id="file29" Name="mwajpgpe.h" Source="$(env.source)\common\cbuilder\mwajpgpe.h" />
-              <File Id="file30" Name="mwaQRjpg.cpp" Source="$(env.source)\common\cbuilder\mwaQRjpg.cpp" />
-              <File Id="file31" Name="mwaQRjpg.h" Source="$(env.source)\common\cbuilder\mwaQRjpg.h" />
+            <Component Id="cbjpegcmpts" DiskId="1" Guid="F604A6CA-28BD-4A95-978B-01FD2BB4EFA0">
+              <File Id="file26" Name="jpeg_reg.cpp" Source="$(env.source)\source\cbuilder\jpeg_reg.cpp" />
+              <File Id="file27" Name="mwajpg.cpp" Source="$(env.source)\source\cbuilder\mwajpg.cpp" />
+              <File Id="file28" Name="mwajpgpe.cpp" Source="$(env.source)\source\cbuilder\mwajpgpe.cpp" />
+              <File Id="file29" Name="mwajpgpe.h" Source="$(env.source)\source\cbuilder\mwajpgpe.h" />
+              <File Id="file30" Name="mwaQRjpg.cpp" Source="$(env.source)\source\cbuilder\mwaQRjpg.cpp" />
+              <File Id="file31" Name="mwaQRjpg.h" Source="$(env.source)\source\cbuilder\mwaQRjpg.h" />
             </Component>
           </Directory>
         </Directory>
         <Directory Id="directory3" Name="jpeg-6b">
-          <Component Id="component3" DiskId="1" Guid="A88C1B5D-40DB-4EA8-AA62-946B6692833C">
+          <Component Id="ijgsource" DiskId="1" Guid="A88C1B5D-40DB-4EA8-AA62-946B6692833C">
             <File Id="file32" Name="ansi2knr.1" Source="$(env.source)\jpeg-6b\ansi2knr.1" />
             <File Id="file33" Name="ansi2knr.c" Source="$(env.source)\jpeg-6b\ansi2knr.c" />
             <File Id="file34" Name="cderror.h" Source="$(env.source)\jpeg-6b\cderror.h" />
@@ -177,7 +177,7 @@
           </Component>
         </Directory>
         <Directory Id="directory4" Name="obj">
-          <Component Id="component4" DiskId="1" Guid="EA32C7A6-AB7D-4357-84AE-3C79610F559E">
+          <Component Id="ijgobj" DiskId="1" Guid="EA32C7A6-AB7D-4357-84AE-3C79610F559E">
             <File Id="file169" Name="JCAPIMIN.OBJ" Source="$(env.source)\obj\JCAPIMIN.OBJ" />
             <File Id="file170" Name="JCAPISTD.OBJ" Source="$(env.source)\obj\JCAPISTD.OBJ" />
             <File Id="file171" Name="JCCOEFCT.OBJ" Source="$(env.source)\obj\JCCOEFCT.OBJ" />
@@ -225,6 +225,13 @@
           </Component>
         </Directory>
    </DirectoryRef>
+   <ComponentGroup Id="JPEGSource">
+     <ComponentRef Id="BuildCpts">
+     <ComponentRef Id="mwajpgcmpts">
+     <ComponentRef Id="cbjpegcmpts">
+     <ComponentRef Id="ijgsource">
+     <ComponentRef Id="ijgobj">
+   </ComponentGroup>
  </Fragment>
 
 </Wix>

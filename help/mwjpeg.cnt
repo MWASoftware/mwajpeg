@@ -1,0 +1,19 @@
+:Base mwjpeg.hlp
+:Title MWA JPEG Component Library
+1 Contents
+2 About the Component Library=Topic_ABOUTTHECOMPONENTLIBRARY
+2 Example Applications=Topic_USINGTHEJPEGDEMOAPPLICATION
+2 Classes
+3 TJPEGFileCompressor=Topic_TJPEGFileCompressor
+3 TJPEGFileDecompressor=Topic_TJPEGFileDecompressor
+3 TDBJPEGImage=Topic_TDBJPEGImage
+3 TQRDBJPEGImage=Topic_TQRDBJPEGImage
+1 Units=Topic_Units
+2 Utility Functions
+3 ReSizeBitmap=Topic_ResizeBitmap
+3 CropBitmap=Topic_CropBitmap
+3 MetaToBitmap=Topic_MetaToBitmap
+2 Registration
+3 Pricing Information=Topic_PRICINGINFORMATION
+3 How to Register=Topic_HOWTOREGISTER
+3 Shareware Licence=JPEGLicence

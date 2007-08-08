@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.1.1.1 2007-08-08 08:52:15 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.2 2007-08-08 13:12:29 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -60,33 +60,36 @@
   <Media Id='1' />
 
   <Directory Id='TARGETDIR' Name='SourceDir'>
-    <Directory Id="CommonAppDataFolder" Name="CAppData" LongName="CommonAppData">
-      <Directory Id="MWAAppDataFolder" Name="mwasoft" LongName="MWA Software">
-        <Directory Id="JPEGSupport" Name="JPEG Component Library" >
-		  <Component Id="jpeghelp" Guid="PUT-GUID-HERE" DiskId="1">
+    <Directory Id="PersonalFolder" Name="Personal">
+      <Directory Id="MWASoftware" Name="mwasoft" LongName="MWA Software"/>
+	    <Directory Id="INSTALLDIR" Name="MWA JPEG Component Library" >
+  	      <Directory Id="JPEGExamples" Name="examples" LongName="JPEG Examples" />
+	      <Directory Id="JPEGSource" Name="source"  />
+		  <Component Id="jpeghelp" Guid="EA4D4A3F-5164-4C67-8A9C-F18A130EEC18" DiskId="1">
             <File Id="mwajpeghlp" Name="mwajpeg.hlp" KeyPath="yes"
-				  Source="$(env.JPEGDIR)\help\mwajpeg.hlp" >
+				  Source="help\mwajpeg.hlp" >
               <Shortcut Id="startmenuhelp" Directory="ProgramMenuDir" Name="Help"
-                  LongName="Online Help" WorkingDirectory='JPEGSupport' />
+                  LongName="Help for Delphi" WorkingDirectory='JPEGSupport' />
 			</File>
             <File Id="mwajpegcnt" Name="mwajpeg.cnt"
-				  Source="$(env.JPEGDIR)\help\mwajpeg.cnt" />
+				  Source="help\mwajpeg.cnt" />
           </Component>
-		  <Component Id="jpeglicence" Guid="PUT-GUID-HERE" DiskId="1">
+		  <Component Id="jpeghelpcb" Guid="2BB47FB7-67B1-4FB1-9B2C-CF64481A1253" DiskId="1">
+            <File Id="mwajpegcbhlp" Name="mwajpgcb.hlp" LongName="mwajpegcb.hlp" KeyPath="yes"
+				  Source="help\mwajpegcb.hlp" >
+              <Shortcut Id="startmenuhelp" Directory="ProgramMenuDir" Name="Helpcb"
+                  LongName="Help for C++Builder" WorkingDirectory='JPEGSupport' />
+			</File>
+            <File Id="mwajpegcbcnt" Name="mwajpgcb.cnt" LongName=mwajpegcb.cnt"
+				  Source="help\mwajpegcb.cnt" />
+          </Component>
+		  <Component Id="jpeglicence" Guid="6666D26D-3EE3-4EBD-9967-C3246AC4578F" DiskId="1">
 		    <File Id="licencehtm" Name="licence.htm" KeyPath="yes"
 				  Source="$(env.JPEGDIR)\$(var.Licence)" >
               <Shortcut Id="startmenulicence" Directory="ProgramMenuDir" Name="licence"
                   LongName="Software Licence" WorkingDirectory='JPEGSupport' />
 			</File>
           </Component>
-		</Directory>
-      </Directory>
-    </Directory>
-    <Directory Id="PersonalFolder" Name="Personal">
-      <Directory Id="MWASoftware" Name="mwasoft" LongName="MWA Software"/>
-	    <Directory Id="INSTALLDIR" Name="MWA JPEG Component Library" >
-  	      <Directory Id="JPEGExamples" Name="examples" LongName="JPEG Examples" />
-	      <Directory Id="JPEGSource" Name="source"  />
 		</Directory>
     </Directory>
     <Directory Id="ProgramMenuFolder" Name="PMenu" LongName="Programs">
@@ -123,16 +126,27 @@
 
   <Feature Id='JPEGComponents' Level='1' Title="MWA JPEG Components"
 			Description="The MWA JPEG Components JPEG enable the Delphi/C++Builder IDE and support Data Aware access to JPEG images"
-			Display="collapse" ConfigurableDirectory='INSTALLDIR'>
-    <ComponentGroupRef Id="Delphi2007" />
+			Display="expand" ConfigurableDirectory='INSTALLDIR'>
+    <Feature Id="Delphi2007Cmpts" Level='1' Title="Delphi 2007">
+	  <Condition Level="0">Not INSTALLDIRD2007</Condition>
+      <ComponentGroupRef Id="Delphi2007" />
+	</Feature>
 	<ComponentRef Id="jpeglicence" />
   </Feature>
+
   <Feature Id="Examples" Level='1' Title='Examples'
            Description="These example Programs  show  showing how to use the JPEG Components'
 		   Display="collapse" >
   </Feature>
-  <Feature Id="HelpFile" Level='1' Title="Help File" Display="collapse" >
+
+  <Feature Id="HelpFile" Level='1' Title="Help Files" Display="collapse" >
 	<ComponentRef Id="jpeghelp" />
+	<ComponentRef Id="jpeghelpcb" />
   </Feature>
+  <?ifndef EVALUATION?>
+  <Feature Id="SourceCode" Level='1' Title="Source Code" Display="collapse" >
+	<ComponentGroupRef Id="JPEGSource" />
+  </Feature>
+  <?endif?>
 
 </Wix>

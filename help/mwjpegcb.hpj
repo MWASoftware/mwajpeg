@@ -1,0 +1,24 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+; This help project requires hc 3.1
+[OPTIONS]
+COMPRESS=12 Hall Zeck
+ERRORLOG=mwjpeg.err
+LCID=0x809 0x0 0x0 ; English (United Kingdom)
+REPORT=Yes
+TITLE=MWA JPEG Component Library
+CNT=.\mwjpegcb.cnt
+COPYRIGHT=Copyright MWA Software 1997 - 2007
+HLP=.\Mwjpegcb.hlp
+
+[FILES]
+.\licence.rtf
+.\register.rtf
+.\common.rtf
+cbuilder.rtf
+
+[WINDOWS]
+main="MWA JPEG Component Library",(250,138,500,839),0,,(r12648447)
+
+[CONFIG]
+BrowseButtons()

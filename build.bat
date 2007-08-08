@@ -5,6 +5,9 @@ updttext version.txt source\mwajpg.rc %major% %minor% %step% @BuildNo.dat %year%
 IF ERRORLEVEL 1 goto Quit
 "%BRCC%\bin\brcc32" -i"%BRCC%\include" -dWIN32 source\mwajpg.rc
 IF ERRORLEVEL 1 goto Quit
+%hc32% /c /m /e help\mwjpeg.hpj
+%hc32% /c /m /e help\mwjpegcb.hpj
+
 cd source
 del mwajpg.rc
 Call Build.bat

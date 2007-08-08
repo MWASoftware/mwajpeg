@@ -16,7 +16,6 @@ call :mkdir Units\d10
 call :mkdir Units\d11
 call :mkdir Units\cb5
 call :mkdir Units\cb6
-call :mkdir Units\cb10
 call :mkdir Packages
 call :mkdir Packages\d6
 call :mkdir Packages\d7
@@ -62,7 +61,10 @@ rem MAKE Delphi 2005
 
 :D9
 If NOT EXIST "%D9%\bin\QR4runDX.dcp" goto D9QRSTD
-"%D9%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runDX -u"%D9%\bin" /OObj /NUnits\D9 /LNPackages\QR\D9 /LEPackages\QR
+"%D9%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignDX -u"%D9%\bin" /OObj /NUnits\D9  /LEPackages\QR
+IF ERRORLEVEL 1 goto Quit
+del mwajpg.dcp
+"%D9%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runDX -u"%D9%\bin" /OObj /NUnits\D9 /LNPackages\QR\D9 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D9STD
 IF NOT EXIST "%D9%\bin\dcc32.exe" goto D10
@@ -77,11 +79,17 @@ rem MAKE Delphi 2006
 
 :D10
 If NOT EXIST "%D10%\QuickRep\bpl\QR4runD2006.dcp" goto D10QRSTD
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10 /LNPackages\QR\D10 /LEPackages\QR
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10  /LEPackages\QR
+IF ERRORLEVEL 1 goto Quit
+del mwajpg.dcp
+"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10 /LNPackages\QR\D10 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D10QRSTD
 If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10QRSTD
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdRunD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10 /LNPackages\QRstd\D10 /LEPackages\QRstd
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdDesignD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
+IF ERRORLEVEL 1 goto Quit
+del mwajpg.dcp
+"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdRunD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10 /LNPackages\QRstd\D10 /LEPackages\QRstd
 IF ERRORLEVEL 1 goto Quit
 :D10STD
 IF NOT EXIST "%D10%\bin\dcc32.exe" goto D11
@@ -99,7 +107,10 @@ rem MAKE Delphi 2007
 IF NOT EXIST "%D11%\bin\dcc32.exe" goto CB5
 
 If NOT EXIST "%D11%\QuickRep\bpl\QR4runD2007.dcp" goto D11STD
-"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11 /LNPackages\QR\D11 /LEPackages\QR
+"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11  /LEPackages\QR
+IF ERRORLEVEL 1 goto Quit
+del mwajpg.dcp
+"%D11%\bin\dcc32" mwajpg.dpk /DNODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4runD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11 /LNPackages\QR\D11 /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 :D11STD
 "%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D11 /LEPackages

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2007.wxs,v 1.1.1.1 2007-08-08 08:52:15 tony Exp $ -->
+<!-- $Id: delphi2007.wxs,v 1.2 2007-08-08 13:12:29 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2007 -->
 
-<?define suffix="VER185"?>
 <?define guidJPEGBPL="BF443AB1-06E0-4EA7-B349-7728A6910C15"?>
+<?define guidMWAQRJPEG="6E5F98E1-04E6-485E-8130-62DBE9F57594"?>
+<?define guidQR4RTDCP="6DCDF31B-A28E-44FA-91C4-17FDDEF86347"?>
+<?define guidQR4runtime="87AF0B0D-B81F-4C8C-83DC-CC1D211538E9"?>
+<?define guidRTDCP="96680930-F20B-44D2-988F-A1938912D468"?>
+<?define STDruntimeguid="D737DB7C-2BB0-4FA3-B69B-488CE620D06E"?>
 
 <?ifdef EVALUATION?>
-<?define dcuDir="d11"?>
+<?define dcuDir="source\evaluationUnits\d11"?>
 <?define guidJPEGLIB="51668FE9-18C7-41A0-84CD-EDFC62376940"?>
 <?define guidMWAJPEG="F0B68401-D02F-476F-A490-7CDBF0A538FE"?>
 <?define guidMWADBJPEG="2478D29D-EDCF-4919-8BCB-02E9B16ACE42"?>
 <?else?>
-<?define dcuDir="d11r"?>
+<?define dcuDir="source\Units\d11"?>
 <?define guidJPEGLIB="3D658EAB-3272-4212-9179-215F1FC04A69"?>
 <?define guidMWAJPEG="8F4BC71B-E2B7-4EA7-8D11-0239114CE0D2"?>
 <?define guidMWADBJPEG="B2E81CD0-0D8F-4F62-8EF7-9A2C58AFC777"?>
@@ -21,53 +25,119 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
 
  <Fragment>
-  <Property Id="INSTALLDIR$(var.suffix)">
-    <RegistrySearch Id="ROOT$(var.suffix)" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
+  <Property Id="INSTALLDIRD2007">
+    <RegistrySearch Id="ROOTVER185" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
                       Name="RootDir" Type="directory" />
   </Property>
 
-  <Custom Action Id="SetInstallDir$(var.suffix)" Property="DelphiDir$(var.suffix)"
-                 Value="[INSTALLDIR$(var.suffix)]"/>
+  <Property Id="QR4D2007">
+    <RegistrySearch Id="QRROOTVER185" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
+                      Name="RootDir" Type="directory" />
+	  <DirectorySearch Id="QR4RunVER185" Path="QuickRep" Depth="1">
+	   <DirectorySearch Id="QR4RunbplVER185" Path="bpl" Depth="1">
+        <FileSearch Id="QR4RunVER185" Name="QR4DesignD2007.bpl" />
+ 	   </DirectorySearch>
+	  </DirectorySearch>
+    </RegistrySearch>
+  </Property>
+
+  <Custom Action Id="SetInstallDirVER185" Property="DelphiDirVER185"
+                 Value="[INSTALLDIRVER185]"/>
   <InstallExecuteSequence>
-    <Custom Action='SetDephi2007Dir' After='CostFinalize'>INSTALLDIR$(var.suffix)</Custom>
+    <Custom Action='SetDephi2007Dir' After='CostFinalize'>INSTALLDIRD2007</Custom>
   </InstallExecuteSequence>
 
   <DirectoryRef Id="TARGETDIR">
-    <Directory Id="DelphiDir$(var.suffix)" Name="Delphi">
-	  <Directory Id="bindir$(var.suffix)" Name="bin">
-	   <Component Id="DesignTimePkge$(var.suffix)" Guid="$(var.guidJPEGBPL)" DiskId="1">
-  	     <File Id="mwajpegbds5bpl" Name="mwajpg10.bpl" LongName="mwajpegbds5.bpl"
-	   	     Source="$(env.JPEGDIR\packages\mwajpg07.bpl">
+    <Directory Id="DelphiDirVER185" Name="Delphi">
+	  <Directory Id="bindirVER185" Name="bin">
+	   <Component Id="DesignTimePkgeVER185" Guid="$(var.guidJPEGBPL)" DiskId="1">
+	     <Condition>INSTALLDIRD2007 and not QR4D2007</Condition>
+  	     <File Id="dcljpg11bpl" Name="dcljpg11.bpl" LongName="dclmwajpgD2007.bpl"
+	   	     Source="source\Packages\dclmwajpgD2007.bpl">
 	       <Registry Id="Add2PackageList" Action="createKeyAndRemoveKeyOnUninstall"
 		 		   Root="HKLM" Type="string"
 		 	       Key="Software\Borland\BDS\5.0\Known Packages"
-				   Name="[#mwajpegbds5bpl]"
-				   Value="MWA JPEG Component Library" />
+				   Name="[#dcljpg11bpl]"
+				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
+	     </File>
+	   </Component>
+	   <Component Id="DesignTimePkgeQRVER185" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
+	     <Condition>INSTALLDIRD2007 and QR4D2007</Condition>
+  	     <File Id="dcljpg11qrbpl" Name="dcljpg11.bpl" LongName="dclmwajpgD2007.bpl"
+	   	     Source="source\Packages\QR\dclmwajpgD2007.bpl">
+	       <Registry Id="Add2PackageList" Action="createKeyAndRemoveKeyOnUninstall"
+		 		   Root="HKLM" Type="string"
+		 	       Key="Software\Borland\BDS\5.0\Known Packages"
+				   Name="[#dcljpg11qrbpl]"
+				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
 	     </File>
 	   </Component>
 	  </Directory>
-	  <Directory Id=libdir$(var.suffix)" Name="lib">
-	    <Component Id="jpeglib$(var.suffix)" Guid="$(var.guidJPEGLIB)" DiskId="1">
-		  <File Id="jpeglibdcu$(var.suffix)" Name="jpeglib.dcu"
-		  	    Source="$(env.JPEGDIR)\Units\$(var.dcuDir)\jpeglib.dcu" />
+	  <Directory Id=libdirVER185" Name="lib">
+	    <Component Id="jpeglibVER185" Guid="$(var.guidJPEGLIB)" DiskId="1">
+	     <Condition>INSTALLDIRD2007</Condition>
+		  <File Id="jpeglibdcuVER185" Name="jpeglib.dcu"
+		  	    Source="$(var.dcuDir)\jpeglib.dcu" />
  	    </Component>
-	    <Component Id="mwajpeg$(var.suffix)" Guid="$(var.guidMWAJPEG)" DiskId="1">
-		  <File Id="mwajpegdcu$(var.suffix)" Name="mwajpeg.dcu"
-		  	    Source="$(env.JPEGDIR)\Units\$(var.dcuDir)\mwajpeg.dcu" />
+	    <Component Id="mwajpegVER185" Guid="$(var.guidMWAJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD2007</Condition>
+		  <File Id="mwajpegdcuVER185" Name="mwajpeg.dcu"
+		  	    Source="$(var.dcuDir)\mwajpeg.dcu" />
  	    </Component>
-	    <Component Id="mwadbjpg$(var.suffix)" Guid="$(var.guidMWADBJPEG)" DiskId="1">
-		  <File Id="mwadbjpgdcu$(var.suffix)" Name="mwadbjpg.dcu"
-		  	    Source="$(env.JPEGDIR)\Units\$(var.dcuDir)\mwadbjpg.dcu" />
+	    <Component Id="mwadbjpgVER185" Guid="$(var.guidMWADBJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD2007</Condition>
+		  <File Id="mwadbjpgdcuVER185" Name="mwadbjpg.dcu"
+		  	    Source="$(var.dcuDir)\mwadbjpg.dcu" />
+ 	    </Component>
+	    <Component Id="mwaQRjpgVER185" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD2007</Condition>
+		  <File Id="mwaQRjpgpasVER185" Name="mwaQRjpg.pas"
+		  	    Source="source\source\mwaQRjpg.pas" />
  	    </Component>
 	  </Directory>
+      <?ifndef EVALUATION?>
+	  <Directory Id="JpegDirVER185" Name="mwajpeg">
+        <Directory Id="QR4BPLVER185" Name="QR4">
+          <Component Id="QR4RTDCPVER185" DiskId="1" Guid="$(var.guidQR4RTDCP)">
+ 	        <Condition>INSTALLDIRD2007</Condition>
+            <File Id="qr4mwajpgdcpVER185" Name="mwajpg.dcp"
+				  Source="source\Packages\QR\d11\mwajpg.dcp" />
+          </Component>
+          <Component Id="QR4runtimeVER185" DiskId="1" Guid="$(var.guidQR4runtime)">
+ 	        <Condition>INSTALLDIRD2007</Condition>
+            <File Id="mwajpgD2007VER185" Name="mwajpg11.bpl" LongName="mwajpgD2007.bpl"
+			      Source="source\Packages\QR\mwajpgD2007.bpl" />
+          </Component>
+        </Directory>
+        <Directory Id="STDBPLVER185" Name="std">
+          <Component Id="RTDCPVER185" DiskId="1" Guid="$(var.guidRTDCP)">
+ 	        <Condition>INSTALLDIRD2007</Condition>
+            <File Id="mwajpgdcpVER185" Name="mwajpg.dcp"
+			      Source="source\Packages\d11\mwajpg.dcp" />
+          </Component>
+          <Component Id="STDruntimeVER185" DiskId="1" Guid="$(var.STDruntimeguid)">
+ 	        <Condition>INSTALLDIRD2007</Condition>
+            <File Id="mwajpgD2007bplVER185" Name="mwajpg11.bpl" LongName="mwajpgD2007.bpl"
+			      Source="source\Packages\mwajpgD2007.bpl" />
+          </Component>
+        </Directory>
+	  </Directory>
+	  <?endif?>
 	</Directory>
   </DirectoryRef>
 
   <ComponentGroup Id="Delphi2007" >
-    <ComponentRef Id="DesignTimePkge$(var.suffix)">
-    <ComponentRef Id="jpeglib$(var.suffix)">
-    <ComponentRef Id="mwajpeg$(var.suffix)">
-    <ComponentRef Id="mwadbjpg$(var.suffix)">
+    <ComponentRef Id="DesignTimePkgeVER185">
+    <ComponentRef Id="DesignTimePkgeQRVER185">
+    <ComponentRef Id="jpeglibVER185">
+    <ComponentRef Id="mwajpegVER185">
+    <ComponentRef Id="mwadbjpgVER185">
+    <?ifndef EVALUATION?>
+    <ComponentRef Id="QR4BPLVER185">
+    <ComponentRef Id="QR4runtimeVER185">
+    <ComponentRef Id="RTDCPVER185">
+    <ComponentRef Id="STDruntimeVER185">
+    <?endif?>
   </ComponentGroup>
 
  </Fragment>
