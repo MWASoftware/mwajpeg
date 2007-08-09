@@ -25,6 +25,7 @@ IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\Registrd\Licence.rtf license.rtf
 "%WIX%\light" -out release\full\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj source.wixobj %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
+
 "%WIX%\candle" -dEVALUATION setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\shrware\Licence.rtf license.rtf
@@ -52,7 +53,7 @@ cd release\%1
 "%ZIP7%\7z" a -r temp.zip *.*
 
 echo ;!@Install@!UTF-8!>config.txt
-echo Title="Firebird %FBVERSION%">>config.txt
+echo Title="MWA JPEG Component Library %RELEASE%">>config.txt
 echo BeginPrompt="Install MWA JPEG Component Library (%3 Edition)?">>config.txt
 echo ExecuteFile="msiexec.exe">>config.txt
 echo ExecuteParameters="/i mwajpeg.msi">>config.txt

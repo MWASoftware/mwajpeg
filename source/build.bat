@@ -67,24 +67,31 @@ call :mkdir Units\d10
 call :mkdir Packages\d10
 If NOT EXIST "%D10%\QuickRep\bpl\QR4runD2006.dcp" goto D10QRSTD
 call :mkdir Packages\QR\d10
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10  /LEPackages\QR
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4DesignD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\QR\D10\dclmwajpg.dcp
+move mwajpg.bpi Packages\QR\D10\dclmwajpg.bpi
+move mwajpg.lib Packages\QR\D10\dclmwajpg.lib
 :D10QRSTD
 If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10QRSTD
 call :mkdir Packages\QRstd
 call :mkdir Packages\QRstd\d10
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /QR4StdDesignD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4StdDesD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\QRstd\D10\dclmwajpg.dcp
+move mwajpg.bpi Packages\QRstd\D10\dclmwajpg.bpi
+move mwajpg.lib Packages\QRstd\D10\dclmwajpg.lib
 :D10STD
-"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /OObj /B /Z- /UUnits\d10 /NUnits\D10 /LEPackages 
+"%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /OObj /B /Z- /JL /UUnits\d10 /NUnits\D10 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\D10\dclmwajpg.dcp
+move mwajpg.bpi Packages\D10\dclmwajpg.bpi
+move mwajpg.lib Packages\D10\dclmwajpg.lib
 "%D10%\bin\dcc32" source\mwadbjpg.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0Units\d10 /NHUnits\d10 /NOUnits\d10
 IF ERRORLEVEL 1 goto Quit
-"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D10 /NUnits\D10 /LNPackages\D10 /LEPackages
+"%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D10 /NUnits\D10 /JL /LNPackages\D10 /LEPackages /NBPackages\D10
 IF ERRORLEVEL 1 goto Quit
+move mwajpg.lib Packages\D10\mwajpg.lib
 del Units\D10\jpegreg2.dcu Units\D10\mwajpg.dcu
 
 rem MAKE Delphi 2007
