@@ -66,13 +66,13 @@ requires
 contains
   {$IFDEF DESIGNTIME}
   jpegreg2 in 'source\jpegreg2.pas',
-  {$ENDIF}
+  mwajpgpe in 'source\mwajpgpe.pas',
+{$ENDIF}
  {$IFDEF QREPORTS}
   mwaQRjpg in 'source\mwaQRjpg.pas',
   {$ENDIF}
   jpeglib in 'source\jpeglib.pas',
   mwadbjpg in 'source\mwadbjpg.pas',
-  mwajpeg in 'source\mwajpeg.pas',
-  mwajpgpe in 'source\mwajpgpe.pas';
+  mwajpeg in 'source\mwajpeg.pas';
 
 end.

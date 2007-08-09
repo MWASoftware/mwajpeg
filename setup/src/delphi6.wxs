@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi6.wxs,v 1.1 2007-08-09 09:09:11 tony Exp $ -->
+<!-- $Id: delphi6.wxs,v 1.2 2007-08-09 11:04:15 tony Exp $ -->
 
-<!-- This Fragment installs the Files for Delphi 2007 -->
+<!-- This Fragment installs the Files for Delphi 6.0 -->
 
 <?define guidJPEGBPL="6F1E2638-E484-45F1-9290-4AC615BCA66D"?>
 <?define guidMWAQRJPEG="762CA308-1232-48C6-ABCB-2CCB4C20F5D4"?>

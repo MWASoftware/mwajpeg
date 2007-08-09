@@ -15,7 +15,7 @@ BCB = $(MAKEDIR)\..
 PROJECT = .\mwajpg.bpl
 !if $d(RUNTIME)
 OBJFILES = mwajpeg.obj  mwaQRjpg.obj mwadbjpg.obj mwajpg.obj \
-    jpeglib.obj mwajpgpe.obj
+    jpeglib.obj
 !else
 OBJFILES = mwajpeg.obj  mwaQRjpg.obj mwadbjpg.obj mwajpg.obj jpeg_reg.obj\
     jpeglib.obj mwajpgpe.obj

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: cbuilder5.wxs,v 1.1 2007-08-09 11:04:15 tony Exp $ -->
+
+<!-- This Fragment installs the Files for C++Builder 5.0 -->
+
+<?define guidJPEGBPL="E9FD04C4-4123-4B75-8D46-1770AC73321D"?>
+<?define guidMWAQRJPEG="9E28EC50-7ED9-449A-A48C-4842DB6D0CFE"?>
+<?define guidRTDCP="FB2E6779-CA19-4819-822C-34B1A8ECA1F0"?>
+<?define guidSTDruntime="C34650F6-1DEB-404C-86B1-6F32891D83ED"?>
+<?define guidDCPJPEGDCP="47E2F170-42CA-4B93-A615-AAB76D8FC22D"?>
+
+<?ifdef EVALUATION?>
+<?define dcuDir="source\evaluationUnits\cb5"?>
+<?define guidJPEGLIB="02708846-15EE-45C1-A970-3A328A6B8CFF"?>
+<?define guidMWAJPEG="BB810F8F-8C71-46FF-AD79-98D3023D4744"?>
+<?define guidMWADBJPEG="CE43912A-2960-4185-B0E2-55732B4EC5CA"?>
+<?define guidObj1VCB130="BD59E905-EA1D-4E98-9F41-6461B4D67279"?>
+<?define guidObj2VCB130="4A6CAE91-9220-408D-8469-62D45ACC074E"?>
+<?define guidObj3VCB130="9BF3D1AD-C735-4DE1-ADB3-D88BEF2AFEC5"?>
+<?define guidHdr1VCB130="D63905BD-15BA-4B5C-ABB3-5A7153FF3B52"?>
+<?define guidHdr2VCB130="12023419-C8C8-40E0-99AC-4B879DA5BBBD"?>
+<?define guidHdr3VCB130="7EF88910-B902-4CDB-9682-989C40EC304A"?>
+<?define guidHdr4VCB130="1782841C-FB95-4833-98AA-F1E6497A1F48"?>
+<?else?>
+<?define dcuDir="source\Units\cb5"?>
+<?define guidJPEGLIB="2851969F-01FA-4B28-AB71-6CC417663B5A"?>
+<?define guidMWAJPEG="EBDBE492-19CC-498E-B442-FBBD6C81DCFA"?>
+<?define guidMWADBJPEG="62CEABDB-3DE8-4692-81DD-5D84F407FA03"?>
+<?define guidObj1VCB130="1F8488AE-8FA4-4295-B5BF-1D9DF1D9B14E"?>
+<?define guidObj2VCB130="8A0DCFF4-C15B-4FF0-B1E5-058017FF2052"?>
+<?define guidObj3VCB130="0DD1A36D-A817-496C-86D9-185D103D92E3"?>
+<?define guidHdr1VCB130="108F7EF2-07E9-4F0E-9B28-D2ACC59A315E"?>
+<?define guidHdr2VCB130="05AAE922-B65F-4976-9994-9A9C6412A4D5"?>
+<?define guidHdr3VCB130="EDB5750C-F838-4095-9C55-9BD85A01018C"?>
+<?define guidHdr4VCB130="EAF53281-0349-404E-9D89-34CEA47BD76E"?>
+<?endif?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+
+ <Fragment>
+  <Property Id="INSTALLDIRCB5">
+    <RegistrySearch Id="ROOTVCB130" Root="HKLM" Key="SOFTWARE\Borland\C++Builder\5.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+
+  <CustomAction Id="SetInstallDirVCB130" Directory="CBDirVCB130"
+                 Value="[INSTALLDIRCB5]"/>
+  <InstallExecuteSequence>
+    <Custom Action='SetInstallDirVCB130' After='CostFinalize'>INSTALLDIRCB5</Custom>
+  </InstallExecuteSequence>
+
+  <DirectoryRef Id="TARGETDIR">
+    <Directory Id="CBDirVCB130" Name="cbldr50">
+	  <Directory Id="bindirVCB130" Name="bin">
+
+      <!-- Design Time Package -->
+
+	   <Component Id="DesignTimePkgeVCB130" Guid="$(var.guidJPEGBPL)" DiskId="1">
+	     <Condition>INSTALLDIRCB5</Condition>
+  	     <File Id="dcljpgc5bpl" Name="dcljpg05.bpl" LongName="dclmwajpgcb5.bpl"
+	   	     Source="source\Packages\dclmwajpgcb5.bpl"/>
+	     <Registry Id="AddStd2PackageListVCB130"
+		 		   Root="HKCU" Type="string"
+		 	       Key="SOFTWARE\Borland\C++Builder\5.0\Known Packages"
+				   Name="[#dcljpgc5bpl]"
+				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
+	   </Component>
+	  </Directory>
+	  <Directory Id="libdirVCB130" Name="lib">
+
+      <!-- dcu, obj and bpi files -->
+
+	    <Component Id="dcljpgdcpVCB130" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRCB5</Condition>
+		  <File Id="dclmwajpgVCB130" Name="dclmjpg.bpi" LongName="dclmwajpg.bpi"
+		  	    Source="source\Packages\cb5\dclmwajpg.bpi" />
+ 	    </Component>
+
+		<Directory Id="CBObjVCB130" Name="Obj">
+	     <Component Id="jpeglibVCB130" Guid="$(var.guidJPEGLIB)" DiskId="1">
+	      <Condition>INSTALLDIRCB5</Condition>
+		   <File Id="jpeglibdcuVCB130" Name="jpeglib.dcu"
+		  	    Source="$(var.dcuDir)\jpeglib.dcu" />
+ 	     </Component>
+	     <Component Id="mwajpegVCB130" Guid="$(var.guidMWAJPEG)" DiskId="1">
+	      <Condition>INSTALLDIRCB5</Condition>
+		  <File Id="mwajpegdcuVCB130" Name="mwajpeg.dcu"
+		  	    Source="$(var.dcuDir)\mwajpeg.dcu" />
+ 	     </Component>
+	     <Component Id="mwadbjpgVCB130" Guid="$(var.guidMWADBJPEG)" DiskId="1">
+	      <Condition>INSTALLDIRCB5</Condition>
+		  <File Id="mwadbjpgdcuVCB130" Name="mwadbjpg.dcu"
+		  	    Source="$(var.dcuDir)\mwadbjpg.dcu" />
+ 	     </Component>
+		</Directory>
+
+        <!-- obj Files -->
+
+        <Component Id="Obj1VCB130" DiskId="1" Guid="$(var.guidObj1VCB130)">
+            <File Id="jpeglibobjVCB130" Name="jpeglib.obj" Source="$(var.dcuDir)\jpeglib.obj" />
+        </Component>
+        <Component Id="Obj2VCB130" DiskId="1" Guid="$(var.guidObj2VCB130)">
+            <File Id="mwadbjpgobjVCB130" Name="mwadbjpg.obj" Source="$(var.dcuDir)\mwadbjpg.obj" />
+        </Component>
+        <Component Id="Obj3VCB130" DiskId="1" Guid="$(var.guidObj3VCB130)">
+            <File Id="mwajpegobjVCB130" Name="mwajpeg.obj" Source="$(var.dcuDir)\mwajpeg.obj" />
+        </Component>
+	    <Component Id="mwaQRjpgVCB130" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRCB5</Condition>
+		  <File Id="mwaQRjpgpasVCB130" Name="mwaQRjpg.obj"
+		  	    Source="source\Units\cb5\mwaQRjpg.obj" />
+ 	    </Component>
+	  </Directory>
+
+      <!-- Include Files -->
+
+        <Directory Id="IncludeVCB130" Name="include">
+          <Component Id="Hdr1VCB130" DiskId="1" Guid="$(var.guidHdr1VCB130)">
+            <File Id="jpeglibhppVCB130" Name="jpeglib.hpp" Source="$(var.dcuDir)\jpeglib.hpp" />
+          </Component>
+          <Component Id="Hdr2VCB130" DiskId="1" Guid="$(var.guidHdr2VCB130)">
+            <File Id="mwadbjpghppVCB130" Name="mwadbjpg.hpp" Source="$(var.dcuDir)\mwadbjpg.hpp" />
+          </Component>
+          <Component Id="Hdr3VCB130" DiskId="1" Guid="$(var.guidHdr3VCB130)">
+            <File Id="mwajpeghppVCB130" Name="mwajpeg.hpp" Source="$(var.dcuDir)\mwajpeg.hpp" />
+          </Component>
+          <Component Id="Hdr4VCB130" DiskId="1" Guid="$(var.guidHdr4VCB130)">
+            <File Id="mwaQRjpghVCB130" Name="mwaQRjpg.h" Source="source\source\cbuilder\mwaQRjpg.h" />
+          </Component>
+        </Directory>
+      <?ifndef EVALUATION?>
+
+      <!-- Run Time Package -->
+
+	  <Directory Id="JpegDirVCB130" Name="mwajpeg">
+          <Component Id="RTDCPVCB130" DiskId="1" Guid="$(var.guidRTDCP)">
+ 	        <Condition>INSTALLDIRCB5</Condition>
+            <File Id="mwajpgdcpVCB130" Name="mwajpg.bpi"
+			      Source="source\Packages\cb5\mwajpg.bpi" />
+          </Component>
+          <Component Id="STDruntimeVCB130" DiskId="1" Guid="$(var.guidSTDruntime)">
+ 	        <Condition>INSTALLDIRCB5</Condition>
+            <File Id="mwajpgcb5bplVCB130" Name="mwajpgc6.bpl" LongName="mwajpgcb5.bpl"
+			      Source="source\Packages\mwajpgcb5.bpl" />
+          </Component>
+	  </Directory>
+	  <?endif?>
+	</Directory>
+  </DirectoryRef>
+
+  <ComponentGroup Id="CBuilder50" >
+    <ComponentRef Id="DesignTimePkgeVCB130"/>
+    <ComponentRef Id="jpeglibVCB130"/>
+    <ComponentRef Id="mwajpegVCB130"/>
+    <ComponentRef Id="mwadbjpgVCB130"/>
+    <ComponentRef Id="mwaQRjpgVCB130"/>
+    <ComponentRef Id="dcljpgdcpVCB130"/>
+    <ComponentRef Id="Obj1VCB130"/>
+    <ComponentRef Id="Obj2VCB130"/>
+    <ComponentRef Id="Obj3VCB130"/>
+    <ComponentRef Id="Hdr1VCB130"/>
+    <ComponentRef Id="Hdr2VCB130"/>
+    <ComponentRef Id="Hdr3VCB130"/>
+    <ComponentRef Id="Hdr4VCB130"/>
+    <?ifndef EVALUATION?>
+    <ComponentRef Id="RTDCPVCB130"/>
+    <ComponentRef Id="STDruntimeVCB130"/>
+    <?endif?>
+  </ComponentGroup>
+
+ </Fragment>
+
+</Wix>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2007.wxs,v 1.4 2007-08-09 09:08:35 tony Exp $ -->
+<!-- $Id: delphi2007.wxs,v 1.5 2007-08-09 11:04:15 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2007 -->
 
@@ -34,11 +34,9 @@
   <Property Id="QR4D2007">
     <RegistrySearch Id="QRROOTVER185" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
                       Name="RootDir" Type="directory" >
-	  <DirectorySearch Id="QR4RunVER185" Path="QuickRep" Depth="1">
-	   <DirectorySearch Id="QR4RunbplVER185" Path="bpl" Depth="1">
-        <FileSearch Id="QR4RunbplVER185" LongName="QR4DesignD2007.bpl" />
+	   <DirectorySearch Id="QR4DesignbplVER185" Path="bin" Depth="1">
+        <FileSearch Id="QR4DesignbplVER185" LongName="QR4DesignD2007.bpl" />
  	   </DirectorySearch>
-	  </DirectorySearch>
     </RegistrySearch>
   </Property>
 
@@ -69,12 +67,17 @@
 
 	   <Component Id="DesignTimePkgeQRVER185" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
 	     <Condition>INSTALLDIRD2007 and QR4D2007</Condition>
-  	     <File Id="dcljpg11qrbpl" Name="dcljpg11.bpl" LongName="dclmwajpgD2007.bpl"
-	   	     Source="source\Packages\QR\dclmwajpgD2007.bpl"/>
+  	     <File Id="qcljpg11bpl" Name="qcljpg11.bpl" LongName="qclmwajpgD2007.bpl"
+	   	     Source="source\Packages\QR\dclmwajpgD2007.bpl">
+		   <CopyFile Id="CopyQclVER185" DestinationName="dcljpg11.bpl"
+                     DestinationLongName="dclmwajpgD2007.bpl"/>
+		 </File>
+		 <RemoveFile Id="RemoveQclVER185" Name="dcljpg11.bpl"
+                     LongName="dclmwajpgD2007.bpl" On="uninstall"/>
 	     <Registry Id="AddQR2PackageListVER185"
 		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\5.0\Known Packages"
-				   Name="[#dcljpg11qrbpl]"
+				   Name="[#dcljpg11bpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
 	   </Component>
 	  </Directory>
@@ -89,8 +92,13 @@
  	    </Component>
 	    <Component Id="dcljpgqrdcpVER185" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
 	     <Condition>INSTALLDIRD2007 and QR4D2007</Condition>
-		  <File Id="dclmwajpgqrVER185" Name="dclmjpq.dcp" LongName="dclmwajpg.dcp"
-		  	    Source="source\Packages\QR\d11\dclmwajpg.dcp" />
+		  <File Id="qclmwajpgVER185" Name="qclmjpq.dcp" LongName="qclmwajpg.dcp"
+		  	    Source="source\Packages\QR\d11\dclmwajpg.dcp" >
+		   <CopyFile Id="CopyQcpVER185" DestinationName="dclmjpg.dcp"
+                     DestinationLongName="dclmwajpg.dcp"/>
+		 </File>
+		 <RemoveFile Id="RemoveQcpVER185" Name="dclmjpg.dcp"
+                     LongName="dclmwajpg.dcp" On="uninstall"/>
  	    </Component>
 
 	    <Component Id="jpeglibVER185" Guid="$(var.guidJPEGLIB)" DiskId="1">

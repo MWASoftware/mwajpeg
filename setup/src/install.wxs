@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.4 2007-08-08 18:19:39 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.5 2007-08-09 11:04:15 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -97,28 +97,6 @@
     </Directory>
   </Directory>
 
-  <!-- Search for a Supported Version of Delphi or C++ Builder -->
-
-  <Property Id="DELPHI7">
-    <RegistrySearch Id="D7" Root="HKLM" Key="SOFTWARE\Borland\Delphi\7.0"
-                      Name="RootDir" Type="directory" />
-  </Property>
-  <Property Id="CBUILDER5">
-    <RegistrySearch Id="CB5" Root="HKLM" Key="SOFTWARE\Borland\C++Builder\5.0"
-                      Name="RootDir" Type="directory" />
-  </Property>
-  <Property Id="CBUILDER6">
-    <RegistrySearch Id="CB6" Root="HKLM" Key="SOFTWARE\Borland\C++Builder\6.0"
-                      Name="RootDir" Type="directory" />
-  </Property>
-  <Property Id="DELPHI2005">
-    <RegistrySearch Id="D2005" Root="HKLM" Key="SOFTWARE\Borland\BDS\3.0"
-                      Name="RootDir" Type="directory" />
-  </Property>
-  <Property Id="BDS2006">
-    <RegistrySearch Id="B2006" Root="HKLM" Key="SOFTWARE\Borland\BDS\4.0"
-                      Name="RootDir" Type="directory" />
-  </Property>
 
   <UIRef Id="WixUI_FeatureTree" />
   <UIRef Id="WixUI_ErrorProgressText" />
@@ -127,13 +105,40 @@
   <Feature Id='JPEGComponents' Level='1' Title="MWA JPEG Components"
 			Description="The MWA JPEG Components JPEG enable the Delphi/C++Builder IDE and support Data Aware access to JPEG images"
 			Display="expand" ConfigurableDirectory='INSTALLDIR'>
-    <Feature Id="Delphi2007Cmpts" Level='1' Title="Delphi 2007">
+    <Feature Id="Delphi2007Cmpts" Level='1' Title="Delphi 2007"
+	         Description="Installs the JPEG components for Delphi 2007">
 	  <Condition Level="0">Not INSTALLDIRD2007</Condition>
       <ComponentGroupRef Id="Delphi2007" />
 	</Feature>
-    <Feature Id="Delphi60Cmpts" Level='1' Title="Delphi 6.0">
+    <Feature Id="BDS2006Cmpts" Level='1' Title="BDS 2006"
+	         Description="Installs the JPEG components for BDS 2006">
+	  <Condition Level="0">Not INSTALLDIRD2006</Condition>
+      <ComponentGroupRef Id="Delphi2006" />
+	</Feature>
+    <Feature Id="Delphi2005Cmpts" Level='1' Title="Delphi 2005"
+			 Description="Installs the JPEG components for Delphi 2005">
+	  <Condition Level="0">Not INSTALLDIRD2005</Condition>
+      <ComponentGroupRef Id="Delphi2005" />
+	</Feature>
+    <Feature Id="Delphi70Cmpts" Level='1' Title="Delphi 7.0"
+			 Description="Installs the JPEG components for Delphi 7.0">
+	  <Condition Level="0">Not INSTALLDIRD7</Condition>
+      <ComponentGroupRef Id="Delphi70" />
+	</Feature>
+    <Feature Id="Delphi60Cmpts" Level='1' Title="Delphi 6.0"
+			 Description="Installs the JPEG components for Delphi 6.0">
 	  <Condition Level="0">Not INSTALLDIRD6</Condition>
       <ComponentGroupRef Id="Delphi60" />
+	</Feature>
+    <Feature Id="CBuilder60Cmpts" Level='1' Title="C++Builder 6.0"
+			 Description="Installs the JPEG components for C++Builder 6.0">
+	  <Condition Level="0">Not INSTALLDIRCB6</Condition>
+      <ComponentGroupRef Id="CBuilder60" />
+	</Feature>
+    <Feature Id="CBuilder50Cmpts" Level='1' Title="C++Builder 5.0"
+			 Description="Installs the JPEG components for C++Builder 5.0">
+	  <Condition Level="0">Not INSTALLDIRCB5</Condition>
+      <ComponentGroupRef Id="CBuilder50" />
 	</Feature>
 	<ComponentRef Id="jpeglicence" />
   </Feature>

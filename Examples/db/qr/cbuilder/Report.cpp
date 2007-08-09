@@ -9,8 +9,6 @@
 #pragma link "quickrpt"
 #pragma link "Qrctrls"
 #pragma link "mwaQRjpg"
-#pragma link "MWAQRJPG"
-#pragma link "mwaQRjpg"
 #pragma resource "*.dfm"
 TReportForm *ReportForm;
 //---------------------------------------------------------------------------

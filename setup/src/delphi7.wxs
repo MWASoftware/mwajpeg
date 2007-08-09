@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: delphi7.wxs,v 1.1 2007-08-09 11:04:15 tony Exp $ -->
+
+<!-- This Fragment installs the Files for Delphi 7.0 -->
+
+<?define guidJPEGBPL="7D4EEF91-59F9-4729-97AF-4B150C59725A"?>
+<?define guidMWAQRJPEG="82F1AFCE-D84F-4EDE-8675-B477331B9ADE"?>
+<?define guidRTDCP="AEC9A3B6-3428-455A-8421-DADDD01AA0A1"?>
+<?define guidSTDruntime="96B54261-6070-4680-9BCB-023D1B7B3F74"?>
+<?define guidDCPJPEGDCP="9A1ED4EA-CC3E-46B2-A2B8-B697184BA599"?>
+
+<?ifdef EVALUATION?>
+<?define dcuDir="source\evaluationUnits\d7"?>
+<?define guidJPEGLIB="6F9F8AEC-EF5D-4307-9F40-10321355D220"?>
+<?define guidMWAJPEG="C7FB43D7-4DC5-410C-9FDD-CA17B55FE051"?>
+<?define guidMWADBJPEG="9FB293C3-01BB-48F0-9060-B611344EC531"?>
+<?else?>
+<?define dcuDir="source\Units\d7"?>
+<?define guidJPEGLIB="D0CFD5C9-591D-4C28-94B8-EEC48E954E99"?>
+<?define guidMWAJPEG="66805DA5-FEC0-4E7E-A87D-D3699842193A"?>
+<?define guidMWADBJPEG="CB88AA10-9EBD-470B-B119-7F27DD40816A"?>
+<?endif?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+
+ <Fragment>
+  <Property Id="INSTALLDIRD7">
+    <RegistrySearch Id="ROOTVER150" Root="HKLM" Key="SOFTWARE\Borland\Delphi\7.0"
+                      Name="RootDir" Type="directory" />
+  </Property>
+
+  <CustomAction Id="SetInstallDirVER150" Directory="DelphiDirVER150"
+                 Value="[INSTALLDIRD7]"/>
+  <InstallExecuteSequence>
+    <Custom Action='SetInstallDirVER150' After='CostFinalize'>INSTALLDIRD7</Custom>
+  </InstallExecuteSequence>
+
+  <DirectoryRef Id="TARGETDIR">
+    <Directory Id="DelphiDirVER150" Name="Delphi70">
+	  <Directory Id="bindirVER150" Name="bin">
+
+      <!-- Design Time Package -->
+
+	   <Component Id="DesignTimePkgeVER150" Guid="$(var.guidJPEGBPL)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+  	     <File Id="dcljpg07bpl" Name="dcljpg07.bpl" LongName="dclmwajpgd7.bpl"
+	   	     Source="source\Packages\dclmwajpgd7.bpl"/>
+	     <Registry Id="AddStd2PackageListVER150"
+		 		   Root="HKCU" Type="string"
+		 	       Key="Software\Borland\Delphi\7.0\Known Packages"
+				   Name="[#dcljpg07bpl]"
+				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
+	   </Component>
+	  </Directory>
+	  <Directory Id="libdirVER150" Name="lib">
+
+      <!-- dcu and dcp files -->
+
+	    <Component Id="dcljpgdcpVER150" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+		  <File Id="dclmwajpgVER150" Name="dclmjpg.dcp" LongName="dclmwajpg.dcp"
+		  	    Source="source\Packages\d7\dclmwajpg.dcp" />
+ 	    </Component>
+	    <Component Id="jpeglibVER150" Guid="$(var.guidJPEGLIB)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+		  <File Id="jpeglibdcuVER150" Name="jpeglib.dcu"
+		  	    Source="$(var.dcuDir)\jpeglib.dcu" />
+ 	    </Component>
+	    <Component Id="mwajpegVER150" Guid="$(var.guidMWAJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+		  <File Id="mwajpegdcuVER150" Name="mwajpeg.dcu"
+		  	    Source="$(var.dcuDir)\mwajpeg.dcu" />
+ 	    </Component>
+	    <Component Id="mwadbjpgVER150" Guid="$(var.guidMWADBJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+		  <File Id="mwadbjpgdcuVER150" Name="mwadbjpg.dcu"
+		  	    Source="$(var.dcuDir)\mwadbjpg.dcu" />
+ 	    </Component>
+
+        <!-- Give them the source to mwaQRjpg.pas -->
+
+	    <Component Id="mwaQRjpgVER150" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRD7</Condition>
+		  <File Id="mwaQRjpgpasVER150" Name="mwaQRjpg.pas"
+		  	    Source="source\source\mwaQRjpg.pas" />
+ 	    </Component>
+	  </Directory>
+      <?ifndef EVALUATION?>
+
+      <!-- Run Time Package -->
+
+	  <Directory Id="JpegDirVER150" Name="mwajpeg">
+          <Component Id="RTDCPVER150" DiskId="1" Guid="$(var.guidRTDCP)">
+ 	        <Condition>INSTALLDIRD7</Condition>
+            <File Id="mwajpgdcpVER150" Name="mwajpg.dcp"
+			      Source="source\Packages\d7\mwajpg.dcp" />
+          </Component>
+          <Component Id="STDruntimeVER150" DiskId="1" Guid="$(var.guidSTDruntime)">
+ 	        <Condition>INSTALLDIRD7</Condition>
+            <File Id="mwajpgd7bplVER150" Name="mwajpgd7.bpl"
+			      Source="source\Packages\mwajpgd7.bpl" />
+          </Component>
+	  </Directory>
+	  <?endif?>
+	</Directory>
+  </DirectoryRef>
+
+  <ComponentGroup Id="Delphi70" >
+    <ComponentRef Id="DesignTimePkgeVER150"/>
+    <ComponentRef Id="jpeglibVER150"/>
+    <ComponentRef Id="mwajpegVER150"/>
+    <ComponentRef Id="mwadbjpgVER150"/>
+    <ComponentRef Id="mwaQRjpgVER150"/>
+    <ComponentRef Id="dcljpgdcpVER150"/>
+    <?ifndef EVALUATION?>
+    <ComponentRef Id="RTDCPVER150"/>
+    <ComponentRef Id="STDruntimeVER150"/>
+    <?endif?>
+  </ComponentGroup>
+
+ </Fragment>
+
+</Wix>
