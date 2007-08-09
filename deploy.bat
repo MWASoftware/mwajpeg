@@ -19,7 +19,7 @@ call :mkdir release\full
 call :mkdir release\singleimage
 
 pcopy source\source\mwajpeg.pas .
-pause
+
 "%WIX%\candle" setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\Registrd\Licence.rtf license.rtf
