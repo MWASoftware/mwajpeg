@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.1 2007-08-09 11:04:15 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.2 2007-08-09 12:42:43 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -18,11 +18,25 @@
 <?define guidJPEGLIB="25AEDF1F-2D29-4642-846D-D38818E7F90C"?>
 <?define guidMWAJPEG="54A9A730-C036-4FF9-A687-76F455EB0EA5"?>
 <?define guidMWADBJPEG="76E191E2-3220-4D13-B890-BBDCE381B638"?>
+<?define guidObj1VER180="44F4E541-31B9-4C18-AF70-F43477B69815"?>
+<?define guidObj2VER180="24B7070E-1FE8-4C4F-BC64-E3C2DA104CF0"?>
+<?define guidObj3VER180="4230A140-274B-4CE9-BE8F-9FA22D878C5B"?>
+<?define guidHdr1VER180="8CF8C622-C150-4A0B-AF05-6037F0F4189A"?>
+<?define guidHdr2VER180="950D46D8-0166-43E2-BC66-2A3C716F212C"?>
+<?define guidHdr3VER180="8F48935A-D100-40CD-9EAC-068739A29052"?>
+<?define guidHdr4VER180="12DDA8CA-5DC7-47E8-92B5-5192BD6A58AC"?>
 <?else?>
 <?define dcuDir="source\Units\d10"?>
 <?define guidJPEGLIB="3FB3BA26-09BF-4A20-8F90-81EDC88F7DFF"?>
 <?define guidMWAJPEG="D957DBCE-54C9-473E-A0CE-622EDB9ED3A9"?>
 <?define guidMWADBJPEG="2999027F-CB3E-423D-9D10-6C0A7CF66675"?>
+<?define guidObj1VER180="5DB4351A-1057-416A-B8A1-7ADD2ADB184B"?>
+<?define guidObj2VER180="D0A17948-E1E2-40A2-8C73-82845A7E37D1"?>
+<?define guidObj3VER180="5BC6281D-F4B7-4008-AAB5-66CAA5360EB0"?>
+<?define guidHdr1VER180="A5838A21-D777-41CE-A733-ED4936790E80"?>
+<?define guidHdr2VER180="4E57AB34-FD0D-4B72-AF3E-050131394360"?>
+<?define guidHdr3VER180="7B018C4F-8C7A-4D0B-900A-064696A2E1CB"?>
+<?define guidHdr4VER180="D682BCC1-3D47-4B35-9678-F9B6D5F56CC4"?>
 <?endif?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
@@ -162,12 +176,46 @@
 
         <!-- Give them the source to mwaQRjpg.pas -->
 
-	    <Component Id="mwaQRjpgVER180" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
+	    <Component Id="mwaQRjpgpasVER180" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
 	     <Condition>INSTALLDIRD2006</Condition>
 		  <File Id="mwaQRjpgpasVER180" Name="mwaQRjpg.pas"
 		  	    Source="source\source\mwaQRjpg.pas" />
  	    </Component>
+
+        <!-- obj Files -->
+
+        <Component Id="Obj1VER180" DiskId="1" Guid="$(var.guidObj1VER180)">
+            <File Id="jpeglibobjVER180" Name="jpeglib.obj" Source="$(var.dcuDir)\jpeglib.obj" />
+        </Component>
+        <Component Id="Obj2VER180" DiskId="1" Guid="$(var.guidObj2VER180)">
+            <File Id="mwadbjpgobjVER180" Name="mwadbjpg.obj" Source="$(var.dcuDir)\mwadbjpg.obj" />
+        </Component>
+        <Component Id="Obj3VER180" DiskId="1" Guid="$(var.guidObj3VER180)">
+            <File Id="mwajpegobjVER180" Name="mwajpeg.obj" Source="$(var.dcuDir)\mwajpeg.obj" />
+        </Component>
+	    <Component Id="mwaQRjpgVER180" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
+	     <Condition>INSTALLDIRCB6</Condition>
+		  <File Id="mwaQRjpgobjVER180" Name="mwaQRjpg.obj"
+		  	    Source="source\Units\cb6\mwaQRjpg.obj" />
+ 	    </Component>
 	  </Directory>
+
+      <!-- Include Files -->
+
+        <Directory Id="IncludeVER180" Name="include">
+          <Component Id="Hdr1VER180" DiskId="1" Guid="$(var.guidHdr1VER180)">
+            <File Id="jpeglibhppVER180" Name="jpeglib.hpp" Source="$(var.dcuDir)\jpeglib.hpp" />
+          </Component>
+          <Component Id="Hdr2VER180" DiskId="1" Guid="$(var.guidHdr2VER180)">
+            <File Id="mwadbjpghppVER180" Name="mwadbjpg.hpp" Source="$(var.dcuDir)\mwadbjpg.hpp" />
+          </Component>
+          <Component Id="Hdr3VER180" DiskId="1" Guid="$(var.guidHdr3VER180)">
+            <File Id="mwajpeghppVER180" Name="mwajpeg.hpp" Source="$(var.dcuDir)\mwajpeg.hpp" />
+          </Component>
+          <Component Id="Hdr4VER180" DiskId="1" Guid="$(var.guidHdr4VER180)">
+            <File Id="mwaQRjpghVER180" Name="mwaQRjpg.h" Source="source\source\cbuilder\mwaQRjpg.h" />
+          </Component>
+        </Directory>
       <?ifndef EVALUATION?>
 
       <!-- Run Time Package -->
@@ -195,10 +243,17 @@
     <ComponentRef Id="jpeglibVER180"/>
     <ComponentRef Id="mwajpegVER180"/>
     <ComponentRef Id="mwadbjpgVER180"/>
-    <ComponentRef Id="mwaQRjpgVER180"/>
+    <ComponentRef Id="mwaQRjpgpasVER180"/>
     <ComponentRef Id="dcljpgdcpVER180"/>
     <ComponentRef Id="dcljpgqrdcpVER180"/>
     <ComponentRef Id="dcljpgqsdcpVER180"/>
+    <ComponentRef Id="Obj1VER180"/>
+    <ComponentRef Id="Obj2VER180"/>
+    <ComponentRef Id="Obj3VER180"/>
+    <ComponentRef Id="Hdr1VER180"/>
+    <ComponentRef Id="Hdr2VER180"/>
+    <ComponentRef Id="Hdr3VER180"/>
+    <ComponentRef Id="Hdr4VER180"/>
     <?ifndef EVALUATION?>
     <ComponentRef Id="RTDCPVER180"/>
     <ComponentRef Id="STDruntimeVER180"/>

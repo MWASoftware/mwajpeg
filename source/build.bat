@@ -59,7 +59,7 @@ move mwajpg.dcp Packages\D9\dclmwajpg.dcp
 IF ERRORLEVEL 1 goto Quit
 del Units\D9\jpegreg2.dcu Units\D9\mwajpg.dcu
 
-rem MAKE Delphi 2006 
+rem MAKE BDS 2006 
 
 :D10
 IF NOT EXIST "%D10%\bin\dcc32.exe" goto D11
@@ -123,14 +123,16 @@ IF ERRORLEVEL 1 goto Quit
 rename source\jpeglib.pas _jpeglib.pas
 "%CB5%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5
 IF ERRORLEVEL 1 goto QUIT1
+
 move mwajpg.bpl Packages\dclmwajpgcb5.bpl
 move mwajpg.bpi Packages\cb5\dclmwajpg.bpi
 "%CB5%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas
-del jpeg_reg.obj mwajpg.obj mwajpg.dcu mwajpg.tds mwajpg.lib
+del jpeg_reg.obj mwajpg.obj mwajpg.dcu mwajpg.tds 
 move mwajpg.bpl Packages\mwajpgcb5.bpl
 move mwajpg.bpi Packages\cb5
+move mwajpg.lib Packages\cb5
 move *.obj Units\cb5
 
 :CB6
@@ -153,15 +155,18 @@ move mwajpg.bpi Packages\cb6\dclmwajpg.bpi
 "%CB6%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB6 -DUNITDIR=Units\cb6 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas
-del jpeg_reg.obj mwajpg.obj mwajpg.dcu mwajpg.tds mwajpg.lib
+del jpeg_reg.obj mwajpg.obj mwajpg.dcu mwajpg.tds
 move mwajpg.bpl Packages\mwajpgcb6.bpl
 move mwajpg.bpi Packages\cb6
+move mwajpg.lib Packages\cb6
 move *.obj Units\cb6
 goto :EOF
 :QUIT1
 rename source\_jpeglib.pas jpeglib.pas
 del /Q *.obj
+pause
 :QUIT
+pause
 goto :EOF
 
 :mkdir

@@ -14,8 +14,7 @@ BCB = $(MAKEDIR)\..
 # ---------------------------------------------------------------------------
 PROJECT = .\mwajpg.bpl
 !if $d(RUNTIME)
-OBJFILES = mwajpeg.obj  mwaQRjpg.obj mwadbjpg.obj mwajpg.obj \
-    jpeglib.obj
+OBJFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj
 !else
 OBJFILES = mwajpeg.obj  mwaQRjpg.obj mwadbjpg.obj mwajpg.obj jpeg_reg.obj\
     jpeglib.obj mwajpgpe.obj
@@ -52,8 +51,8 @@ DEBUGLIBPATH = $(BCB)\lib\debug
 RELEASELIBPATH = $(BCB)\lib\release
 USERDEFINES = 
 SYSDEFINES = _RTLDLL;NO_STRICT;USEPACKAGES
-INCLUDEPATH = source\cbuilder;.;$(BCB)\include;$(BCB)\include\vcl;$(UNITDIR)
-LIBPATH = $(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(BCB)\lib\release;$(UNITDIR)
+INCLUDEPATH = $(UNITDIR);source\cbuilder;.;$(BCB)\include;$(BCB)\include\vcl
+LIBPATH = $(UNITDIR);$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(BCB)\lib\release
 WARNINGS= -w-par -w-8027 -w-8026
 PATHCPP = .;source\cbuilder
 PATHASM = .;

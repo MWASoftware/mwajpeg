@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: cbuilder6.wxs,v 1.1 2007-08-09 11:04:15 tony Exp $ -->
+<!-- $Id: cbuilder6.wxs,v 1.2 2007-08-09 12:42:43 tony Exp $ -->
 
 <!-- This Fragment installs the Files for C++Builder 6.0 -->
 
@@ -8,6 +8,7 @@
 <?define guidRTDCP="266D5BB3-5A81-4327-8A84-A61D8AEDFAD0"?>
 <?define guidSTDruntime="6E543A41-BB02-4991-B26D-AC3D1060C36C"?>
 <?define guidDCPJPEGDCP="8B0F0B1B-581C-4313-8A3F-532DDA1E9EE1"?>
+<?define guidLIBCP="CB695A1C-D7B7-4C25-A6FE-44ECDB80A1FE"?>
 
 <?ifdef EVALUATION?>
 <?define dcuDir="source\evaluationUnits\cb6"?>
@@ -107,7 +108,7 @@
         </Component>
 	    <Component Id="mwaQRjpgVCB140" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
 	     <Condition>INSTALLDIRCB6</Condition>
-		  <File Id="mwaQRjpgpasVCB140" Name="mwaQRjpg.obj"
+		  <File Id="mwaQRjpgobjVCB140" Name="mwaQRjpg.obj"
 		  	    Source="source\Units\cb6\mwaQRjpg.obj" />
  	    </Component>
 	  </Directory>
@@ -138,6 +139,11 @@
             <File Id="mwajpgdcpVCB140" Name="mwajpg.bpi"
 			      Source="source\Packages\cb6\mwajpg.bpi" />
           </Component>
+          <Component Id="RTLIBVCB140" DiskId="1" Guid="$(var.guidLIBCP)">
+ 	        <Condition>INSTALLDIRCB6</Condition>
+            <File Id="mwajpglibVCB140" Name="mwajpg.lib"
+			      Source="source\Packages\cb6\mwajpg.lib" />
+          </Component>
           <Component Id="STDruntimeVCB140" DiskId="1" Guid="$(var.guidSTDruntime)">
  	        <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwajpgcb6bplVCB140" Name="mwajpgc6.bpl" LongName="mwajpgcb6.bpl"
@@ -165,6 +171,7 @@
     <?ifndef EVALUATION?>
     <ComponentRef Id="RTDCPVCB140"/>
     <ComponentRef Id="STDruntimeVCB140"/>
+    <ComponentRef Id="RTLIBVCB140"/>
     <?endif?>
   </ComponentGroup>
 
