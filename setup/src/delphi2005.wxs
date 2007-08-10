@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2005.wxs,v 1.3 2007-08-10 17:18:29 tony Exp $ -->
+<!-- $Id: delphi2005.wxs,v 1.4 2007-08-10 21:45:05 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2005 -->
 
@@ -33,7 +33,15 @@
 
   <CustomTable Id="MWARegSearchParams" >
     <Row>
+	  <Data Column="Id">HKLMSearchVER170</Data>
 	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\3.0\Known Packages</Data>
+	  <Data Column="SubString">QR4DesignDX.bpl</Data>
+	  <Data Column="Property">QR4D2005</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HKCUSearchVER170</Data>
+	  <Data Column="Root">HKCU</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\3.0\Known Packages</Data>
 	  <Data Column="SubString">QR4DesignDX.bpl</Data>
 	  <Data Column="Property">QR4D2005</Data>
