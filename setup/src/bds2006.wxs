@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.3 2007-08-09 17:48:24 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.4 2007-08-10 17:18:29 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -55,24 +55,23 @@
                       Name="RootDir" Type="directory" />
   </Property>
 
+  <CustomTable Id="MWARegSearchParams" >
+    <Row>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">QR4DesignD2006.bpl</Data>
+	  <Data Column="Property">QR4D2006</Data>
+	</Row>
+  </CustomTable>
 
-  <Property Id="QR4D2006">
-    <RegistrySearch Id="QRROOTVER180" Root="HKLM" Key="SOFTWARE\Borland\BDS\4.0"
-                      Name="RootDir" Type="directory" >
-	  <DirectorySearch Id="QR4DesignbplVER180" Path="bin" Depth="1">
-        <FileSearch Id="QR4DesignbplVER180" LongName="QR4DesignD2006.bpl" />
-	  </DirectorySearch>
-    </RegistrySearch>
-  </Property>
-
-  <Property Id="QR4STDD2007">
-    <RegistrySearch Id="QSROOTVER180" Root="HKLM" Key="SOFTWARE\Borland\BDS\4.0"
-                      Name="RootDir" Type="directory" >
-	  <DirectorySearch Id="QR4stdVER180" Path="QRStandard" Depth="1">
-        <FileSearch Id="QR4stdVER180" LongName="QR4StdDesD2006.bpl" />
- 	   </DirectorySearch>
-    </RegistrySearch>
-  </Property>
+  <CustomTable Id="MWARegSearchParams" >
+    <Row>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">QR4StdDesD2006.bpl</Data>
+	  <Data Column="Property">QR4STDD2006</Data>
+	</Row>
+  </CustomTable>
 
   <CustomAction Id="SetInstallDirVER180" Directory="DelphiDirVER180"
                  Value="[INSTALLDIRD2006]"/>
@@ -87,7 +86,7 @@
        <!-- Standard Design Time Package -->
 
 	   <Component Id="DesignTimePkgeVER180" Guid="$(var.guidJPEGBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2006</Condition>
   	     <File Id="dcljpg10bpl" Name="dcljpg10.bpl" LongName="dclmwajpgD2006.bpl"
 	   	     Source="source\Packages\dclmwajpgD2006.bpl"/>
 	     <Registry Id="AddStd2PackageListVER180"
@@ -118,7 +117,7 @@
        <!-- Quick Reports Standand Design Time Package -->
 
 	   <Component Id="DesignTimePkgeQRstdVER180" Guid="$(var.guidJPEGQRstdBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2006</Condition>
   	     <File Id="qsljpg10bpl" Name="qsljpg10.bpl" LongName="qslmwajpgD2006.bpl"
 	   	     Source="source\Packages\QRstd\dclmwajpgD2006.bpl">
 		   <CopyFile Id="CopyQslVER180" DestinationName="dcljpg10.bpl"

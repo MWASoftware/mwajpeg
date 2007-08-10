@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2005.wxs,v 1.2 2007-08-09 17:48:25 tony Exp $ -->
+<!-- $Id: delphi2005.wxs,v 1.3 2007-08-10 17:18:29 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2005 -->
 
@@ -31,14 +31,14 @@
                       Name="RootDir" Type="directory" />
   </Property>
 
-  <Property Id="QR4D2005">
-    <RegistrySearch Id="QRROOTVER170" Root="HKLM" Key="SOFTWARE\Borland\BDS\3.0"
-                      Name="RootDir" Type="directory" >
-	  <DirectorySearch Id="QR4DesignbplVER170" Path="bin" Depth="1">
-        <FileSearch Id="QR4DesignbplVER170" LongName="QR4DesignDX.bpl" />
-	  </DirectorySearch>
-    </RegistrySearch>
-  </Property>
+  <CustomTable Id="MWARegSearchParams" >
+    <Row>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\3.0\Known Packages</Data>
+	  <Data Column="SubString">QR4DesignDX.bpl</Data>
+	  <Data Column="Property">QR4D2005</Data>
+	</Row>
+  </CustomTable>
 
   <CustomAction Id="SetInstallDirVER170" Directory="DelphiDirVER170"
                  Value="[INSTALLDIRD2005]"/>
@@ -91,7 +91,6 @@
 		  <File Id="dclmwajpgVER170" Name="dclmjpg.dcp" LongName="dclmwajpg.dcp"
 		  	    Source="source\Packages\d9\dclmwajpg.dcp" />
  	    </Component>
-	  <?endif?>
 	    <Component Id="dcljpgqrdcpVER170" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
 	     <Condition>INSTALLDIRD2005 and QR4D2005</Condition>
 		  <File Id="qclmwajpgVER170" Name="qclmjpq.dcp" LongName="qclmwajpg.dcp"
@@ -102,6 +101,7 @@
 		 <RemoveFile Id="RemoveQcpVER170" Name="dclmjpg.dcp"
                      LongName="dclmwajpg.dcp" On="uninstall"/>
  	    </Component>
+	  <?endif?>
 
 	    <Component Id="jpeglibVER170" Guid="$(var.guidJPEGLIB)" DiskId="1">
 	     <Condition>INSTALLDIRD2005</Condition>
@@ -154,9 +154,9 @@
     <ComponentRef Id="mwajpegVER170"/>
     <ComponentRef Id="mwadbjpgVER170"/>
     <ComponentRef Id="mwaQRjpgVER170"/>
+    <?ifndef EVALUATION?>
     <ComponentRef Id="dcljpgdcpVER170"/>
     <ComponentRef Id="dcljpgqrdcpVER170"/>
-    <?ifndef EVALUATION?>
     <ComponentRef Id="RTDCPVER170"/>
     <ComponentRef Id="STDruntimeVER170"/>
     <?endif?>
