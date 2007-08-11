@@ -47,8 +47,9 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>The two non-visual components are
 TJPEGFileCompressor and TJPEGFileDecompressor. These support compression of
-images to JPEG Format and decompression respectively. The data aware component
-is TDBJPEGImage, and the printable component is TQRDBJPEGImage (for Delphi 2005
+images to JPEG Format and decompression respectively, and their properties
+allow full control of the JPEG algorithm. The data aware component is
+TDBJPEGImage, and the printable component is TQRDBJPEGImage (for Delphi 2005
 and later only available if you also have Quick Reports 4 installed). You will
 find these components on the &quot;MWA JPEG&quot; tab on the component palette.</span></p>
 
@@ -91,8 +92,8 @@ and also uses TJPEGFileDecompressor and TJPEGFileCompressor to save and load
 JPEG encoded images from the Blob Field. Use of the JPEG compressor and
 decompressor components can be implicit if the default parameter settings are
 sufficient. On the other hand, the reference may be explicit to copies of these
-components with non-default parameter settings. TQRDBJPEGImage can be used to print
-a JPEG Image using Quick Reports 2. </span></p>
+components with non-default parameter settings. TQRDBJPEGImage can be used to
+print a JPEG Image using Quick Reports. </span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>&nbsp;</span></p>
@@ -111,8 +112,8 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>An interface to this software is provided by the
-unit jpeglib.pas. This is encapsulated as a set of Delphi components in the
-unit mwajpeg.pas, which also supports the mapping of the environment
+unit <i>jpeglib.pas</i>. This is encapsulated as a set of Delphi components in
+the unit <i>mwajpeg.pas</i>, which also supports the mapping of the environment
 independent image format expected by the IJG code into MS Windows bitmap and
 metafile formats.</span></p>
 
@@ -123,13 +124,48 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 font-family:Arial;color:black'>When you purchase a licence to this product, you
 purchase a licence for the source code to the mwajpeg and jpeglib units and the
 right to include binaries derived from them in your own products without having
-to pay additional royalties. You also have a right to freely distribute the
-mwjpeg and mwjpeg32 dlls (if used), and copies of the modified 'C' source is
-also included in the registered version. Support is also provided by EMail
-albeit without a guaranteed response time.</span></p>
+to pay additional royalties. Support is provided by our online Forum at
+http://www.mwasoftware.co.uk.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>Installation</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>Installation is fully automated. The installer
+will detect each supported version of Delphi and C++Builder installed on your
+system and offer to install the JPEG Components for each one. You may deselect
+selection installation for any supported version of Delphi and C++Builder in
+the customisation dialog. The installer will also install the example applications
+and help file in your Personal Folder. You can also modify this in the
+customisation dialog. In the full version, the source files will also be
+installed here.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>Once installation is complete, the MWA JPEG
+components will have been added to each selected version of Delphi and
+C++Builder. The supporting .dcu (and .obj) files will be installed in the
+&quot;lib&quot; folder and, for C++Builder, the hpp files will be installed in
+the &quot;include&quot; folder. </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The evaluation version is fully functional
+except that any programs you create with it will only function when the Delphi
+or C++Builder IDE is also active.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>&nbsp;</span></b></p>
 
 <p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
 Arial;color:black'>Example Applications</span></b></p>
@@ -139,7 +175,7 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>Three demo applications are provided. A JPEG
-Viewer application demonstrates the opening and saving JPEG image files and
+Viewer application demonstrates the opening and saving of JPEG image files and
 conversion to and from bitmap files (.bmp) and from Windows Metafiles (.wmf).
 One database application (DBDemo) demonstrates use of the data aware component
 with the DB Navigation bar, while another (DBGrDemo) demonstrates the use of
@@ -150,11 +186,11 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>The JPEG Viewer application may be found in the
-Examples\Viewer subdirectory created above. To activate, load the jpegdemo.dpr
-file into the IDE using the File|Open Project menu item. This provides a simple
-application that can open and save .jpg (JPEG), .bmp (Windows Bitmap) and .wmf
-(Windows metfaile) files, and copy and paste bitmaps and metafiles to and from
-the clipboard. To test out, simply compile and run the application.</span></p>
+Examples\Viewer folder. To activate, load the jpegdemo.dpr file into the IDE
+using the File|Open Project menu item. This provides a simple application that
+can open and save .jpg (JPEG), .bmp (Windows Bitmap) and .wmf (Windows
+metfaile) files, and copy and paste bitmaps and metafiles to and from the
+clipboard. To test out, simply compile and run the application.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>&nbsp;</span></p>
@@ -188,8 +224,8 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>The JPEG database applications may be found in
-the Examples\db subdirectory. To activate, load the respective .dpr file into
-the IDE using the File|Open Project menu item.</span></p>
+the Examples\db folder. To activate, load the respective .dpr file into the IDE
+using the File|Open Project menu item.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>&nbsp;</span></p>
@@ -207,8 +243,8 @@ font-family:Arial;color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>The DBGrDemo application uses the same image
-database but presents the images using a TDBCtrlGrid which enables them to be viewed
-as an image strip.</span></p>
+database but presents the images using a TDBCtrlGrid which enables them to be
+viewed as an image strip.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial;color:black'>&nbsp;</span></p>
@@ -237,8 +273,8 @@ font-family:Arial'>&nbsp;</span></p>
 font-family:Arial'>If you are evaluating this product then you have an
 evaluation licence for 30 days. Please see the licence agreement for more
 information. If you wish to continue to use the software after this time then
-you must purchase a source licence from MWA Software - see http://www.mwasoftware.co.uk
-for more information.</span></p>
+you must purchase a source licence from MWA Software - see
+http://www.mwasoftware.co.uk for more information.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial'>&nbsp;</span></p>
@@ -248,6 +284,357 @@ font-family:Arial'>If you have purchased this product then Thank You! Your
 licence allows you full access to the source code and royalty free deployment.
 However, you must keep the source code confidential and not give it to third
 parties.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>What's New in This Version</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New In Version 1.10</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Support for CMYK Jpeg Images</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New in Version 1.9</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Support for Delphi 2005 (Win32)</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. Support for Borland Developer Studio 2006 (both Delphi
+and C++Builder Win32)</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. Support for Delphi 2007.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New features in release 1.8b</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. C++Builder Support has been added.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New Features in Version 1.8a</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Delphi 7 support has been added</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. To support Interbase Express, LoadPicture now also checks
+the JPEG image field's Blobsize.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. Support for Delphi 6 has now been added.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. Version 6b of the IJG software is now used.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New Features in version 1.7</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Support for C++Builder 5 has been added.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. With Delphi 3 or later, TJpegDecompressor.ReadBitmap now
+returns a DIB bitmap  rather than a Device Dependent Bitmap. This is for
+improved and more reliable  printing. Earlier verions of Delpbi and C++Builder
+1 do not support DIB bitmaps.  The Viewer example program has been amended to
+demonstrate this new feature.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New Features in version 1.6</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Support for C++Builder 4 has been added.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. The memory leak in LoadPictureFromStream is now fixed.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. Support for TDBCtrlGrid has been added to TDBJPEGImage,
+and a demo application provided to illustrate this.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>4. References to TBlobstream in TDBJPEGImage have been
+replaced with calls to the more generic TDataSet.CreateBlobStream. This should
+permit operation with 3rd party database components.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>5. If an error occurs during the decompression of a jpeg
+image from TImage.Picture.LoadFromFile, the next call to the JPEG Decompressor
+should no longer </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>risk an Access Violation.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>6. If an exception occurs during the processing of a
+progress report, Abort is now called to reset the JPEG decompressor/compressor.
+This will avoid the &quot;JPEG decompressor/compressor not in correct state
+error messages on subsequent calls to the jpeg code.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New Features in Version 1.5</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. This release is primarily for Delphi 4 support and to
+ensure a common software base is maintained.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. Two new methods &quot;LoadPictureFromResource&quot; and
+&quot;LoadPictureFromResID&quot; are provided so that JPEG images can be
+packaged with a program as </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>resources and then loaded at run-time. This can save
+considerable space compared with loading an image into TImage at run-time. See
+the help for </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>information on how to use this feature and the Viewer Demo
+application, which includes a JPEG resource in its about box.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. The Delphi 3 version should now install into the IDE
+without generating a &quot;A Device Attached to the System is not Working&quot;
+error </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>message. This was due to the components having been compiled
+on a system with Quick Reports Professional installed. This error message was </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>experienced by users that used the standard version shipped
+by Borland.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>New features in Version 1.4:</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Support for C++Builder 3.0. The component library now
+also supports C++Builder 3.0. The functionality is identical to the other
+versions </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>and a common source base is still maintained.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. No DLL required for Delphi 3, and all versions of
+C++Builder. Version 1.3 required a separate dll for the JPEG compression
+software. </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>This is no longer true for Delphi 3 and C++Builder. By
+default the JPEG software is linked into your program - dll support is still
+available as a command line option.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. Dynamic dll loading. The Delphi 1 and Delphi 2 versions
+now load the JPEG dll dynamically. This enables a more meaningful error message
+</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>to be returned if the library cannot be found. The version
+1.3 static load is still available as an option.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>4. A new visual component - TDBJPEGImage has been provided.
+This is a data aware descendant of TImage that stores images in a database blob
+</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>field using JPEG compression.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>5. Quick Reports support: with Quick Reports version 1, the
+TDBJPEGImage may be included on a report. For version 2, a new </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>component TQRJPEGImage is provided so that you can print
+JPEG images direct from a database.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>Bug Fixes:</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>1. Parameters to TStream.Seek in
+TJPEGCompressor.SkipInputBytes now the correct way round :(    Why didn't
+Borland make the &quot;ORigin&quot; </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>parameter an enumerated type then this typo would have been
+a compile time error!</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>2. The error code returned from PlayEnhMetaFile is now
+returned in the error messsage</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>3. The decompressor now has a property (ColoursIn8bitMode)
+that allows the user to  specify the actual numbers of discrete colours in the </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>image when decoding to a 256 colour image. This used to be
+256. However, a lower number can avoid a colour cast especially with Blank </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>and White images encoded as full colour images. The default
+is now 64.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>4. When the buffer size is changed the buffer will now be
+freed and reallocated.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>5. An event handler for warning messages has been added.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>6. You should now be able to correctly save JPEG images when
+working in the IDE  and want to save an image as a JPEG at design time (but </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>only when the image  was loaded from a JPEG source - the IDE
+cannot be used to convert JPEG's to  bitmaps, but it can be used to convert
+from </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>JPEGs to bitmaps.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>7. OnProgressReport now spelt correctly! Note that uses
+upgrading from earlier versions will experience an error message when loading </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>projects that use the JPEG Component Library reporting that
+the mis-spelt property name cannot be found. Ignore this error and manually
+direct the &quot;OnProgressReport&quot; to its event handler.</span></p>
 
 <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
 font-family:Arial'>&nbsp;</span></p>
