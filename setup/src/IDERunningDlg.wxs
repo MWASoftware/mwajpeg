@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: IDERunningDlg.wxs,v 1.1 2007-08-11 16:38:30 tony Exp $ -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+  <Fragment>
+    <UI Id="IDERunning">
+      <Dialog Id="IDERunningDlg" Y="30" Width="260" Height="200" Title="[ProductName] Setup" NoMinimize="yes">
+        <Control Id="OK" Type="PushButton" X="101" Y="169" Width="56" Height="17" Default="yes" Text="OK">
+          <Publish Event="EndDialog" Value="Exit" />
+        </Control>
+        <Control Id="Msg" Type="Text" X="45" Y="15" Width="196" Height="60">
+          <Text>A Manually installed version of the MWA JPEG Component Library has been detected for [InstalledOldProducts]. Before installing this product, you must:</Text>
+        </Control>
+        <Control Id="ErrorIcon" Type="Icon" X="15" Y="15" Width="24" Height="24" ToolTip="Information icon" FixedSize="yes" IconSize="32" Text="exclamic">
+          <Binary Id="exclamic" SourceFile="Bitmaps\exclamic.ico" />
+        </Control>
+        <Control Type="Text" Width="196" Height="30" X="45" Y="60" Id="Step1">
+          <Text>1. Remove the Installed Package "MWA JPEG Component Library from each of the Delphi and C++Builder Products identified above."</Text>
+        </Control>
+        <Control Type="Text" Width="196" Height="26" X="45" Y="101" Id="Step2">
+          <Text>2. Remove the JPEG and JPEG\OBJ directories from the Delphi IDE Library Path.</Text>
+        </Control>
+        <Control Type="Text" Width="196" Height="17" X="45" Y="131" Id="Step3">
+          <Text>3. Restart this installation script.</Text>
+        </Control>
+      </Dialog>
+	  <Error Id="10000">A Manually installed version of the MWA JPEG Component Library has been detected for [InstalledOldProducts] and must be uninstalled before this product can be installed.</Error>
+    </UI>
+
+  	<CustomAction Id="RemoveOldHJPEGLibs" Error="10000"/>
+
+  </Fragment>
+</Wix>

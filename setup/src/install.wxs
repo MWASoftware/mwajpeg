@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.7 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.8 2007-08-11 16:38:30 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -103,7 +103,7 @@
   <UIRef Id="IDERunning" />
   <UI>
     <Error Id="10001">MWA JPEG Component Library has already been updated to $(env.RELEASE) or newer.</Error>
-	<Error Id="10002">The Full Version of the MWA JPEG Component Library has already been installed.</Error>
+	<Error Id="10002">The Full Version of the MWA JPEG Component Library has already been installed. This is the evaluation version.</Error>
   </UI>
 
   <CustomAction Id='AlreadyUpdated' Error='10001' />
