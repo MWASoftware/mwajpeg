@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: cbuilder6.wxs,v 1.4 2007-08-10 17:18:29 tony Exp $ -->
+<!-- $Id: cbuilder6.wxs,v 1.5 2007-08-11 16:10:32 tony Exp $ -->
 
 <!-- This Fragment installs the Files for C++Builder 6.0 -->
 
@@ -44,11 +44,22 @@
                       Name="RootDir" Type="directory" />
   </Property>
 
-  <CustomAction Id="SetInstallDirVCB140" Directory="CBDirVCB140"
-                 Value="[INSTALLDIRCB6]"/>
-  <InstallExecuteSequence>
-    <Custom Action='SetInstallDirVCB140' After='CostFinalize'>INSTALLDIRCB6</Custom>
-  </InstallExecuteSequence>
+  <CustomTable Id="MWARegSearchParams" >
+    <Row>
+	  <Data Column="Id">HKLMSearchOldInstallVCB140</Data>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\C++Builder\6.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgc6.bpl</Data>
+	  <Data Column="Property">OLDINSTALLCB6</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HLCUSearchOldInstallVCB140</Data>
+	  <Data Column="Root">HKCU</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\C++Builder\6.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgc6.bpl</Data>
+	  <Data Column="Property">OLDINSTALLCB6</Data>
+	</Row>
+  </CustomTable>
 
   <DirectoryRef Id="TARGETDIR">
     <Directory Id="CBDirVCB140" Name="cbldr60">
@@ -155,6 +166,20 @@
 	  <?endif?>
 	</Directory>
   </DirectoryRef>
+
+  <CustomAction Id="SetInstallDirVCB140" Directory="CBDirVCB140"
+                 Value="[INSTALLDIRCB6]"/>
+  <CustomAction Id="OldVCB140Found" Property="InstalledOldProducts"
+                Value="[InstalledOldProducts]C++Builder 6;"/>
+
+  <InstallExecuteSequence>
+    <Custom Action="OldVCB140Found" After="MWARegSearch" >OLDINSTALLCB6</Custom>
+    <Custom Action='SetInstallDirVCB140' After='CostFinalize'>INSTALLDIRCB6</Custom>
+  </InstallExecuteSequence>
+
+   <InstallUISequence>
+     <Custom Action="OldVCB140Found" After="MWARegSearch" >OLDINSTALLCB5</Custom>
+   </InstallUISequence>
 
   <ComponentGroup Id="CBuilder60" >
     <ComponentRef Id="DesignTimePkgeVCB140"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.6 2007-08-09 17:48:25 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.7 2007-08-11 16:10:32 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -43,17 +43,14 @@
         IncludeMinimum='yes' Minimum='$(env.RELEASE)' />
   </Upgrade>
 
-  <CustomAction Id='AlreadyUpdated'
-    Error='MWA JPEG Component Library has already been updated to $(env.RELEASE) or newer.' />
-
-  <InstallExecuteSequence>
-    <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>CURRENTVERSIONFOUND</Custom>
-    <RemoveExistingProducts Before="InstallInitialize" />
-  </InstallExecuteSequence>
-
   <!-- If we are installing the Registered User Version then remove the evaluation version -->
 
-  <?ifndef EVALUATION?>
+  <?ifdef EVALUATION?>
+  <Upgrade Id='$(var.FullUpgradeCode)'>
+      <UpgradeVersion IncludeMaximum='yes' Maximum='$(env.RELEASE)'
+	                  OnlyDetect='yes' Property='FULLVERSIONFOUND' />
+  </Upgrade>
+  <?else?>
   <Upgrade Id='$(var.EvalUpgradeCode)'>
       <UpgradeVersion IncludeMaximum='yes' Maximum='$(env.RELEASE)' />
   </Upgrade>
@@ -101,9 +98,29 @@
     </Directory>
   </Directory>
 
-
   <UIRef Id="WixUI_FeatureTree" />
   <UIRef Id="WixUI_ErrorProgressText" />
+  <UIRef Id="IDERunning" />
+  <UI>
+    <Error Id="10001">MWA JPEG Component Library has already been updated to $(env.RELEASE) or newer.</Error>
+	<Error Id="10002">The Full Version of the MWA JPEG Component Library has already been installed.</Error>
+  </UI>
+
+  <CustomAction Id='AlreadyUpdated' Error='10001' />
+  <CustomAction Id='FullVersionInstalled' Error='10002' />
+
+  <InstallExecuteSequence>
+    <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>CURRENTVERSIONFOUND</Custom>
+    <Custom Action='FullVersionInstalled' After='FindRelatedProducts'>FULLVERSIONFOUND</Custom>
+    <RemoveExistingProducts Before="InstallInitialize" />
+    <Custom Action="RemoveOldHJPEGLibs" After="MWARegSearch" >OLDINSTALLD7</Custom>
+   </InstallExecuteSequence>
+
+   <InstallUISequence>
+    <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>CURRENTVERSIONFOUND</Custom>
+    <Custom Action='FullVersionInstalled' After='FindRelatedProducts'>FULLVERSIONFOUND</Custom>
+    <Show Dialog="IDERunningDlg" After="CostFinalize">InstalledOldProducts</Show>
+   </InstallUISequence>
 
 
   <Feature Id='JPEGComponents' Level='1' Title="MWA JPEG Components"

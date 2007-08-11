@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.5 2007-08-10 21:45:05 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.6 2007-08-11 16:10:32 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -84,13 +84,21 @@
 	  <Data Column="SubString">QR4StdDesD2006.bpl</Data>
 	  <Data Column="Property">QR4STDD2006</Data>
 	</Row>
+    <Row>
+	  <Data Column="Id">HKLMSearchOldInstallVER180</Data>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgb4.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD10</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HLCUSearchOldInstallVER180</Data>
+	  <Data Column="Root">HKCU</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgb4.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD10</Data>
+	</Row>
   </CustomTable>
-
-  <CustomAction Id="SetInstallDirVER180" Directory="DelphiDirVER180"
-                 Value="[INSTALLDIRD2006]"/>
-  <InstallExecuteSequence>
-    <Custom Action='SetInstallDirVER180' After='CostFinalize'>INSTALLDIRD2006</Custom>
-  </InstallExecuteSequence>
 
   <DirectoryRef Id="TARGETDIR">
     <Directory Id="DelphiDirVER180" Name="Delphi10" LongName="bds2006">
@@ -331,6 +339,19 @@
 	</Directory>
   </DirectoryRef>
 
+  <CustomAction Id="SetInstallDirVER180" Directory="DelphiDirVER180"
+                 Value="[INSTALLDIRD2006]"/>
+  <CustomAction Id="OldVER180Found" Property="InstalledOldProducts"
+                Value="[InstalledOldProducts]BDS 2006;"/>
+
+  <InstallExecuteSequence>
+    <Custom Action="OldVER180Found" After="MWARegSearch" >OLDINSTALLD10</Custom>
+    <Custom Action='SetInstallDirVER180' After='CostFinalize'>INSTALLDIRD2006</Custom>
+  </InstallExecuteSequence>
+
+   <InstallUISequence>
+     <Custom Action="OldVER180Found" After="MWARegSearch" >OLDINSTALLD10</Custom>
+   </InstallUISequence>
   <ComponentGroup Id="Delphi2006" >
     <ComponentRef Id="DesignTimePkgeVER180"/>
     <ComponentRef Id="DesignTimePkgeQRVER180"/>

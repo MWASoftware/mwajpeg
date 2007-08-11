@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi6.wxs,v 1.4 2007-08-10 17:18:29 tony Exp $ -->
+<!-- $Id: delphi6.wxs,v 1.5 2007-08-11 16:10:32 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 6.0 -->
 
@@ -29,11 +29,22 @@
                       Name="RootDir" Type="directory" />
   </Property>
 
-  <CustomAction Id="SetInstallDirVER140" Directory="DelphiDirVER140"
-                 Value="[INSTALLDIRD6]"/>
-  <InstallExecuteSequence>
-    <Custom Action='SetInstallDirVER140' After='CostFinalize'>INSTALLDIRD6</Custom>
-  </InstallExecuteSequence>
+  <CustomTable Id="MWARegSearchParams" >
+    <Row>
+	  <Data Column="Id">HKLMSearchOldInstallVER140</Data>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\6.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgd6.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD6</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HLCUSearchOldInstallVER140</Data>
+	  <Data Column="Root">HKCU</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\6.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgd6.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD6</Data>
+	</Row>
+  </CustomTable>
 
   <DirectoryRef Id="TARGETDIR">
     <Directory Id="DelphiDirVER140" Name="Delphi60">
@@ -106,6 +117,20 @@
 	  <?endif?>
 	</Directory>
   </DirectoryRef>
+
+  <CustomAction Id="SetInstallDirVER140" Directory="DelphiDirVER140"
+                 Value="[INSTALLDIRD6]"/>
+  <CustomAction Id="OldVER140Found" Property="InstalledOldProducts"
+                Value="[InstalledOldProducts]Delphi 6;"/>
+
+  <InstallExecuteSequence>
+    <Custom Action="OldVER140Found" After="MWARegSearch" >OLDINSTALLD6</Custom>
+    <Custom Action='SetInstallDirVER140' After='CostFinalize'>INSTALLDIRD6</Custom>
+  </InstallExecuteSequence>
+
+   <InstallUISequence>
+     <Custom Action="OldVER140Found" After="MWARegSearch" >OLDINSTALLD6</Custom>
+   </InstallUISequence>
 
   <ComponentGroup Id="Delphi60" >
     <ComponentRef Id="DesignTimePkgeVER140"/>

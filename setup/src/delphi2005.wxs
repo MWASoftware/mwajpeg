@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2005.wxs,v 1.4 2007-08-10 21:45:05 tony Exp $ -->
+<!-- $Id: delphi2005.wxs,v 1.5 2007-08-11 16:10:32 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2005 -->
 
@@ -46,13 +46,21 @@
 	  <Data Column="SubString">QR4DesignDX.bpl</Data>
 	  <Data Column="Property">QR4D2005</Data>
 	</Row>
+    <Row>
+	  <Data Column="Id">HKLMSearchOldInstallVER170</Data>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\3.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgd9.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD9</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HLCUSearchOldInstallVER170</Data>
+	  <Data Column="Root">HKCU</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\3.0\Known Packages</Data>
+	  <Data Column="SubString">mwajpgd9.bpl</Data>
+	  <Data Column="Property">OLDINSTALLD9</Data>
+	</Row>
   </CustomTable>
-
-  <CustomAction Id="SetInstallDirVER170" Directory="DelphiDirVER170"
-                 Value="[INSTALLDIRD2005]"/>
-  <InstallExecuteSequence>
-    <Custom Action='SetInstallDirVER170' After='CostFinalize'>INSTALLDIRD2005</Custom>
-  </InstallExecuteSequence>
 
   <DirectoryRef Id="TARGETDIR">
     <Directory Id="DelphiDirVER170" Name="Delphi09" LongName="Delphi2005">
@@ -154,6 +162,20 @@
 	  <?endif?>
 	</Directory>
   </DirectoryRef>
+
+  <CustomAction Id="SetInstallDirVER170" Directory="DelphiDirVER170"
+                 Value="[INSTALLDIRD2005]"/>
+  <CustomAction Id="OldVER170Found" Property="InstalledOldProducts"
+                Value="[InstalledOldProducts]Delphi 2005;"/>
+
+  <InstallExecuteSequence>
+    <Custom Action="OldVER170Found" After="MWARegSearch" >OLDINSTALLD9</Custom>
+    <Custom Action='SetInstallDirVER170' After='CostFinalize'>INSTALLDIRD2005</Custom>
+  </InstallExecuteSequence>
+
+   <InstallUISequence>
+     <Custom Action="OldVER170Found" After="MWARegSearch" >OLDINSTALLD9</Custom>
+   </InstallUISequence>
 
   <ComponentGroup Id="Delphi2005" >
     <ComponentRef Id="DesignTimePkgeVER170"/>
