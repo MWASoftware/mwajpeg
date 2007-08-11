@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi6.wxs,v 1.5 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: delphi6.wxs,v 1.6 2007-08-11 17:32:37 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 6.0 -->
 
@@ -34,14 +34,14 @@
 	  <Data Column="Id">HKLMSearchOldInstallVER140</Data>
 	  <Data Column="Root">HKLM</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\6.0\Known Packages</Data>
-	  <Data Column="SubString">mwajpgd6.bpl</Data>
+	  <Data Column="SubString">\mwajpgd6.bpl</Data>
 	  <Data Column="Property">OLDINSTALLD6</Data>
 	</Row>
     <Row>
 	  <Data Column="Id">HLCUSearchOldInstallVER140</Data>
 	  <Data Column="Root">HKCU</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\6.0\Known Packages</Data>
-	  <Data Column="SubString">mwajpgd6.bpl</Data>
+	  <Data Column="SubString">\mwajpgd6.bpl</Data>
 	  <Data Column="Property">OLDINSTALLD6</Data>
 	</Row>
   </CustomTable>

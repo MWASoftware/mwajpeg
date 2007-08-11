@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi7.wxs,v 1.4 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: delphi7.wxs,v 1.5 2007-08-11 17:32:37 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 7.0 -->
 
@@ -34,14 +34,14 @@
 	  <Data Column="Id">HKLMSearchOldInstallVER150</Data>
 	  <Data Column="Root">HKLM</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\7.0\Known Packages</Data>
-	  <Data Column="SubString">mwajpgd7.bpl</Data>
+	  <Data Column="SubString">\mwajpgd7.bpl</Data>
 	  <Data Column="Property">OLDINSTALLD7</Data>
 	</Row>
     <Row>
 	  <Data Column="Id">HLCUSearchOldInstallVER150</Data>
 	  <Data Column="Root">HKCU</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\Delphi\7.0\Known Packages</Data>
-	  <Data Column="SubString">mwajpgd7.bpl</Data>
+	  <Data Column="SubString">\mwajpgd7.bpl</Data>
 	  <Data Column="Property">OLDINSTALLD7</Data>
 	</Row>
   </CustomTable>

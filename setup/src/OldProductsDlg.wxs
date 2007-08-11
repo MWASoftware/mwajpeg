@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: IDERunningDlg.wxs,v 1.2 2007-08-11 17:32:37 tony Exp $ -->
+<!-- $Id: OldProductsDlg.wxs,v 1.1 2007-08-11 17:32:37 tony Exp $ -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
   <Fragment>
-    <UI Id="IDERunning">
-      <Dialog Id="IDERunningDlg" Y="30" Width="260" Height="200" Title="[ProductName] Setup" NoMinimize="yes">
+    <UI>
+      <Dialog Id="OldProductsDlg" Y="30" Width="260" Height="200" Title="[ProductName] Setup" NoMinimize="yes">
         <Control Id="OK" Type="PushButton" X="101" Y="169" Width="56" Height="17" Default="yes" Text="OK">
           <Publish Event="EndDialog" Value="Exit" />
         </Control>
