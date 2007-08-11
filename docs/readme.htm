@@ -1,0 +1,265 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>MWA JPEG Component Library</title>
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+ /* Page Definitions */
+ @page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-GB style='text-justify-trim:punctuation'>
+
+<div class=Section1> 
+  <p class=MsoNormal align=center style='text-align:center;text-autospace:none'><b><span
+style='font-size:16.0pt;font-family:Arial;color:black'>MWA JPEG Component Library</span></b></p>
+  <hr>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>Welcome to the MWA JPEG Component Library. <span
+style='color:black'>The JPEG Component Library provides two additional
+non-visual components for use under either Delphi or C++Builder. It also
+provides a Data Aware JPEG Image component which may be used to save and access
+JPEG encoded images in a database blob field. A corresponding printable
+component is also provided so that you may print images from a database using
+Quick Reports. </span></span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The two non-visual components are
+TJPEGFileCompressor and TJPEGFileDecompressor. These support compression of
+images to JPEG Format and decompression respectively. The data aware component
+is TDBJPEGImage, and the printable component is TQRDBJPEGImage (for Delphi 2005
+and later only available if you also have Quick Reports 4 installed). You will
+find these components on the &quot;MWA JPEG&quot; tab on the component palette.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>Simply installing these components JPEG enables
+the Delphi IDE. The components register themselves as supporting .jpg files and
+the JPEG compression format and, when you come to load an image into a TImage
+Picture, the JPEG format will be found amongst the list of supported file
+formats. An image loaded from a JPEG source can also be saved back to JPEG.
+These components support the JPEG File Interchange Format (JFIF).</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>These two components also support TImage at
+run-time too. As at design time, if TJPEGFileDecompressor is included in your
+project, then calling TImage.Picture.LoadFromFile when the file extension is
+.jpg will automatically invoke the JPEG decompressor. You can also explicitly
+call TJPEGFileDecompressor to load a JPEG image from any file.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>TJPEGFileCompressor can be used to save a
+TImage.Picture in JPEG format, and can handle pictures that are either bitmaps
+or metafiles. It can also compress a device independent bitmap, and change the
+size of bitmaps before compression.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>TDBJPEGImage is linked to a database blob field
+and also uses TJPEGFileDecompressor and TJPEGFileCompressor to save and load
+JPEG encoded images from the Blob Field. Use of the JPEG compressor and
+decompressor components can be implicit if the default parameter settings are
+sufficient. On the other hand, the reference may be explicit to copies of these
+components with non-default parameter settings. TQRDBJPEGImage can be used to print
+a JPEG Image using Quick Reports 2. </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>This software uses original software for JPEG
+developed by the Independent JPEG Group (see ftp://ftp.uu.net/graphics/jpeg).
+The IDG have made available a library of generic 'C' code supporting JPEG
+compression and decompression and have permitted its free use provided the
+source is acknowledged. The IDG code has been modified for use with Delphi and
+MS Windows and is provided as compiled object files. Optionally, they may be
+separately compiled into a dll.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>An interface to this software is provided by the
+unit jpeglib.pas. This is encapsulated as a set of Delphi components in the
+unit mwajpeg.pas, which also supports the mapping of the environment
+independent image format expected by the IJG code into MS Windows bitmap and
+metafile formats.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>When you purchase a licence to this product, you
+purchase a licence for the source code to the mwajpeg and jpeglib units and the
+right to include binaries derived from them in your own products without having
+to pay additional royalties. You also have a right to freely distribute the
+mwjpeg and mwjpeg32 dlls (if used), and copies of the modified 'C' source is
+also included in the registered version. Support is also provided by EMail
+albeit without a guaranteed response time.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>Example Applications</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>Three demo applications are provided. A JPEG
+Viewer application demonstrates the opening and saving JPEG image files and
+conversion to and from bitmap files (.bmp) and from Windows Metafiles (.wmf).
+One database application (DBDemo) demonstrates use of the data aware component
+with the DB Navigation bar, while another (DBGrDemo) demonstrates the use of
+the data aware component in a TDBCtrlGrid.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The JPEG Viewer application may be found in the
+Examples\Viewer subdirectory created above. To activate, load the jpegdemo.dpr
+file into the IDE using the File|Open Project menu item. This provides a simple
+application that can open and save .jpg (JPEG), .bmp (Windows Bitmap) and .wmf
+(Windows metfaile) files, and copy and paste bitmaps and metafiles to and from
+the clipboard. To test out, simply compile and run the application.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>To load and view a JPEG file, click on the open
+button and load the test.jpg file contained in the subdirectory created above.
+You can also try saving it to another file name (you can save it as either a
+JPEG or a bitmap). You can also use the demo application to convert windows
+bitmaps and metafiles to jpegs simply by opening the file containing them (or
+pasting from the clipboard) and saving them as jpegs. The viewer window can
+also be resized by simply dragging the bottom right hand corner with the mouse.
+Saving the image will save it at the new size.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The application also demonstrates a simple
+method for printing a JPEG Image.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>You can also use the Object Inspector to see the
+properties published by the two JPEG components.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The JPEG database applications may be found in
+the Examples\db subdirectory. To activate, load the respective .dpr file into
+the IDE using the File|Open Project menu item.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The DBDemo application is an extension of the
+Viewer and presents images held in an example database. The database records
+may be perused using the DBNavigator bar provided. It is still possible to save
+images from the database record and to replace/insert images from files or the
+clipboard. The application also demonstrates how to print a report including
+JPEG Images.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>The DBGrDemo application uses the same image
+database but presents the images using a TDBCtrlGrid which enables them to be viewed
+as an image strip.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial;color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>More Information</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>An Online Help File is installed and may be found under the
+Programs-&gt;MWA JPEG Component Library Start Menu. An online form is also
+available at http://www.mwasoftware.co.uk.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><b><span style='font-family:
+Arial;color:black'>Licensing</span></b></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>If you are evaluating this product then you have an
+evaluation licence for 30 days. Please see the licence agreement for more
+information. If you wish to continue to use the software after this time then
+you must purchase a source licence from MWA Software - see http://www.mwasoftware.co.uk
+for more information.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>If you have purchased this product then Thank You! Your
+licence allows you full access to the source code and royalty free deployment.
+However, you must keep the source code confidential and not give it to third
+parties.</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>MWA Software</span></p>
+
+<p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+font-family:Arial'>http://www,mwasoftware.co.uk</span></p>
+
+</div>
+
+</body>
+
+</html>

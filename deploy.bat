@@ -23,13 +23,13 @@ pcopy source\source\mwajpeg.pas .
 "%WIX%\candle" setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\Registrd\Licence.rtf license.rtf
-"%WIX%\light" -out release\full\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj source.wixobj ReadMeDlg.wixobj JpegUI_FeatureTree.wixobj OldProductsdlg.wixobj ..\customactions\RegSearch\RegSearch.wixobj ..\customactions\DelphiRunning\DelphiRunning.wixobj %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
+"%WIX%\light" -out release\full\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj source.wixobj ReadMeDlg.wixobj JpegUI_FeatureTree.wixobj OldProductsdlg.wixobj ..\customactions\mwaca.wixlib %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
 
 "%WIX%\candle" -dEVALUATION setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
 copy docs\licence\shrware\Licence.rtf license.rtf
-"%WIX%\light" -out release\evaluation\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj ReadMeDlg.wixobj JpegUI_FeatureTree.wixobj OldProductsdlg.wixobj  ..\customactions\RegSearch\RegSearch.wixobj ..\customactions\DelphiRunning\DelphiRunning.wixobj %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
+"%WIX%\light" -out release\evaluation\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj ReadMeDlg.wixobj JpegUI_FeatureTree.wixobj OldProductsdlg.wixobj  ..\customactions\mwaca.wixlib  %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
 del license.rtf mwajpeg.pas
 

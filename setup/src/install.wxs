@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.9 2007-08-11 17:32:37 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.10 2007-08-11 18:01:28 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -90,6 +90,14 @@
               <Shortcut Id="startmenulicence" Directory="ProgramMenuDir" Name="licence"
                   LongName="Software Licence" WorkingDirectory='INSTALLDIR' />
 			</File>
+		    <File Id="readmehtm" Name="readme.htm"
+				  Source="docs\readme.htm" >
+              <Shortcut Id="startmenureadme" Directory="ProgramMenuDir" Name="ReadMe"
+                  LongName="ReadMe" WorkingDirectory='INSTALLDIR' />
+			</File>
+            <Shortcut Id="mwalink" Directory="ProgramMenuDir" Name="mwasoft"
+                  LongName="Home Page" WorkingDirectory='INSTALLDIR'
+				  Target="http://www.mwasoftware.co.uk/jpeg" />
           </Component>
 		</Directory>
     </Directory>
