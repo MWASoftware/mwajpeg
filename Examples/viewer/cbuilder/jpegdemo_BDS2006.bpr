@@ -2,7 +2,7 @@
 <!-- C++Builder XML Project -->
 <PROJECT>
   <MACROS>
-    <VERSION value="BCB.05.03"/>
+    <VERSION value="BCB.06.00"/>
     <PROJECT value="jpegdemo.exe"/>
     <OBJFILES value="jpegdemo.obj jpegview.obj progress.obj about.obj"/>
     <RESFILES value="jpegdemo.res test.res"/>
@@ -10,8 +10,8 @@
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) jpegview.dfm progress.dfm about.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="qrpt50.lib vcldbx50.lib vclbde50.lib vcldb50.lib vclx50.lib vcl50.lib"/>
-    <SPARELIBS value="vcl50.lib vclx50.lib vcldb50.lib vclbde50.lib vcldbx50.lib qrpt50.lib"/>
+    <LIBRARIES value="qrpt.lib vcldbx.lib bdertl.lib vcldb.lib dbrtl.lib vclx.lib vcl.lib rtl.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib vclx.lib dbrtl.lib vcldb.lib bdertl.lib vcldbx.lib qrpt.lib"/>
     <PACKAGES value=""/>
     <PATHCPP value=".;"/>
     <PATHPAS value=".;"/>
@@ -27,21 +27,35 @@
     <LIBPATH value="..\..\..\projects;$(BCB)\bin;$(BCB)\jpeg;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
+    <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
       -c -tWM"/>
     <PFLAGS value="-AWinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE 
-      -$YD -$W -$O- -v -JPHNV -M -JPHNE"/>
+      -$YD -$W -$O- -$A8 -v -JPHNV -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
     <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -v"/>
+    <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
     <ALLRES value="$(RESFILES)"/>
     <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
   </LINKER>
+  <FILELIST>
+      <FILE FILENAME="jpegdemo.cpp" FORMNAME="" UNITNAME="jpegdemo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="jpegview.cpp" FORMNAME="Form1" UNITNAME="jpegview" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="jpegdemo.res" FORMNAME="" UNITNAME="jpegdemo" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="progress.cpp" FORMNAME="ProgressBox" UNITNAME="progress" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="about.cpp" FORMNAME="AboutBox" UNITNAME="about" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="test.rc" FORMNAME="" UNITNAME="test" CONTAINERID="RC" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
   <IDEOPTIONS>
 [Version Info]
 IncludeVerInfo=0
@@ -63,9 +77,14 @@ DebugSourceDirs=
 
 [Parameters]
 RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
 HostApplication=
 RemoteHost=
 RemotePath=
+RemoteLauncher=
+RemoteCWD=
 RemoteDebug=0
 
 [Compiler]

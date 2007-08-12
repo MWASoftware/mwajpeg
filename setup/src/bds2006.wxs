@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.6 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.7 2007-08-12 18:04:25 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -352,6 +352,7 @@
    <InstallUISequence>
      <Custom Action="OldVER180Found" After="MWARegSearch" >OLDINSTALLD10</Custom>
    </InstallUISequence>
+   
   <ComponentGroup Id="Delphi2006" >
     <ComponentRef Id="DesignTimePkgeVER180"/>
     <ComponentRef Id="DesignTimePkgeQRVER180"/>

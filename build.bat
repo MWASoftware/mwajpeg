@@ -66,9 +66,9 @@ IF ERRORLEVEL 1 goto QUIT1
 rem Make C++Builder 6.0 
 
 :CB6
-IF NOT EXIST "%CB5%\bin\dcc32.exe" goto CB6
+IF NOT EXIST "%CB6%\bin\dcc32.exe" goto CB6
 call :mkdir evaluationUnits\cb6
-"%CB5%\bin\dcc32" source\mwadbjpg.pas /DDELPHI_REQUIRED;NODLL;CBUILDER5 /$D-,L-,Y-,R- /JPHN /B /Z- /OObj /N0evaluationUnits\cb6 /NOevaluationUnits\cb6 /NHevaluationUnits\cb6 
+"%CB6%\bin\dcc32" source\mwadbjpg.pas /DDELPHI_REQUIRED;NODLL;CBUILDER5 /$D-,L-,Y-,R- /JPHN /B /Z- /OObj /N0evaluationUnits\cb6 /NOevaluationUnits\cb6 /NHevaluationUnits\cb6 
 IF ERRORLEVEL 1 goto QUIT1
 
 cd ..

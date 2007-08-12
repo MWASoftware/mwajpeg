@@ -2,7 +2,7 @@
 <!-- C++Builder XML Project -->
 <PROJECT>
   <MACROS>
-    <VERSION value="BCB.06.00"/>
+    <VERSION value="BCB.05.03"/>
     <PROJECT value="DBdemo.exe"/>
     <OBJFILES value="DBdemo.obj jpegview.obj progress.obj about.obj Report.obj jpegdata.obj"/>
     <RESFILES value="DBdemo.res"/>
@@ -10,11 +10,11 @@
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) jpegview.dfm progress.dfm about.dfm Report.dfm jpegdata.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="qrpt.lib vcldbx.lib bdertl.lib vcldb.lib dbrtl.lib vclx.lib vcl.lib rtl.lib"/>
-    <SPARELIBS value="rtl.lib vcl.lib vclx.lib dbrtl.lib vcldb.lib bdertl.lib vcldbx.lib qrpt.lib"/>
-    <PACKAGES value="vclx.bpi rtl.bpi vcl.bpi dbrtl.bpi vcldb.bpi bdertl.bpi vcldbx.bpi 
-      bcbsmp.bpi dclocx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi ibsmp.bpi 
-      nmfast.bpi inetdb.bpi inet.bpi"/>
+    <LIBRARIES value="qrpt50.lib vcldbx50.lib vclbde50.lib vcldb50.lib vclx50.lib vcl50.lib"/>
+    <SPARELIBS value="vcl50.lib vclx50.lib vcldb50.lib vclbde50.lib vcldbx50.lib qrpt50.lib"/>
+    <PACKAGES value="vclx50.bpi vcl50.bpi vcldb50.bpi vclbde50.bpi vcldbx50.bpi bcbsmp50.bpi 
+      dclocx50.bpi qrpt50.bpi teeui50.bpi teedb50.bpi tee50.bpi ibsmp50.bpi 
+      nmfast50.bpi inetdb50.bpi inet50.bpi"/>
     <PATHCPP value=".;"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
@@ -25,40 +25,25 @@
     <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="DBdemo.cpp"/>
-    <INCLUDEPATH value="$(BCB)\projects;$(BCB)\bin;$(BCB)\jpeg;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="$(BCB)\projects;$(BCB)\bin;$(BCB)\jpeg;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="$(BCB)\projects;$(BCB)\bin;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\projects;$(BCB)\bin;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
-    <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
-      -tWM"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
+      -c -tWM"/>
     <PFLAGS value="-AWinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE 
-      -$YD -$W -$O- -$A8 -v -JPHNV -M -JPHNE"/>
+      -$YD -$W -$O- -v -JPHNV -M -JPHNE"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
     <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -v"/>
-    <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
     <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
     <ALLRES value="$(RESFILES)"/>
     <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
-    <OTHERFILES value=""/>
   </LINKER>
-  <FILELIST>
-      <FILE FILENAME="DBdemo.cpp" FORMNAME="" UNITNAME="DBdemo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="jpegview.cpp" FORMNAME="Form1" UNITNAME="jpegview" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="DBdemo.res" FORMNAME="" UNITNAME="DBdemo" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="progress.cpp" FORMNAME="ProgressBox" UNITNAME="progress" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="about.cpp" FORMNAME="AboutBox" UNITNAME="about" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="Report.cpp" FORMNAME="ReportForm" UNITNAME="Report" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="jpegdata.cpp" FORMNAME="DataModule1" UNITNAME="jpegdata" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-  </FILELIST>
-  <BUILDTOOLS>
-  </BUILDTOOLS>
-
   <IDEOPTIONS>
 [Version Info]
 IncludeVerInfo=0
@@ -96,14 +81,9 @@ DebugSourceDirs=
 
 [Parameters]
 RunParams=
-Launcher=
-UseLauncher=0
-DebugCWD=
 HostApplication=
 RemoteHost=
 RemotePath=
-RemoteLauncher=
-RemoteCWD=
 RemoteDebug=0
 
 [Compiler]
