@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: examples.wxs,v 1.2 2007-08-12 18:04:25 tony Exp $ -->
+<!-- $Id: examples.wxs,v 1.3 2007-08-12 18:08:14 tony Exp $ -->
 <!-- This fragment specifies the example programs -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
@@ -15,14 +15,14 @@
                 <File Id="Examplefile0" Name="about.cpp" Source="Examples\db\qr\cbuilder\about.cpp" />
                 <File Id="Examplefile1" Name="about.dfm" Source="Examples\db\qr\cbuilder\about.dfm" />
                 <File Id="Examplefile2" Name="about.h" Source="Examples\db\qr\cbuilder\about.h" />
-                <File Id="Examplefile3C5" Name="DBdemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder5.bpr" />
-                <File Id="Examplefile3C6" Name="DBdemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder6.bpr" />
-                <File Id="Examplefile3C10" Name="DBdemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\DBdemo_BDS2006.bpr" />
+                <File Id="Examplefile3C5" Name="DBDemo5.bpr" LongName="DBdemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder5.bpr" />
+                <File Id="Examplefile3C6" Name="DBDemo6.bpr" LongName="DBdemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder6.bpr" />
+                <File Id="Examplefile3C10" Name="DBDemo10.bpr" LongName="DBdemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\DBdemo_BDS2006.bpr" />
                 <File Id="Examplefile4" Name="DBdemo.cpp" Source="Examples\db\qr\cbuilder\DBdemo.cpp" />
                 <File Id="Examplefile5" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
-                <File Id="Examplefile6C5" Name="dbGrDemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder5.bpr" />
-                <File Id="Examplefile6C6" Name="dbGrDemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder6.bpr" />
-                <File Id="Examplefile6C10" Name="dbGrDemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_BDS2006.bpr" />
+                <File Id="Examplefile6C5" Name="GRDemo5.dpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder5.bpr" />
+                <File Id="Examplefile6C6" Name="GRDemo6.dpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder6.bpr" />
+                <File Id="Examplefile6C10" Name="GRDemo10.dpr" LongName="dbGrDemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_BDS2006.bpr" />
                 <File Id="Examplefile7" Name="dbGrDemo.cpp" Source="Examples\db\qr\cbuilder\dbGrDemo.cpp" />
                 <File Id="Examplefile8" Name="dbGrDemo.res" Source="Examples\db\dbDemo.res" />
                 <File Id="Examplefile9" Name="dblistvr.cpp" Source="Examples\db\qr\cbuilder\dblistvr.cpp" />
@@ -74,14 +74,14 @@
                 <File Id="Examplefile49" Name="about.cpp" Source="Examples\db\std\cbuilder\about.cpp" />
                 <File Id="Examplefile50" Name="about.dfm" Source="Examples\db\std\cbuilder\about.dfm" />
                 <File Id="Examplefile51" Name="about.h" Source="Examples\db\std\cbuilder\about.h" />
-                <File Id="Examplefile52C5" Name="DBdemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder5.bpr" />
-                <File Id="Examplefile52C6" Name="DBdemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder6.bpr" />
-                <File Id="Examplefile52C10" Name="DBdemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\DBdemo_BDS2006.bpr" />
+                <File Id="Examplefile52C5" Name="DBDemo5.bpr" LongName="DBdemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder5.bpr" />
+                <File Id="Examplefile52C6" Name="DBDemo6.bpr" LongName="DBdemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder6.bpr" />
+                <File Id="Examplefile52C10" Name="DBDemo10.bpr" LongName="DBdemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\DBdemo_BDS2006.bpr" />
                 <File Id="Examplefile53" Name="DBdemo.cpp" Source="Examples\db\std\cbuilder\DBdemo.cpp" />
                 <File Id="Examplefile54" Name="dbdemo.RES" Source="Examples\db\dbdemo.RES" />
-                <File Id="Examplefile55C5" Name="dbGrDemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder5.bpr" />
-                <File Id="Examplefile55C6" Name="dbGrDemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder6.bpr" />
-                <File Id="Examplefile55C10" Name="dbGrDemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_BDS2006.bpr" />
+                <File Id="Examplefile55C5" Name="GRDemo5.dpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder5.bpr" />
+                <File Id="Examplefile55C6" Name="GRDemo6.dpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder6.bpr" />
+                <File Id="Examplefile55C10" Name="GRDemo10.dpr" LongName="dbGrDemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_BDS2006.bpr" />
                 <File Id="Examplefile56" Name="dbGrDemo.cpp" Source="Examples\db\std\cbuilder\dbGrDemo.cpp" />
                 <File Id="Examplefile57" Name="dbGrDemo.res" Source="Examples\db\dbDemo.res" />
                 <File Id="Examplefile58" Name="dblistvr.cpp" Source="Examples\db\std\cbuilder\dblistvr.cpp" />
@@ -131,9 +131,9 @@
               <File Id="Examplefile91" Name="about.cpp" Source="Examples\Viewer\cbuilder\about.cpp" />
               <File Id="Examplefile92" Name="about.dfm" Source="Examples\Viewer\cbuilder\about.dfm" />
               <File Id="Examplefile93" Name="about.h" Source="Examples\Viewer\cbuilder\about.h" />
-              <File Id="Examplefile941" Name="jpegdemo_cbuilder5.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_cbuilder5.bpr" />
-              <File Id="Examplefile942" Name="jpegdemo_cbuilder6.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_cbuilder6.bpr" />
-              <File Id="Examplefile943" Name="jpegdemo_BDS2006.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_BDS2006.bpr" />
+              <File Id="Examplefile941" Name="VDemo5.bpr" LongName="jpegdemo_cbuilder5.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_cbuilder5.bpr" />
+              <File Id="Examplefile942" Name="VDemo6.bpr" LongName="jpegdemo_cbuilder6.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_cbuilder6.bpr" />
+              <File Id="Examplefile943" Name="VDemo10.bpr" LongName="jpegdemo_BDS2006.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_BDS2006.bpr" />
               <File Id="Examplefile95" Name="jpegdemo.cpp" Source="Examples\Viewer\cbuilder\jpegdemo.cpp" />
               <File Id="Examplefile96" Name="jpegdemo.RES" Source="Examples\Viewer\jpegdemo.RES" />
               <File Id="Examplefile97" Name="jpegview.cpp" Source="Examples\Viewer\cbuilder\jpegview.cpp" />

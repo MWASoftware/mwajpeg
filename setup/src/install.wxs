@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.11 2007-08-12 09:35:12 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.12 2007-08-12 18:04:25 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -109,8 +109,8 @@
   <UIRef Id="MwaUI_FeatureTree" />
   <UIRef Id="WixUI_ErrorProgressText" />
   <UI>
-    <Error Id="10001">MWA JPEG Component Library has already been updated to $(env.RELEASE) or newer.</Error>
-	<Error Id="10002">The Full Version of the MWA JPEG Component Library has already been installed. This is the evaluation version.</Error>
+    <Error Id="10001">[ProductName] has already been updated to $(env.RELEASE) or newer.</Error>
+	<Error Id="10002">The Full Version of the [ProductName] has already been installed. This is the evaluation version.</Error>
 	<Error Id="10003">Setup has detected that [ACTIVEIDES] is running. You must stop the IDE before this installation can be performed.</Error>
   </UI>
 
@@ -129,7 +129,7 @@
 
    <InstallUISequence>
     <Custom Action="CheckDelphiIDE" After="AppSearch" />
-	<Custom Action="IdeRunning" After="CheckDelphiIDE" >ACTIVEIDES</Custom>>
+	<Custom Action="IdeRunning" After="CheckDelphiIDE" >ACTIVEIDES</Custom>
     <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>CURRENTVERSIONFOUND</Custom>
     <Custom Action='FullVersionInstalled' After='FindRelatedProducts'>FULLVERSIONFOUND</Custom>
     <Show Dialog="OldProductsDlg" After="CostFinalize">InstalledOldProducts and not Installed</Show>
