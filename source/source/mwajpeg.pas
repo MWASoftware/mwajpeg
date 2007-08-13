@@ -45,6 +45,13 @@ unit mwajpeg;
 {$ObjExportAll On}
 {$ENDIF}
 
+{$IFDEF VER90} {$DEFINE BeforeDelphi3} {$ENDIF}
+{$IFDEF VER93} {$DEFINE BeforeDelphi3} {$ENDIF}
+{$IFNDEF VER80} {$IFNDEF VER90} {$IFNDEF VER93} {$IFNDEF VER100} {$IFNDEF VER110}
+{$IFNDEF VER120}{$IFNDEF VER130}
+{$DEFINE DELPHI6ORLATER}
+{$ENDIF}{$ENDIF}{$ENDIF}{$ENDIF}{$ENDIF}{$ENDIF}{$ENDIF}
+
 {Changes from 1.6a
 
 1. With Delphi 3 or later, TJpegDecompressor.ReadBitmap now returns a DIB bitmap
@@ -1067,7 +1074,12 @@ const UseIsIllegal: boolean = false;
 
 implementation
 
-uses SysUtils, Dialogs, Forms, Math;
+uses SysUtils, Dialogs, Forms, 
+     {$IFDEF DELPHI6ORLATER}
+     math;
+     {$ELSE}
+     macros;
+     {$ENDIF}
 
 const
      sNoImage        = 'The Image Property is empty!';

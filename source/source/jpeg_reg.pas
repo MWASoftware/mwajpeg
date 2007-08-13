@@ -32,6 +32,12 @@ uses Classes,
   {$IFDEF QREPORT2} mwaQRjpg,{$ENDIF}
   mwadbjpg, mwajpeg, jpeglib, dialogs, sysutils;
 
+{$IFDEF VER80}
+{$R jpgreg16.dcr}
+{$ELSE}
+{$R jpeg_reg.dcr}
+{$ENDIF}
+
 procedure Register;
 begin
   try

@@ -40,7 +40,11 @@ uses Classes, mwadbjpg, mwajpeg, jpeglib, dialogs, sysutils
 {$IFDEF DELPHI5ORLATER},dsgnwnds{$ENDIF}
 {$IFDEF DESIGNTIME},Graphics, jpeg {$ENDIF};
 
+{$IFDEF VER80}
+{$R jpgreg16.dcr}
+{$ELSE}
 {$R jpeg_reg.dcr}
+{$ENDIF}
 
 procedure Register;
 begin

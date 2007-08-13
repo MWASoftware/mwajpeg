@@ -47,7 +47,11 @@ uses Classes,  {$IFDEF QREPORTS}mwaQRjpg,  {$ENDIF} mwadbjpg, mwajpeg, jpeglib, 
 {$IFDEF DELPHI5ORLATER},dsgnwnds{$ENDIF} {$ENDIF}
 {$IFDEF DESIGNTIME},Graphics, jpeg {$ENDIF};
 
+{$IFDEF VER80}
+{$R jpgreg16.dcr}
+{$ELSE}
 {$R jpeg_reg.dcr}
+{$ENDIF}
 
 procedure Register;
 begin

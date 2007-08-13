@@ -23,6 +23,7 @@ rem
 call :mkdir Units\d1
 "%D1%\bin\dcc" Source\jpegreg1 /$D-,L-,Y- /USource /B /EUnits\d1
 IF ERRORLEVEL 1 goto Quit
+copy source\jpegreg1.pas Units\d1
 
 rem
 rem MAKE 32-bit Delphi 2.0  COMPONENTS
@@ -32,6 +33,7 @@ IF NOT EXIST "%D2%\bin\dcc32.exe" goto D3
 call :mkdir Units\d2
 "%D2%\bin\dcc32" Source\jpegreg2 /$D-,L-,Y- /B /USource  /NUnits\d2
 IF ERRORLEVEL 1 goto Quit
+copy source\jpegreg2.pas units\d2
 
 rem MAKE 32-bit Delphi 3.0 COMPONENTS
 
@@ -191,6 +193,7 @@ IF NOT EXIST "%CB1%\bin\dcc32.exe" goto CB3
 call :mkdir Units\cb1
 "%CB1%\bin\dcc32" Source\jpegreg1.pas /$D-,L-,Y- /OObj /USource /ISource /B /JPHN /NUnits\cb1
 IF ERRORLEVEL 1 goto QUIT1
+copy source\cbuilder\jpegreg2.cpp units\cb1
 move Source\*.hpp Units\cb1
 move Source\*.obj Units\cb1
 

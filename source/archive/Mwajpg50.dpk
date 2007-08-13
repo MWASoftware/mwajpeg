@@ -1,0 +1,50 @@
+package mwajpg50;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS OFF}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'MWA JPEG Component Library'}
+{$IFDEF DESIGNTIME}
+{$DESIGNONLY}
+{$ELSE}
+{$RUNONLY}
+{$ENDIF}
+{$IMPLICITBUILD OFF}
+
+requires
+  {$IFDEF DESIGNTIME}
+  vcljpg50,
+  {$ENDIF}
+  vcl50,
+  qrpt50;
+
+contains
+  {$IFDEF DESIGNTIME}
+  jpegreg2 in 'source\jpegreg2.pas',
+  mwajpgpe in 'source\mwajpgpe.pas',
+  {$ENDIF}
+  mwadbjpg in 'source\mwadbjpg.pas',
+  mwaQRjpg in 'source\mwaQRjpg.pas',
+  mwajpeg in 'source\mwajpeg.pas',
+  jpeglib in 'source\jpeglib.pas';
+
+end.
