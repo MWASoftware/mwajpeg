@@ -5,6 +5,11 @@ interface
 uses wintypes, winprocs, Classes, Graphics, Forms, Controls, Menus,
   Dialogs, StdCtrls, Buttons, ExtCtrls,  mwajpeg;
 
+{$IFNDEF VER80}{$IFNDEF VER90}{$IFNDEF VER93}{$IFNDEF VER100} {$IFNDEF VER110} {$IFNDEF VER120} 
+{$IFNDEF VER125} {$IFNDEF VER130} {$IFNDEF VER140}
+{$DEFINE DELPHI7ORLATER}
+{$ENDIF}{$ENDIF}{$ENDIF} {$ENDIF} {$ENDIF}{$ENDIF} {$ENDIF}{$ENDIF}{$ENDIF}
+
 type
   TSDIAppForm = class(TForm)
     MainMenu: TMainMenu;
@@ -46,7 +51,11 @@ type
     procedure Copy1Click(Sender: TObject);
     procedure Paste1Click(Sender: TObject);
     procedure JPEGFileDecompressor1JPEGComment(sender: TJPEGBase;
+    {$IFDEF DELPHI7ORLATER}
+      comment: PAnsiChar);
+    {$ELSE}
       comment: PChar);
+    {$ENDIF}
     procedure Clear1Click(Sender: TObject);
     procedure PrintSetup1Click(Sender: TObject);
     procedure Print1Click(Sender: TObject);
@@ -239,7 +248,11 @@ begin
 end;
 
 procedure TSDIAppForm.JPEGFileDecompressor1JPEGComment(sender: TJPEGBase;
-  comment: PChar);
+    {$IFDEF DELPHI7ORLATER}
+      comment: PAnsiChar);
+    {$ELSE}
+      comment: PChar);
+    {$ENDIF}
 begin
      StatusBar.Caption := StrPas(comment)
 end;

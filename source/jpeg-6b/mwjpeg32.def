@@ -1,0 +1,45 @@
+LIBRARY
+
+DESCRIPTION '"""jpeg data compression library"""'
+
+SUBSYSTEM WINDOWS,4.0
+
+CODE   EXECUTEREAD
+
+DATA   READWRITE
+
+HEAPSIZE 1048576, 4096
+
+EXPORTS jpeg_CreateCompress
+        jpeg_CreateDecompress
+        jpeg_destroy_compress
+        jpeg_destroy_decompress
+        jpeg_set_defaults
+        jpeg_set_colorspace
+        jpeg_default_colorspace
+        jpeg_set_quality
+        jpeg_set_linear_quality
+        jpeg_add_quant_table
+        jpeg_quality_scaling
+        jpeg_simple_progression
+        jpeg_start_compress
+        jpeg_write_scanlines
+        jpeg_finish_compress
+        jpeg_write_marker
+        jpeg_read_header
+        jpeg_start_decompress
+        jpeg_read_scanlines
+        jpeg_finish_decompress
+        jpeg_has_multiple_scans
+        jpeg_start_output
+        jpeg_finish_output
+        jpeg_input_complete
+        jpeg_new_colormap
+        jpeg_consume_input
+        jpeg_calc_output_dimensions
+        jpeg_set_marker_processor
+        jpeg_abort
+        jpeg_destroy
+        jpeg_resync_to_restart
+        jpeg_std_error
+        jpeg_suppress_tables
