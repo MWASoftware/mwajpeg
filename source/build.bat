@@ -24,6 +24,7 @@ call :mkdir Units\d1
 "%D1%\bin\dcc" Source\jpegreg1 /$D-,L-,Y- /USource /B /EUnits\d1
 IF ERRORLEVEL 1 goto Quit
 copy source\jpegreg1.pas Units\d1
+copy source\jpgreg16.dcr Units\d1
 
 rem
 rem MAKE 32-bit Delphi 2.0  COMPONENTS

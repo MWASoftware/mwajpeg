@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<h1  align=center ><b>MWA JPEG Component Library</b></h1>
+<hr>
+<p >&nbsp;This folder contains the complete source code for the 
+  MWA JPEG Component Library and build scripts.</p>
+<p >The 
+  file <em>build.bat</em> should be used to build the component library from source. 
+  The first few lines of this script are configurable and specify the paths to 
+  the versions of Delphi and C++Builder installed on your system. By default, 
+  they are set to typical installation paths. However, you may need to edit them 
+  if your installation differs from this. You may ignore the paths to versions 
+  of Delphi and C++Builder not installed on your system.</p>
+<p >Once 
+  Build.bat has completed, you should have two new folders in the source code 
+  folder. &quot;Packages&quot; contains the Delphi and C++Builder design and runtime 
+  packages for the JPEG Component Library while, the &quot;units&quot; folder 
+  contains the .dcu and for C++Builder, the .obj and .hpp files. In each folder, 
+  a sub-folder will have been created for each version of Delphi and C++Builder 
+  installed on your system and the compiled files placed there.</p>
+<p >The 
+  package names and subfolder names are as follows:</p>
+<table width="95%" border="1" cellspacing="0" cellpadding="2">
+  <tr> 
+    <td width="15%"><div align="center">IDE</div></td>
+    <td width="32%"><div align="center">Design Time Package</div></td>
+    <td width="33%"><div align="center">Run Time Package</div></td>
+    <td width="20%"><div align="center">Sub-Folder</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 2007</div></td>
+    <td><div align="center">dclmwajpgD2007.bpl</div></td>
+    <td><div align="center">mwajpgD2007.bpl</div></td>
+    <td><div align="center">d11</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">BDS 2006</div></td>
+    <td><div align="center">dclmwajpgD2006.bpl</div></td>
+    <td><div align="center">mwajpgD2006.bpl</div></td>
+    <td><div align="center">d10</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 2005 </div></td>
+    <td><div align="center">dclmwajpgD2005.bpl</div></td>
+    <td><div align="center">mwajpgD2005.bpl</div></td>
+    <td><div align="center">d9</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 7</div></td>
+    <td><div align="center">dclmwajpgD7.bpl</div></td>
+    <td><div align="center">mwajpgD7.bpl</div></td>
+    <td><div align="center">d7</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">C++Builder 6</div></td>
+    <td><div align="center">dclmwajpgcb6.bpl</div></td>
+    <td><div align="center">mwajpgcb6.bpl</div></td>
+    <td><div align="center">cb6</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 6</div></td>
+    <td><div align="center">dclmwajpgD6.bpl</div></td>
+    <td><div align="center">mwajpgD6.bpl</div></td>
+    <td><div align="center">d6</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">C++Builder 5</div></td>
+    <td><div align="center">dclmwajpgcb5.bpl</div></td>
+    <td><div align="center">mwajpgcb5.bpl</div></td>
+    <td><div align="center">cb5</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 5</div></td>
+    <td><div align="center">dclmwajpg50.bpl</div></td>
+    <td><div align="center">mwajpg50.bpl</div></td>
+    <td><div align="center">d5</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">C++Builder 4</div></td>
+    <td><div align="center">dclmwajpgcb4.bpl</div></td>
+    <td><div align="center">mwajpgcb4.bpl</div></td>
+    <td><div align="center">cb4</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 4</div></td>
+    <td><div align="center">dclmwajpg40.bpl</div></td>
+    <td><div align="center">mwajpg40.bpl</div></td>
+    <td><div align="center">d4</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">C++Builder 3</div></td>
+    <td><div align="center">dclmwajpgcb3.bpl</div></td>
+    <td><div align="center">mwajpgcb3.bpl</div></td>
+    <td><div align="center">cb3</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 3</div></td>
+    <td><div align="center">dclmwajpg30.dpl</div></td>
+    <td><div align="center">mwajpg30.dpl</div></td>
+    <td><div align="center">d3</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">C++Builder</div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center">cb1</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 2</div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center">d2</div></td>
+  </tr>
+  <tr> 
+    <td><div align="center">Delphi 1</div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center"></div></td>
+    <td><div align="center">d1</div></td>
+  </tr>
+</table>
+<h2 >Installation of Old Versions</h2>
+<p >The installation script will only automatically install Delphi 6 and later 
+  or C++Builder 5 and later. Earlier versions have to be built using the &quot;build.bat&quot; 
+  script and manually installed as described below. </p>
+<table width="95%" border="1" cellspacing="0" cellpadding="2">
+  <tr> 
+    <td width="12%" valign="top">Delphi 1</td>
+    <td width="88%" valign="top">i. Copy the mwjpeg.dll in the <em>dll folder 
+      </em>to your windows directory. 
+      <p>ii. Create a new folder in your delphi folder (the actual name is unimportant 
+        - call it jpeg if you can't think of anything better) and copy the files 
+        contained in the units\d1 folder into this new folder. Y</p>
+      <p>iii. Start the Delphi IDE and choose the Options|Install Components menu 
+        option. Click on the &quot;Add&quot; button and browse for the jpegreg1.pas 
+        file you just copied to the new folder. Click on OK. (Note that this file 
+        contains the registration information for the JPEG components. By default 
+        the two non-visual components are placed on the &quot;Additional&quot; 
+        tab, and TDBJPEGImage is on the Data Controls tab. You can edit this file 
+        to locate them elsewhere).</p></td>
+  </tr>
+  <tr> 
+    <td valign="top">Delphi 2</td>
+    <td valign="top">i. Copy the mwjpeg32.dll in the <em>dll </em>folder<em> </em>to 
+      your windows directory. 
+      <p>ii. Create a new folder in your delphi folder (the actual name is unimportant 
+        - call it jpeg if you can't think of anything better) and copy the files 
+        contained in the units\d2 folder into this new folder. </p>
+      <p>iii. Start the Delphi IDE and choose the Component|Install menu option. 
+        Click on the &quot;Add&quot; button and browse for the jpegreg1.pas file 
+        (or jpegreg2.pas if you are using Quick Reports 2) you just copied to 
+        the new folder. Click on OK. (Note that this file contains the registration 
+        information for the JPEG components. By default these are placed on the 
+        &quot;Additional&quot; tab, TDBJPEGImage is on the Data Controls tab, 
+        and TQRDBJPEGImage is on the QReports tab. You can edit this file to locate 
+        them elsewhere).</p></td>
+  </tr>
+  <tr> 
+    <td valign="top">Delphi 3</td>
+    <td valign="top">i. Create a new folder in your delphi directory (the actual 
+      name is unimportant - call it jpeg if you can't think of anything better) 
+      and copy the files contained in the units\d3 into this new folder. You should 
+      also copy the dclmwajpg30.dpl from the Packages folder into the new folder 
+      <p>iii. Start the Delphi IDE and choose the Component|Install Packages menu 
+        item. Click on the &quot;Add&quot; button and browse for the dclmwajpg30.dpl 
+        file you just copied to the new subdirectory. Click on OK. The package 
+        will now be installed. By default the JPEG components are placed on the 
+        &quot;Additional&quot; tab, TDBJPEGImage is on the Data Controls tab, 
+        and TQRDBJPEGImage is on the QReports tab. </p>
+      <p>iv. Now select the Tools|Environment Options menu item, and click on 
+        the &quot;Library&quot; tab. You must now add to the end of the &quot;Library 
+        Path&quot; the full pathname of the folder that contains the JPEG Components, 
+        if it's not already present. Remember to put a semi-colon (;) separator 
+        in before you add the path name. For example, if you installed the JPEG 
+        Components into &quot;d:\Delphi 3\jpeg&quot;, then the Library Path should 
+        now look something like:</p>
+      <p>D:\Delphi 3\Lib;D:\Delphi 3\Bin;D:\Delphi 3\Imports;d:\delphi 3\jpeg</p>
+      <p>IMPORTANT: You should now restart Delphi before trying to load a JPEG 
+        Image at Design Time, and this includes the example applications. If you 
+        do not then it is likely that you will get an Access Violation in VCL30.dpl. 
+      </p></td>
+  </tr>
+  <tr> 
+    <td valign="top">Delphi 4</td>
+    <td valign="top">i. Create a new folder in your delphi folder (the actual 
+      name is unimportant - call it jpeg if you can't think of anything better) 
+      and copy the files contained in the units\d4 folderinto this new folder. 
+      You should also copy the dclmwajpg40.bpl from the Packages folder into the 
+      new folder 
+      <p>iii. Start the Delphi IDE and choose the Component|Install Packages menu 
+        item. Click on the &quot;Add&quot; button and browse for the dclmwajpg40.bpl 
+        file you just copied to the new folder. Click on OK. The package will 
+        now be installed. By default the JPEG components are placed on the &quot;Additional&quot; 
+        tab, TDBJPEGImage is on the Data Controls tab, and TQRDBJPEGImage is on 
+        the QReports tab. </p>
+      <p>iv. Now select the Tools|Environment Options menu item, and click on 
+        the &quot;Library&quot; tab. You must now add to the end of the &quot;Library 
+        Path&quot; the full pathname of the subdirectory that contains the JPEG 
+        Components, if it's not already present. Remember to put a semi-colon 
+        (;) separator in before you add the path name. For example, if you folder 
+        the JPEG Components into &quot;d:\Delphi4\jpeg&quot;, then the Library 
+        Path should now look something like:</p>
+      <p>D:\Delphi4\Lib;D:\Delphi4\Bin;D:\Delphi4\Imports;d:\delphi4\jpeg</p>
+      <p>IMPORTANT: You should now restart Delphi before trying to load a JPEG 
+        Image at Design Time, and this includes the example applications. If you 
+        do not then it is likely that you will get an Access Violation in VCL40.dpl. 
+      </p></td>
+  </tr>
+  <tr> 
+    <td valign="top">Delphi 5</td>
+    <td valign="top">i. Create a new folder in your delphi directory (the actual 
+      name is unimportant - call it jpeg if you can't think of anything better) 
+      and copy the files contained in the units\d5 folderinto this new folder. 
+      You should also copy the dclmwajpg50.bpl from the Packages folder into the 
+      new folder 
+      <p>iii. Start the Delphi IDE and choose the Component|Install Packages menu 
+        item. Click on the &quot;Add&quot; button and browse for the dclmwajpg50.bpl 
+        file you just copied to the new folder. Click on OK. The package will 
+        now be installed. By default the JPEG components are placed on the &quot;Additional&quot; 
+        tab, TDBJPEGImage is on the Data Controls tab, and TQRDBJPEGImage is on 
+        the QReports tab. </p>
+      <p>iv. Now select the Tools|Environment Options menu item, and click on 
+        the &quot;Library&quot; tab. You must now add to the end of the &quot;Library 
+        Path&quot; the full pathname of the folder that contains the JPEG Components, 
+        if it's not already present. Remember to put a semi-colon (;) separator 
+        in before you add the path name. For example, if you installed the JPEG 
+        Components into &quot;d:\Delphi5\jpeg&quot;, then the Library Path should 
+        now look something like:</p>
+      <p>D:\Delphi5\Lib;D:\Delphi5\Bin;D:\Delphi5\Imports;d:\delphi5\jpeg</p>
+      <p>IMPORTANT: You should now restart Delphi before trying to load a JPEG 
+        Image at Design Time, and this includes the example applications. If you 
+        do not then it is likely that you will get an Access Violation in VCL50.dpl. 
+      </p></td>
+  </tr>
+  <tr> 
+    <td valign="top">C++Builder</td>
+    <td valign="top">i. Create a new folder in your C++Builder directory called 
+      &quot;jpeg&quot; and copy the files contained in theunits\cb1 folder into 
+      this new folder. 
+      <p>ii. Start the C++Builder IDE and then choose the Component|Install menu 
+        option. Click on the &quot;Add&quot; button and browse for the jpegreg1.cpp 
+        (or jpegreg2.cpp if you are using Quick Reports 2) file you just copied 
+        to the new folder. Click on OK. (Note that this file contains the registration 
+        information for the JPEG components. By default these are placed on the 
+        &quot;Additional&quot; tab, TDBJPEGImage is on the Data Controls tab, 
+        and TQRDBJPEGImage is on the QReports tab. You can edit this file to locate 
+        them elsewhere).</p>
+      <p>The components are now installed. Use the demo application to learn how 
+        they are used. Note that if you have registered for and installed Quick 
+        Reports 2 and have placed the Quick Reports .hpp and .obj files in directories 
+        other than the standard include and lib directories, then you may have 
+        to modify the demo programs' .mak files so that these directories are 
+        included in the search path.</p></td>
+  </tr>
+  <tr> 
+    <td valign="top">C++Builder 3</td>
+    <td valign="top">i. Create a new folder in your C++Builder directory called 
+      &quot;jpeg&quot; and copy the remaining files contained in the units\cb3 
+      folder into this new folder. You should also copy the dclmwajpgcb3.bpl from 
+      the Packages folder into the new folder 
+      <p>ii. Start the C++Builder IDE and choose the Component|Install Packages 
+        menu item. Click on the &quot;Add&quot; button and browse for the dclmwajpgcb3.bpl 
+        file you just copied to the new folder. Click on OK. The package will 
+        now be installed. By default the JPEG components are placed on the &quot;Additional&quot; 
+        tab, TDBJPEGImage is on the Data Controls tab, and TQRDBJPEGImage is on 
+        the QReports tab. </p>
+      <p>i11. You should now add &quot;;$(BCB)\jpeg&quot; to the end of the library 
+        path in the Tools|Environment Options dialog box (it's on the Library 
+        tab). This is so that the jpeg components can be automatically found in 
+        any project of yours that uses them.</p>
+      <p>You should now restart C++Builder before trying to load a JPEG Image 
+        at Design Time.</p></td>
+  </tr>
+  <tr>
+    <td valign="top">C++Builder 4</td>
+    <td valign="top">i. Create a new folder in your C++Builder directory called 
+      &quot;jpeg&quot; and copy the remaining files contained in the units\cb4 
+      folder into this new folder. You should also copy the dclmwajpgcb4.bpl from 
+      the Packages folder into the new folder 
+      <p>ii. Start the C++Builder IDE and choose the Component|Install Packages 
+        menu item. Click on the &quot;Add&quot; button and browse for the dclmwajpgcb4.bpl 
+        file you just copied to the new folder. Click on OK. The package will 
+        now be installed. By default the JPEG components are placed on the &quot;Additional&quot; 
+        tab, TDBJPEGImage is on the Data Controls tab, and TQRDBJPEGImage is on 
+        the QReports tab. </p>
+      <p>i11. You should now add &quot;;$(BCB)\jpeg&quot; to the end of the library 
+        path in the Tools|Environment Options dialog box (it's on the Library 
+        tab). This is so that the jpeg components can be automatically found in 
+        any project of yours that uses them.</p>
+      <p>You should now restart C++Builder before trying to load a JPEG Image 
+        at Design Time.</p></td>
+  </tr>
+</table>
+<p >&nbsp;</p>
+</body>
+</html>
