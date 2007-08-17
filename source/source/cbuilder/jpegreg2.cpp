@@ -31,8 +31,6 @@
 //---------------------------------------------------------------------------
 namespace Jpegreg2
 {
-namespace Jpeg_reg
-{
 PTypeInfo AnsiStringTypeInfo(void)
 {
   PPTypeInfo Temp;

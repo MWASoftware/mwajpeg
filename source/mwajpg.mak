@@ -64,7 +64,7 @@ RELEASELIBPATH = $(BCB)\lib\release
 USERDEFINES = 
 SYSDEFINES = _RTLDLL;NO_STRICT;USEPACKAGES
 INCLUDEPATH = $(UNITDIR);source;source\cbuilder;.;$(BCB)\include;$(BCB)\include\vcl
-LIBPATH = $(UNITDIR);$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(BCB)\lib\release;source
+LIBPATH = source;source\cbuilder;$(UNITDIR);$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(BCB)\lib\release
 WARNINGS= -w-par -w-8027 -w-8026
 PATHCPP = .;source\cbuilder
 PATHASM = .;
@@ -231,10 +231,10 @@ $(PROJECT): $(OTHERFILES) $(IDLGENFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
     $(BCB)\BIN\$(DCC32) $(PFLAGS) -U$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -O$(INCLUDEPATH) --BCB {$< }
 
 .cpp.obj:
-    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(@D) {$< }
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
 
 .c.obj:
-    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(@D) {$< }
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
 
 .c.i:
     $(BCB)\BIN\$(CPP32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n. {$< }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: source.wxs,v 1.6 2007-08-13 22:57:42 tony Exp $ -->
+<!-- $Id: source.wxs,v 1.7 2007-08-17 09:09:12 tony Exp $ -->
 
 <!-- This Fragment installs the JPEG Source Code Files -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
@@ -12,7 +12,7 @@
           <File Id="file4" Name="mwajpg.dpk" Source="source\mwajpg.dpk" />
           <File Id="file5" Name="mwajpg.mak" Source="source\mwajpg.mak" />
           <File Id="file6" Name="mwajpg.res" Source="source\mwajpg.res" />
-          <File Id="file200" Name="readme.htm" Source="docs\source.htm" />
+          <File Id="file1200" Name="readme.htm" Source="docs\source.htm" />
 		  <Shortcut Id="SourceDirShortCut" Target="[JPEGSource]" Name="Source"
 					      LongName="JPEG Source Code"
 						  Directory="ProgramMenuDir" />
@@ -34,14 +34,15 @@
           <Component Id="mwajpgcmpts" DiskId="1" Guid="78737442-9A2F-471E-9619-08154DEE7D3E">
             <File Id="file7" Name="jmorecfg.inc" Source="source\source\jmorecfg.inc" />
             <File Id="file9" Name="jpeglib.pas" Source="source\source\jpeglib.pas" />
+            <File Id="file12A" Name="jpegreg1.pas" Source="source\source\jpegreg1.pas" />
             <File Id="file12" Name="jpegreg2.pas" Source="source\source\jpegreg2.pas" />
             <File Id="file13" Name="jpeg_reg.dcr" Source="source\source\jpeg_reg.dcr" />
             <File Id="file17" Name="mwadbjpg.pas" Source="source\source\mwadbjpg.pas" />
             <File Id="file20" Name="mwajpeg.pas" Source="mwajpeg.pas" />
             <File Id="file22" Name="mwajpgpe.pas" Source="source\source\mwajpgpe.pas" />
             <File Id="file23" Name="mwaQRjpg.pas" Source="source\source\mwaQRjpg.pas" />
-            <File Id="file211" Name="jpgreg16.dcr" Source="source\source\jpgreg16.dcr" />
-            <File Id="file212" Name="macros.pas" Source="source\source\macros.pas" />
+            <File Id="file1211" Name="jpgreg16.dcr" Source="source\source\jpgreg16.dcr" />
+            <File Id="file1212" Name="macros.pas" Source="source\source\macros.pas" />
           </Component>
           <Directory Id="directory2" Name="cbuilder">
             <Component Id="cbjpegcmpts" DiskId="1" Guid="F604A6CA-28BD-4A95-978B-01FD2BB4EFA0">
@@ -195,12 +196,12 @@
             <File Id="file168" Name="wrtarga.c" Source="source\jpeg-6b\wrtarga.c" />
           </Component>
           <Component Id="mwajpeg6b" DiskId="1" Guid="C43686C7-BE6B-4AAA-B27B-5104FABAD8B0">
-            <File Id="file205" Name="mwjpeg.def" Source="source\jpeg-6b\mwjpeg.def" />
-            <File Id="file206" Name="mwjpeg.mak" Source="source\jpeg-6b\mwjpeg.mak" />
-            <File Id="file207" Name="mwjpeg.rc" Source="source\jpeg-6b\mwjpeg.rc" />
-            <File Id="file208" Name="mwjpeg32.def" Source="source\jpeg-6b\mwjpeg32.def" />
-            <File Id="file209" Name="mwjpeg32.mak" Source="source\jpeg-6b\mwjpeg32.mak" />
-            <File Id="file210" Name="mwjpeg32.rc" Source="source\jpeg-6b\mwjpeg32.rc" />
+            <File Id="file1205" Name="mwjpeg.def" Source="source\jpeg-6b\mwjpeg.def" />
+            <File Id="file1206" Name="mwjpeg.mak" Source="source\jpeg-6b\mwjpeg.mak" />
+            <File Id="file1207" Name="mwjpeg.rc" Source="source\jpeg-6b\mwjpeg.rc" />
+            <File Id="file1208" Name="mwjpeg32.def" Source="source\jpeg-6b\mwjpeg32.def" />
+            <File Id="file1209" Name="mwjpeg32.mak" Source="source\jpeg-6b\mwjpeg32.mak" />
+            <File Id="file1210" Name="mwjpeg32.rc" Source="source\jpeg-6b\mwjpeg32.rc" />
           </Component>
         </Directory>
         <Directory Id="directory4" Name="obj">

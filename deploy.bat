@@ -34,8 +34,8 @@ IF ERRORLEVEL 1 goto QUIT
 del license.rtf mwajpeg.pas
 
 
-call :MKSINGLEIMAGE full mwajpegfull Full
-call :MKSINGLEIMAGE evaluation mwajpegevaluation Evaluation
+call :MKSINGLEIMAGE full mwajpegfull.%RELEASE% Full
+call :MKSINGLEIMAGE evaluation mwajpegevaluation.%RELEASE% Evaluation
 del *.wixobj
 goto :EOF
 

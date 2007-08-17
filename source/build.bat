@@ -15,6 +15,7 @@ set CB4=c:\Program Files\Borland\cbuilder4
 set CB5=c:\Program Files\Borland\cbuilder5
 set CB6=c:\Program Files\Borland\cbuilder6
 Set DEFS=
+touch source\cbuilder\mwaQRjpg.cpp
 
 IF NOT EXIST "%D1%\bin\dcc.exe" goto D2
 rem
@@ -34,7 +35,9 @@ IF NOT EXIST "%D2%\bin\dcc32.exe" goto D3
 call :mkdir Units\d2
 "%D2%\bin\dcc32" Source\jpegreg2 /$D-,L-,Y- /B /USource  /NUnits\d2
 IF ERRORLEVEL 1 goto Quit
+copy source\jpegreg1.pas units\d2
 copy source\jpegreg2.pas units\d2
+copy source\jpeg_reg.dcr units\d2
 
 rem MAKE 32-bit Delphi 3.0 COMPONENTS
 
@@ -192,9 +195,10 @@ rem
 :CB1
 IF NOT EXIST "%CB1%\bin\dcc32.exe" goto CB3
 call :mkdir Units\cb1
-"%CB1%\bin\dcc32" Source\jpegreg1.pas /$D-,L-,Y- /OObj /USource /ISource /B /JPHN /NUnits\cb1
+"%CB1%\bin\dcc32" Source\jpegreg2.pas /$D-,L-,Y- /OObj /USource /ISource /B /JPHN /NUnits\cb1
 IF ERRORLEVEL 1 goto QUIT1
-copy source\cbuilder\jpegreg2.cpp units\cb1
+copy source\cbuilder\jpeg_reg.cpp units\cb1
+copy source\jpeg_reg.dcr units\cb1
 move Source\*.hpp Units\cb1
 move Source\*.obj Units\cb1
 
