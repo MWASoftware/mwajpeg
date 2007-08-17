@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.7 2007-08-12 18:04:25 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.8 2007-08-17 18:29:15 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -274,12 +274,15 @@
 
         <Directory Id="LibDirVER180" Name="obj">
         <Component Id="Obj1VER180" DiskId="1" Guid="$(var.guidObj1VER180)">
+	     <Condition>INSTALLDIRD2006</Condition>
             <File Id="jpeglibobjVER180" Name="jpeglib.obj" Source="$(var.dcuDir)\jpeglib.obj" />
         </Component>
         <Component Id="Obj2VER180" DiskId="1" Guid="$(var.guidObj2VER180)">
+	     <Condition>INSTALLDIRD2006</Condition>
             <File Id="mwadbjpgobjVER180" Name="mwadbjpg.obj" Source="$(var.dcuDir)\mwadbjpg.obj" />
         </Component>
         <Component Id="Obj3VER180" DiskId="1" Guid="$(var.guidObj3VER180)">
+	     <Condition>INSTALLDIRD2006</Condition>
             <File Id="mwajpegobjVER180" Name="mwajpeg.obj" Source="$(var.dcuDir)\mwajpeg.obj" />
         </Component>
 	    <Component Id="mwaQRjpgVER180" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
@@ -293,20 +296,22 @@
       <!-- Header Files -->
 
         <Directory Id="IncludeVER180" Name="include">
-		 <Directory Id="JPEGIncludeDirVER180" Name="mwajpeg">
           <Component Id="Hdr1VER180" DiskId="1" Guid="$(var.guidHdr1VER180)">
+	        <Condition>INSTALLDIRD2006</Condition>
             <File Id="jpeglibhppVER180" Name="jpeglib.hpp" Source="$(var.dcuDir)\jpeglib.hpp" />
           </Component>
           <Component Id="Hdr2VER180" DiskId="1" Guid="$(var.guidHdr2VER180)">
+	        <Condition>INSTALLDIRD2006</Condition>
             <File Id="mwadbjpghppVER180" Name="mwadbjpg.hpp" Source="$(var.dcuDir)\mwadbjpg.hpp" />
           </Component>
           <Component Id="Hdr3VER180" DiskId="1" Guid="$(var.guidHdr3VER180)">
+	        <Condition>INSTALLDIRD2006</Condition>
             <File Id="mwajpeghppVER180" Name="mwajpeg.hpp" Source="$(var.dcuDir)\mwajpeg.hpp" />
           </Component>
           <Component Id="Hdr4VER180" DiskId="1" Guid="$(var.guidHdr4VER180)">
+	        <Condition>INSTALLDIRD2006</Condition>
             <File Id="mwaQRjpghVER180" Name="mwaQRjpg.h" Source="source\source\cbuilder\mwaQRjpg.h" />
           </Component>
-		 </Directory>
         </Directory>
 
       <?ifndef EVALUATION?>

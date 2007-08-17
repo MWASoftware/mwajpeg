@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: cbuilder6.wxs,v 1.5 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: cbuilder6.wxs,v 1.6 2007-08-17 18:29:15 tony Exp $ -->
 
 <!-- This Fragment installs the Files for C++Builder 6.0 -->
 
@@ -111,16 +111,19 @@
         <!-- obj Files -->
 
         <Component Id="Obj1VCB140" DiskId="1" Guid="$(var.guidObj1VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="jpeglibobjVCB140" Name="jpeglib.obj" Source="$(var.dcuDir)\jpeglib.obj" />
         </Component>
         <Component Id="Obj2VCB140" DiskId="1" Guid="$(var.guidObj2VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwadbjpgobjVCB140" Name="mwadbjpg.obj" Source="$(var.dcuDir)\mwadbjpg.obj" />
         </Component>
         <Component Id="Obj3VCB140" DiskId="1" Guid="$(var.guidObj3VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwajpegobjVCB140" Name="mwajpeg.obj" Source="$(var.dcuDir)\mwajpeg.obj" />
         </Component>
 	    <Component Id="mwaQRjpgVCB140" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
-	     <Condition>INSTALLDIRCB6</Condition>
+	      <Condition>INSTALLDIRCB6</Condition>
 		  <File Id="mwaQRjpgobjVCB140" Name="mwaQRjpg.obj"
 		  	    Source="source\Units\cb6\mwaQRjpg.obj" />
  	    </Component>
@@ -130,15 +133,19 @@
 
         <Directory Id="IncludeVCB140" Name="include">
           <Component Id="Hdr1VCB140" DiskId="1" Guid="$(var.guidHdr1VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="jpeglibhppVCB140" Name="jpeglib.hpp" Source="$(var.dcuDir)\jpeglib.hpp" />
           </Component>
           <Component Id="Hdr2VCB140" DiskId="1" Guid="$(var.guidHdr2VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwadbjpghppVCB140" Name="mwadbjpg.hpp" Source="$(var.dcuDir)\mwadbjpg.hpp" />
           </Component>
           <Component Id="Hdr3VCB140" DiskId="1" Guid="$(var.guidHdr3VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwajpeghppVCB140" Name="mwajpeg.hpp" Source="$(var.dcuDir)\mwajpeg.hpp" />
           </Component>
           <Component Id="Hdr4VCB140" DiskId="1" Guid="$(var.guidHdr4VCB140)">
+	      <Condition>INSTALLDIRCB6</Condition>
             <File Id="mwaQRjpghVCB140" Name="mwaQRjpg.h" Source="source\source\cbuilder\mwaQRjpg.h" />
           </Component>
         </Directory>

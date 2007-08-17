@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 279
   Top = 145
+  Width = 517
+  Height = 303
   Caption = 'Image List Viewer'
-  ClientHeight = 255
-  ClientWidth = 493
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Form1: TForm1
   object StatusBar1: TStatusBar
     Left = 0
     Top = 235
-    Width = 493
+    Width = 509
     Height = 20
     Panels = <>
     SimplePanel = True
@@ -28,7 +28,7 @@ object Form1: TForm1
   object SpeedPanel: TPanel
     Left = 0
     Top = 0
-    Width = 493
+    Width = 509
     Height = 30
     Align = alTop
     TabOrder = 1
@@ -108,22 +108,23 @@ object Form1: TForm1
   end
   object DBCtrlGrid1: TDBCtrlGrid
     Left = 0
-    Top = 32
-    Width = 483
-    Height = 201
+    Top = 30
+    Width = 509
+    Height = 205
+    Align = alClient
     AllowDelete = False
     AllowInsert = False
     ColCount = 3
     DataSource = DataSource1
     Orientation = goHorizontal
-    PanelHeight = 185
-    PanelWidth = 161
+    PanelHeight = 189
+    PanelWidth = 169
     TabOrder = 2
     RowCount = 1
     object Panel1: TPanel
       Left = 0
       Top = 0
-      Width = 161
+      Width = 169
       Height = 129
       Align = alTop
       BevelInner = bvLowered
@@ -132,7 +133,7 @@ object Form1: TForm1
       object Image1: TDBJPEGImage
         Left = 2
         Top = 2
-        Width = 157
+        Width = 165
         Height = 125
         Align = alClient
         Center = True
@@ -147,8 +148,8 @@ object Form1: TForm1
     object Panel3: TPanel
       Left = 0
       Top = 129
-      Width = 161
-      Height = 56
+      Width = 169
+      Height = 60
       Align = alClient
       BevelInner = bvLowered
       BevelOuter = bvLowered
@@ -224,7 +225,7 @@ object Form1: TForm1
     Trace_Level = 0
     GrayscaleOutput = False
     Comment = 'Created by the MWA JPEG Component Linrary Demonstration Program'
-    InputGamma = 1.000000000000000000
+    InputGamma = 1
     ProgressiveJPEG = False
     DCTMethod = JDCT_ISLOW
     OptimizeCoding = False
@@ -246,6 +247,7 @@ object Form1: TForm1
     OnJPEGComment = JPEGFileDecompressor1JPEGComment
     DefaultDecompressor = False
     OnProgressReport = JPEGFileCompressor1ProgessReport
+    CMYKInvert = True
     Left = 224
     Top = 144
   end

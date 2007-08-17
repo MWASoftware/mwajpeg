@@ -10,10 +10,10 @@
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) jpegview.dfm progress.dfm about.dfm jpegdata.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="Vcl50.lib qrpt.lib vcldbx.lib bdertl.lib vcldb.lib dbrtl.lib vclx.lib 
+    <LIBRARIES value="vcl.lib qrpt.lib vcldbx.lib bdertl.lib vcldb.lib dbrtl.lib vclx.lib 
       vcl.lib rtl.lib"/>
     <SPARELIBS value="rtl.lib vcl.lib vclx.lib dbrtl.lib vcldb.lib bdertl.lib vcldbx.lib 
-      qrpt.lib Vcl50.lib"/>
+      qrpt.lib vcl.lib"/>
     <PACKAGES value="vclx.bpi rtl.bpi vcl.bpi dbrtl.bpi vcldb.bpi bdertl.bpi vcldbx.bpi 
       bcbsmp.bpi dclocx.bpi qrpt.bpi teeui.bpi teedb.bpi tee.bpi ibsmp.bpi 
       nmfast.bpi inetdb.bpi inet.bpi"/>

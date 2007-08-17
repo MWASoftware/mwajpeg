@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.12 2007-08-12 18:04:25 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.13 2007-08-17 18:29:15 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -17,6 +17,7 @@
 <?endif?>
 <?define guidHelpFile="1B311B3D-19C5-432C-B945-9A87A5341661"?>
 <?define guidHelpCBFile="79669CEA-71B1-45A0-8D7C-46DA336C4682"?>
+<?define guidHomePage="72C2A3BB-88EC-4556-A4BA-10B239AE6289"?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
 
@@ -95,9 +96,13 @@
               <Shortcut Id="startmenureadme" Directory="ProgramMenuDir" Name="ReadMe"
                   LongName="ReadMe" WorkingDirectory='INSTALLDIR' />
 			</File>
+          </Component>
+		  <Component Id="homepagelink" Guid="$(var.guidHomePage)" DiskId="1">
+		    <File Id="jpeghomepageurl" Name="jpeg.url" LongName="jpeghomepage.url" KeyPath="yes"
+				  Source="docs\web\jpeghomepage.url" >
             <Shortcut Id="mwalink" Directory="ProgramMenuDir" Name="mwasoft"
-                  LongName="Home Page" WorkingDirectory='INSTALLDIR'
-				  Target="http://www.mwasoftware.co.uk/jpeg" />
+                  LongName="Home Page" WorkingDirectory='INSTALLDIR'/>
+			</File>
           </Component>
 		</Directory>
     </Directory>
@@ -180,7 +185,8 @@
           Description="Examples and Support Files. You may configure the installation folder for this feature."
 		  Display="expand" ConfigurableDirectory='INSTALLDIR'>
    <ComponentRef Id="jpeglicence" />
-   <Feature Id="Examples" Level='1' Title='Examples'
+   <ComponentRef Id="homepagelink" />
+    <Feature Id="Examples" Level='1' Title='Examples'
              Description="These example Programs show how to use the JPEG Components"
 	  	     Display="collapse" >
       <ComponentGroupRef Id="Examples" />

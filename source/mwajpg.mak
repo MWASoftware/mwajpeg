@@ -73,35 +73,35 @@ PATHRC = .;
 PATHOBJ = .;$(LIBPATH)
 # ---------------------------------------------------------------------------
 !if $d(B6)
-CFLAG1 = -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
+CFLAG1 = -Od -H="$(BCB)\lib\vcl60.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
 !elif $d(B5)
-CFLAG1 = -Od -H=$(BCB)\lib\vcl50.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
+CFLAG1 = -Od -H="$(BCB)\lib\vcl50.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
 !elif $d(B4)
-CFLAG1 = -I.;$(BCB)\include;$(BCB)\include\vcl -Od -Hc -H=$(BCB)\lib\vcl40.csm \
+CFLAG1 = -I".;$(BCB)\include;$(BCB)\include\vcl" -Od -Hc -H=$(BCB)\lib\vcl40.csm \
   -w -Ve -r- -a8 -k -y -v -vi- -c -b- -w-par -w-inl -Vx -tWM \
   -D$(SYSDEFINES);$(USERDEFINES)
-PFLAGS = -U$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(RELEASELIBPATH) \
-  -D$(PDEFS);$(DLLSTATE) -I$(BCB)\include;$(BCB)\include\vcl -$YD -$W -$O- -OObj -v -JPHNE -M -U$(UNITDIR) -N$(UNITDIR)
+PFLAGS = -U"$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(RELEASELIBPATH)" \
+  -D$(PDEFS);$(DLLSTATE) -I"$(BCB)\include;$(BCB)\include\vcl" -$YD -$W -$O- -OObj -v -JPHNE -M -U$(UNITDIR) -N$(UNITDIR)
 !elif $d(B3)
 CFLAG1 = -Od -Hc -w -Ve -r- -k -y -v -vi- -c -b- -w-par -w-inl -Vx \
-  -D_RTLDLL;USEPACKAGES -I.;$(BCB)\include;$(BCB)\include\vcl \
-  -H=$(BCB)\lib\vcl35.csm -Tkh30000
-PFLAGS = -D_RTLDLL;USEPACKAGES;$(PDEFS);$(DLLSTATE) -U$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
-  -I.;$(BCB)\include;$(BCB)\include\vcl -$Y -$W -v -JPHN -M -R$(RESPATH) -OObj -U$(UNITDIR) -N$(UNITDIR)
+  -D_RTLDLL;USEPACKAGES -I".;$(BCB)\include;$(BCB)\include\vcl" \
+  -H="$(BCB)\lib\vcl35.csm" -Tkh30000
+PFLAGS = -D_RTLDLL;USEPACKAGES;$(PDEFS);$(DLLSTATE) -U"$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH)" \
+  -I".;$(BCB)\include;$(BCB)\include\vcl" -$Y -$W -v -JPHN -M -R$(RESPATH) -OObj -U$(UNITDIR) -N$(UNITDIR)
 !endif
 IDLCFLAGS = 
 RFLAGS = 
 AFLAGS = /mx /w2 /zd
 !if $d(B3) || $d(B4)
 !if $d(RUNTIME)
-LFLAGS = -L$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH) -D"MWA JPEG Component Library" \
+LFLAGS = -L"$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH)" -D"MWA JPEG Component Library" \
   -aa -Tpp -Gpr -x -Gn -Gl -Gi -v
 !else
-LFLAGS = -L$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH) -D"MWA JPEG Component Library" \
+LFLAGS = -L"$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH)" -D"MWA JPEG Component Library" \
   -aa -Tpp -Gpd -x -Gn -Gl -Gi -v
 !endif
 !else
@@ -116,38 +116,6 @@ ALLOBJ = c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)
 ALLRES = $(RESFILES)
 ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib
 # ---------------------------------------------------------------------------
-!ifdef IDEOPTIONS
-
-[Version Info]
-IncludeVerInfo=0
-AutoIncBuild=0
-MajorVer=1
-MinorVer=10
-Release=0
-Build=0
-Debug=0
-PreRelease=0
-Special=0
-Private=0
-DLL=0
-
-[Version Info Keys]
-CompanyName=
-FileDescription=
-FileVersion=1.10.0.0
-InternalName=
-LegalCopyright=
-LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=1.10.0.0
-Comments=
-
-[Debugging]
-DebugSourceDirs=$(BCB)\source\vcl
-
-!endif
-
 
 
 
@@ -188,7 +156,7 @@ LINKER = ilink32
 !endif
 
 !if !$d(BRCC32)
-BRCC32 = brcc32
+BRCC32 = bin\brcc32
 !endif
 
 
@@ -216,7 +184,7 @@ BRCC32 = brcc32
 # ---------------------------------------------------------------------------
 $(PROJECT): $(OTHERFILES) $(IDLGENFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
     $(BCB)\BIN\$(LINKER) @&&!
-    $(LFLAGS) -L$(LIBPATH) +
+    $(LFLAGS) -L"$(LIBPATH)" +
     $(ALLOBJ), +
     $(PROJECT),, +
     $(ALLLIB), +
@@ -225,28 +193,28 @@ $(PROJECT): $(OTHERFILES) $(IDLGENFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
 !
 # ---------------------------------------------------------------------------
 .pas.hpp:
-    $(BCB)\BIN\$(DCC32) $(PFLAGS) -U$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -O$(INCLUDEPATH) --BCB {$< }
+    "$(BCB)\BIN\$(DCC32)" $(PFLAGS) -U"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -O"$(INCLUDEPATH)" --BCB {$< }
 
 .pas.obj:
-    $(BCB)\BIN\$(DCC32) $(PFLAGS) -U$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -O$(INCLUDEPATH) --BCB {$< }
+    "$(BCB)\BIN\$(DCC32)" $(PFLAGS) -U"$(INCLUDEPATH)"-D$(USERDEFINES);$(SYSDEFINES) -O"$(INCLUDEPATH)" --BCB {$< }
 
 .cpp.obj:
-    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
+    "$(BCB)\BIN\$(BCC32)" $(CFLAG1) $(WARNINGS) -I"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
 
 .c.obj:
-    $(BCB)\BIN\$(BCC32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
+    "$(BCB)\BIN\$(BCC32)" $(CFLAG1) $(WARNINGS) -I"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -n$(UNITDIR) {$< }
 
 .c.i:
-    $(BCB)\BIN\$(CPP32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n. {$< }
+    "$(BCB)\BIN\$(CPP32)" $(CFLAG1) $(WARNINGS) -I"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -n. {$< }
 
 .cpp.i:
-    $(BCB)\BIN\$(CPP32) $(CFLAG1) $(WARNINGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -n. {$< }
+    "$(BCB)\BIN\$(CPP32)" $(CFLAG1) $(WARNINGS) -I"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -n. {$< }
 
 .asm.obj:
-    $(BCB)\BIN\$(TASM32) $(AFLAGS) -i$(INCLUDEPATH:;= -i) $(AUSERDEFINES) -d$(SYSDEFINES:;= -d) $<, $@
+    "$(BCB)\BIN\$(TASM32)" $(AFLAGS) -i"$(INCLUDEPATH:;= -i)" $(AUSERDEFINES) -d$(SYSDEFINES:;= -d) $<, $@
 
 .rc.res:
-    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -I$(INCLUDEPATH) -D$(USERDEFINES);$(SYSDEFINES) -fo$@ $<
+    "$(BCB)\BIN\$(BRCC32)" $(RFLAGS) -I"$(INCLUDEPATH)" -D$(USERDEFINES);$(SYSDEFINES) -fo$@ $<
 
 
 

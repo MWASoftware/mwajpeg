@@ -87,6 +87,9 @@ call :mkdir evaluationUnits\d10
 IF NOT EXIST "%D10%\bin\dcc32.exe" goto D11
 "%D10%\bin\dcc32" source\mwadbjpg.pas /DDELPHI_REQUIRED;NODLL /$D-,L-,Y-,R- /JPHNE /B /Z- /OObj /N0evaluationUnits\D10 /NOevaluationUnits\D10 /NHevaluationUnits\D10 
 IF ERRORLEVEL 1 goto QUIT1
+"%D10%\bin\dcc32" source\jpeglib.pas /DDELPHI_REQUIRED;NODLL;CBUILDER; /$D-,L-,Y-,R- /JPHNE /B /Z- /OObj /N0. /NOevaluationUnits\D10 /NHevaluationUnits\D10 
+IF ERRORLEVEL 1 goto QUIT1
+del jpeglib.dcu
 
 rem MAKE Delphi 2007
 

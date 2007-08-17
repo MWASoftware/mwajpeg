@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 #include <vcl\vcl.h>
 #include <vcl/clipbrd.hpp>
+#include <vcl/printers.hpp>
 #include <dir.h>
 #include <string.h>
 #pragma hdrstop

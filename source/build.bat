@@ -1,4 +1,5 @@
 REM Build File for JPEG Component Library
+rem @echo off
 set D1=c:\delphi
 set D2=c:\Program Files\Borland\Delphi 2.0
 set D3=c:\Program Files\Borland\Delphi 3
@@ -162,13 +163,15 @@ IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\D10\dclmwajpg.dcp
 move mwajpg.bpi Packages\D10\dclmwajpg.bpi
 move mwajpg.lib Packages\D10\dclmwajpg.lib
-"%D10%\bin\dcc32" source\mwadbjpg.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0Units\d10 /NHUnits\d10 /NOUnits\d10
-IF ERRORLEVEL 1 goto Quit
 "%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D10 /NUnits\D10 /JL /LNPackages\D10 /LEPackages /NBPackages\D10
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.lib Packages\D10\mwajpg.lib
 del Units\D10\jpegreg2.dcu Units\D10\mwajpg.dcu
-
+"%D10%\bin\dcc32" source\mwadbjpg.pas /DNODLL;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0Units\d10 /NHUnits\d10 /NOUnits\d10
+IF ERRORLEVEL 1 goto Quit
+"%D10%\bin\dcc32" source\jpeglib.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0. /NHUnits\d10 /NOUnits\d10
+IF ERRORLEVEL 1 goto Quit
+del jpeglib.dcu
 rem MAKE Delphi 2007
 
 :D11
@@ -216,6 +219,7 @@ IF ERRORLEVEL 1 goto Quit
 Move source\*.hpp units\cb3
 Move source\*.obj units\cb3
 rename source\jpeglib.pas _jpeglib.pas
+Set BCB=%CB3%
 "%CB3%\bin\make" -B  -f mwajpg.mak -DB3 -DUNITDIR=Units\cb3
 IF ERRORLEVEL 1 goto QUIT1
 move mwajpg.bpl Packages\dclmwajpgcb3.bpl
@@ -245,6 +249,7 @@ IF ERRORLEVEL 1 goto Quit
 Move source\*.hpp units\cb4
 Move source\*.obj units\cb4
 rename source\jpeglib.pas _jpeglib.pas
+Set BCB=%CB4%
 "%CB4%\bin\make" -B  -f mwajpg.mak -DB4 -DUNITDIR=Units\cb4
 IF ERRORLEVEL 1 goto QUIT1
 move mwajpg.bpl Packages\dclmwajpgcb4.bpl
@@ -278,6 +283,7 @@ IF ERRORLEVEL 1 goto QUIT1
 
 move mwajpg.bpl Packages\dclmwajpgcb5.bpl
 move mwajpg.bpi Packages\cb5\dclmwajpg.bpi
+Set BCB=%CB5%
 "%CB5%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas
@@ -300,6 +306,7 @@ IF ERRORLEVEL 1 goto Quit
 "%CB6%\bin\dcc32" -B -D_RTLDLL;USEPACKAGES;NODLL;CBUILDER5;%DEFS% -$Y -$W -$O- -Oobj  -JPN source\jpeglib.pas  /N0Units\cb6 /NHUnits\cb6 /NO.
 IF ERRORLEVEL 1 goto Quit
 rename source\jpeglib.pas _jpeglib.pas
+Set BCB=%CB6%
 "%CB6%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB6 -DUNITDIR=Units\cb6
 IF ERRORLEVEL 1 goto QUIT1
 move mwajpg.bpl Packages\dclmwajpgcb6.bpl
@@ -312,7 +319,7 @@ move mwajpg.bpl Packages\mwajpgcb6.bpl
 move mwajpg.bpi Packages\cb6
 move mwajpg.lib Packages\cb6
 move *.obj Units\cb6
-goto :EOF
+goto QUIT
 :QUIT1
 rename source\_jpeglib.pas jpeglib.pas
 del /Q *.obj
