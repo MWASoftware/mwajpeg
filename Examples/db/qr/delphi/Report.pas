@@ -2,29 +2,31 @@ unit Report;
 
 interface
 
-uses Windows, SysUtils, Messages, Classes, Graphics, Controls,
-  StdCtrls, ExtCtrls, Forms, Quickrpt, QRCtrls, mwaQRjpg;
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, QRCtrls, mwaQRjpg, QuickRpt, ExtCtrls;
 
 type
-  TQuickReport1 = class(TQuickRep)
+  TReportForm = class(TForm)
+    Report: TQuickRep;
     TitleBand1: TQRBand;
-    DetailBand1: TQRBand;
     QRLabel1: TQRLabel;
+    DetailBand1: TQRBand;
     QRDBJPEGImage1: TQRDBJPEGImage;
     QRDBText1: TQRDBText;
   private
-
+    { Private declarations }
   public
-
+    { Public declarations }
   end;
 
 var
-  QuickReport1: TQuickReport1;
+  ReportForm: TReportForm;
 
 implementation
 
 uses JpegData;
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.

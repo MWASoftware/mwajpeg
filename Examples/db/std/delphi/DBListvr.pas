@@ -54,10 +54,11 @@ type
     procedure OnProgress(Sender: TObject);
     procedure Copy1Click(Sender: TObject);
     procedure Paste1Click(Sender: TObject);
-    procedure JPEGFileDecompressor1JPEGComment(sender: TJPEGBase;
     {$IFDEF DELPHI7ORLATER}
+    procedure JPEGFileDecompressor1JPEGComment(sender: TJPEGBase;
       comment: PAnsiChar);
     {$ELSE}
+    procedure JPEGFileDecompressor1JPEGComment(sender: TJPEGBase;
       comment: PChar);
     {$ENDIF}
     procedure Clear1Click(Sender: TObject);

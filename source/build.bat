@@ -1,5 +1,5 @@
 REM Build File for JPEG Component Library
-rem @echo off
+@echo off
 set D1=c:\delphi
 set D2=c:\Program Files\Borland\Delphi 2.0
 set D3=c:\Program Files\Borland\Delphi 3
@@ -297,7 +297,7 @@ move *.obj Units\cb5
 
 rem Make C++Builder 6.0 
 
-IF NOT EXIST "%CB6%\bin\dcc32.exe" goto QUIT
+IF NOT EXIST "%CB6%\bin\dcc32.exe" goto DONE
 call :mkdir Units\cb6
 call :mkdir Packages\cb6
 rem compile jpeglib first in order to avoid bug
@@ -319,6 +319,8 @@ move mwajpg.bpl Packages\mwajpgcb6.bpl
 move mwajpg.bpi Packages\cb6
 move mwajpg.lib Packages\cb6
 move *.obj Units\cb6
+:DONE
+echo Build Completed without Errors
 goto QUIT
 :QUIT1
 rename source\_jpeglib.pas jpeglib.pas

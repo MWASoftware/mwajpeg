@@ -317,6 +317,7 @@ object SDIAppForm: TSDIAppForm
     OnJPEGComment = JPEGFileDecompressor1JPEGComment
     DefaultDecompressor = False
     OnProgressReport = OnProgress
+    CMYKInvert = True
     Left = 192
     Top = 136
   end

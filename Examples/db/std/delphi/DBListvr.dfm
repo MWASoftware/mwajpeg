@@ -311,6 +311,7 @@ object ListVr: TListVr
     OnJPEGComment = JPEGFileDecompressor1JPEGComment
     DefaultDecompressor = False
     OnProgressReport = OnProgress
+    CMYKInvert = True
     Left = 200
     Top = 120
   end
