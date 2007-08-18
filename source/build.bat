@@ -149,7 +149,7 @@ move mwajpg.dcp Packages\QR\D10\dclmwajpg.dcp
 move mwajpg.bpi Packages\QR\D10\dclmwajpg.bpi
 move mwajpg.lib Packages\QR\D10\dclmwajpg.lib
 :D10QRSTD
-If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10QRSTD
+If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10STD
 call :mkdir Packages\QRstd
 call :mkdir Packages\QRstd\d10
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4StdDesD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
