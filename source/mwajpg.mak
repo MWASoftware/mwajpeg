@@ -25,14 +25,21 @@ RESDEPEN = $(RESFILES)
 LIBFILES = 
 IDLFILES = 
 IDLGENFILES = 
-!if $d(B6)
+!if $d(C2006)
+VERSION = BCB.06.00
+LIBRARIES = tee.lib teedb.lib teeui.lib vcldbx.lib 
+PACKAGES = rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi bdertl.bpi \
+	designide.bpi vcljpg.bpi QR4DesignC2006.bpi QR4RunC2006.bpi
+SPARELIBS = rtl.lib vcl.lib vclx.lib vcljpg.lib bcbsmp.lib qrpt.lib dbrtl.lib \
+    vcldb.lib bdertl.lib ibsmp.lib vcldbx.lib teeui.lib teedb.lib tee.lib \
+    nmfast.lib dclocx.lib
+!elif $d(B6)
 VERSION = BCB.06.00
 LIBRARIES = dclocx.lib nmfast.lib tee.lib teedb.lib teeui.lib vcldbx.lib ibsmp.lib 
 PACKAGES = rtl.bpi vcl.bpi qrpt.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi \
     bdertl.bpi designide.bpi
-SPARELIBS = rtl.lib vcl.lib vclx.lib vcljpg.lib bcbsmp.lib qrpt.lib dbrtl.lib \
-    vcldb.lib bdertl.lib ibsmp.lib vcldbx.lib teeui.lib teedb.lib tee.lib \
-    nmfast.lib dclocx.lib
+SPARELIBS = rtl.lib vcl.lib vclx.lib vcljpg.lib bcbsmp.lib dbrtl.lib vcldb.lib \
+		bdertl.lib vcldbx.lib teeui.lib teedb.lib tee.lib 
 !elif $d(B5)
 VERSION = BCB.05.03
 LIBRARIES = dclocx50.lib nmfast50.lib tee50.lib teedb50.lib teeui50.lib vcldbx50.lib \
@@ -52,8 +59,8 @@ SPARELIBS =  Vcl40.lib vclx40.lib vcljpg40.lib bcbsmp40.lib qrpt40.lib vcldb40.l
 PACKAGES = vcl40.bpi dbx40.bpi qrpt40.bpi Vclx40.bpi bcbsmp40.bpi Vcldb40.bpi
 !elif $d(B3)
 VERSION = BCB.03
-LIBRARIES =
-SPARELIBS = VCL35.lib vcldb35.lib Qrpt35.lib vclx35.lib
+LIBRARIES = 
+SPARELIBS =  VCL35.lib vcldb35.lib Qrpt35.lib vclx35.lib
 PACKAGES = vcl35.bpi vcldb35.bpi qrpt35.bpi vclx35.bpi
 !endif
 DEFFILE = 
@@ -72,7 +79,11 @@ PATHPAS = .;source
 PATHRC = .;
 PATHOBJ = .;$(LIBPATH)
 # ---------------------------------------------------------------------------
-!if $d(B6)
+!if $d(C2006)
+CFLAG1 = -Od -H="$(BCB)\lib\vcl100.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
+    -c -tWM -n$(UNITDIR) 
+PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
+!elif $d(B6)
 CFLAG1 = -Od -H="$(BCB)\lib\vcl60.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
@@ -81,7 +92,7 @@ CFLAG1 = -Od -H="$(BCB)\lib\vcl50.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi-
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
 !elif $d(B4)
-CFLAG1 = -I".;$(BCB)\include;$(BCB)\include\vcl" -Od -Hc -H=$(BCB)\lib\vcl40.csm \
+CFLAG1 = -I".;$(BCB)\include;$(BCB)\include\vcl" -Od -Hc -H="$(BCB)\lib\vcl40.csm" \
   -w -Ve -r- -a8 -k -y -v -vi- -c -b- -w-par -w-inl -Vx -tWM \
   -D$(SYSDEFINES);$(USERDEFINES)
 PFLAGS = -U"$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(RELEASELIBPATH)" \
@@ -98,21 +109,27 @@ RFLAGS =
 AFLAGS = /mx /w2 /zd
 !if $d(B3) || $d(B4)
 !if $d(RUNTIME)
-LFLAGS = -L"$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH)" -D"MWA JPEG Component Library" \
-  -aa -Tpp -Gpr -x -Gn -Gl -Gi -v
+LFLAGS =  -D"MWA JPEG Component Library"  -aa -Tpp -Gpr -x -Gn -Gl -Gi -v
 !else
-LFLAGS = -L"$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH);$(RESPATH)" -D"MWA JPEG Component Library" \
-  -aa -Tpp -Gpd -x -Gn -Gl -Gi -v
+LFLAGS = -D"MWA JPEG Component Library" -aa -Tpp -Gpd -x -Gn -Gl -Gi -v
 !endif
 !else
 !if $d(RUNTIME)
 LFLAGS = -l. -D"MWA JPEG Component Library" -aa -Tpp -Gpr -x -Gn -Gl -Gi -v
 !else
+!if $d(C2006)
+LFLAGS = -l. -D"MWA JPEG Component Library" -aa -Tpp -Gpd -x -Gn -Gl -Gi -v -L"$(BCB)\projects\lib"
+!else
 LFLAGS = -l. -D"MWA JPEG Component Library" -aa -Tpp -Gpd -x -Gn -Gl -Gi -v
 !endif
 !endif
+!endif
 # ---------------------------------------------------------------------------
+!if $d(B3) || $d(B4)
+ALLOBJ = c0pkg32.obj $(PACKAGES) sysinit.obj $(OBJFILES)
+!else
 ALLOBJ = c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)
+!endif
 ALLRES = $(RESFILES)
 ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib
 # ---------------------------------------------------------------------------
@@ -183,7 +200,7 @@ BRCC32 = bin\brcc32
 !endif
 # ---------------------------------------------------------------------------
 $(PROJECT): $(OTHERFILES) $(IDLGENFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
-    $(BCB)\BIN\$(LINKER) @&&!
+    "$(BCB)\BIN\$(LINKER)" @&&!
     $(LFLAGS) -L"$(LIBPATH)" +
     $(ALLOBJ), +
     $(PROJECT),, +

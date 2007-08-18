@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.8 2007-08-17 18:29:15 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.9 2007-08-18 18:01:43 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -71,6 +71,20 @@
 	  <Data Column="Property">QR4D2006</Data>
 	</Row>
     <Row>
+	  <Data Column="Id">HKLMSearchCBVER180</Data>
+	  <Data Column="Root">HKLM</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">QR4DesignC2006.bpl</Data>
+	  <Data Column="Property">QR4C2006</Data>
+	</Row>
+    <Row>
+	  <Data Column="Id">HKCUSearchCBVER180</Data>
+	  <Data Column="Root">HKCU</Data>
+	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
+	  <Data Column="SubString">QR4DesignC2006.bpl</Data>
+	  <Data Column="Property">QR4C2006</Data>
+	</Row>
+    <Row>
 	  <Data Column="Id">HKLMStdSearchVER180</Data>
 	  <Data Column="Root">HKLM</Data>
 	  <Data Column="KeyPath">SOFTWARE\Borland\BDS\4.0\Known Packages</Data>
@@ -107,7 +121,7 @@
        <!-- Standard Design Time Package -->
 
 	   <Component Id="DesignTimePkgeVER180" Guid="$(var.guidJPEGBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2006</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
   	     <File Id="dcljpg10bpl" Name="dcljpg10.bpl" LongName="dclmwajpgD2006.bpl"
 	   	     Source="source\Packages\dclmwajpgD2006.bpl"/>
 	     <Registry Id="AddStd2PackageListVER180"
@@ -120,7 +134,7 @@
        <!-- Quick Reports Design Time Package -->
 
 	   <Component Id="DesignTimePkgeQRVER180" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
   	     <File Id="qcljpg10bpl" Name="qcljpg10.bpl" LongName="qclmwajpgD2006.bpl"
 	   	     Source="source\Packages\QR\dclmwajpgD2006.bpl">
 		   <CopyFile Id="CopyQclVER180" DestinationName="dcljpg10.bpl"
@@ -138,7 +152,7 @@
        <!-- Quick Reports Standand Design Time Package -->
 
 	   <Component Id="DesignTimePkgeQRstdVER180" Guid="$(var.guidJPEGQRstdBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2006</Condition>
+	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
   	     <File Id="qsljpg10bpl" Name="qsljpg10.bpl" LongName="qslmwajpgD2006.bpl"
 	   	     Source="source\Packages\QRstd\dclmwajpgD2006.bpl">
 		   <CopyFile Id="CopyQslVER180" DestinationName="dcljpg10.bpl"
@@ -160,13 +174,13 @@
       <!-- dcp, bpi and lib files -->
 
 	    <Component Id="dcljpgdcpVER180" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpgVER180" Name="dclmjpg.dcp" LongName="dclmwajpg.dcp"
 		  	    Source="source\Packages\d10\dclmwajpg.dcp" />
  	    </Component>
 
 	    <Component Id="dcljpgqrdcpVER180" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
 		  <File Id="qclmwajpgVER180" Name="qclmjpq.dcp" LongName="qclmwajpg.dcp"
 		  	    Source="source\Packages\QR\d10\dclmwajpg.dcp" >
 		   <CopyFile Id="CopyQcpVER180" DestinationName="dclmjpg.dcp"
@@ -177,7 +191,7 @@
  	    </Component>
 
 	    <Component Id="dcljpgqsdcpVER180" Guid="$(var.guidQRstdDCPJPEGDCP)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
 		  <File Id="qslmwajpgVER180" Name="qslmjpq.dcp" LongName="qslmwajpg.dcp"
 		  	    Source="source\Packages\QRstd\d10\dclmwajpg.dcp" >
 		   <CopyFile Id="CopyQspVER180" DestinationName="dclmjpg.dcp"
@@ -188,13 +202,13 @@
  	    </Component>
 
 	    <Component Id="dcljpgbpiVER180" Guid="$(var.guidDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpgbpiVER180" Name="dclmjpg.bpi" LongName="dclmwajpg.bpi"
 		  	    Source="source\Packages\d10\dclmwajpg.bpi" />
  	    </Component>
 
 	    <Component Id="dcljpgqrbpiVER180" Guid="$(var.guidQRDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
 		  <File Id="qclmwajpgbpiVER180" Name="qclmjpq.bpi" LongName="qclmwajpg.bpi"
 		  	    Source="source\Packages\QR\d10\dclmwajpg.bpi" >
 		   <CopyFile Id="CopyQcpbpiVER180" DestinationName="dclmjpg.bpi"
@@ -205,7 +219,7 @@
  	    </Component>
 
 	    <Component Id="dcljpgqsbpiVER180" Guid="$(var.guidQRstdDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
 		  <File Id="qslmwajpgbpiVER180" Name="qslmjpq.bpi" LongName="qslmwajpg.bpi"
 		  	    Source="source\Packages\QRstd\d10\dclmwajpg.bpi" >
 		   <CopyFile Id="CopyQspbpiVER180" DestinationName="dclmjpg.bpi"
@@ -216,13 +230,13 @@
  	    </Component>
 
 	    <Component Id="dcljpglibVER180" Guid="$(var.guidDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpglibVER180" Name="dclmjpg.lib" LongName="dclmwajpg.lib"
 		  	    Source="source\Packages\d10\dclmwajpg.lib" />
  	    </Component>
 
 	    <Component Id="dcljpgqrlibVER180" Guid="$(var.guidQRDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
 		  <File Id="qclmwajpglibVER180" Name="qclmjpq.lib" LongName="qclmwajpg.lib"
 		  	    Source="source\Packages\QR\d10\dclmwajpg.lib" >
 		   <CopyFile Id="CopyQcplibVER180" DestinationName="dclmjpg.lib"
@@ -233,7 +247,7 @@
  	    </Component>
 
 	    <Component Id="dcljpgqslibVER180" Guid="$(var.guidQRstdDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4STDD2007</Condition>
+	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
 		  <File Id="qslmwajpglibVER180" Name="qslmjpq.lib" LongName="qslmwajpg.lib"
 		  	    Source="source\Packages\QRstd\d10\dclmwajpg.lib" >
 		   <CopyFile Id="CopyQsplibVER180" DestinationName="dclmjpg.lib"

@@ -17,6 +17,7 @@ set CB5=c:\Program Files\Borland\cbuilder5
 set CB6=c:\Program Files\Borland\cbuilder6
 Set DEFS=
 touch source\cbuilder\mwaQRjpg.cpp
+touch source\*.pas
 
 IF NOT EXIST "%D1%\bin\dcc.exe" goto D2
 rem
@@ -122,7 +123,7 @@ rem MAKE Delphi 2005
 IF NOT EXIST "%D9%\bin\dcc32.exe" goto D10
 call :mkdir Units\d9
 call :mkdir Packages\d9
-If NOT EXIST "%D9%\bin\QR4runDX.dcp" goto D9QRSTD
+If NOT EXIST "%D9%\bin\QR4runDX.dcp" goto D9STD
 call :mkdir Packages\QR\d9
 "%D9%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignDX -u"%D9%\bin" /OObj /NUnits\D9  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
@@ -172,6 +173,18 @@ IF ERRORLEVEL 1 goto Quit
 "%D10%\bin\dcc32" source\jpeglib.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0. /NHUnits\d10 /NOUnits\d10
 IF ERRORLEVEL 1 goto Quit
 del jpeglib.dcu
+If NOT EXIST "%D10%\projects\lib\QR4DesignC2006.bpi" goto D11
+Call :mkdir Units\c2006
+Call :mkdir Packages\c2006
+Call :mkdir Packages\QR\c2006
+Set BCB=%D10%
+"%D10%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DC2006 -DUNITDIR=Units\c2006
+IF ERRORLEVEL 1 goto Quit
+Set C2006=
+move mwajpg.bpl Packages\QR\dclmwajpgC2006.bpl
+move mwajpg.bpi Packages\QR\c2006\dclmwajpg.bpi
+del mwajpg.lib
+
 rem MAKE Delphi 2007
 
 :D11
@@ -198,6 +211,7 @@ rem
 :CB1
 IF NOT EXIST "%CB1%\bin\dcc32.exe" goto CB3
 call :mkdir Units\cb1
+del source\*.dcu *.obj *.hpp
 "%CB1%\bin\dcc32" Source\jpegreg2.pas /$D-,L-,Y- /OObj /USource /ISource /B /JPHN /NUnits\cb1
 IF ERRORLEVEL 1 goto QUIT1
 copy source\cbuilder\jpeg_reg.cpp units\cb1
@@ -211,13 +225,12 @@ rem Make C++ Builder 3
 IF NOT EXIST "%CB3%\bin\dcc32.exe" goto CB4
 call :mkdir Units\cb3
 call :mkdir Packages\cb3
+del source\*.dcu *.obj *.hpp
 rem compile jpeglib first in order to avoid bug
 "%CB3%\bin\dcc32" -D_RTLDLL;USEPACKAGES;STATIC_LIBRARY;%DEFS% -Oobj -$Y -$W -$O-  -JPHN source\jpeglib.pas /NUnits\cb3 
 IF ERRORLEVEL 1 goto Quit
 "%CB3%\bin\dcc32" -B -D_RTLDLL;USEPACKAGES;NODLL;%DEFS% -$Y -$W -$O- -Oobj  -JPN source\jpeglib.pas  /NUnits\cb3 
 IF ERRORLEVEL 1 goto Quit
-Move source\*.hpp units\cb3
-Move source\*.obj units\cb3
 rename source\jpeglib.pas _jpeglib.pas
 Set BCB=%CB3%
 "%CB3%\bin\make" -B  -f mwajpg.mak -DB3 -DUNITDIR=Units\cb3
@@ -241,6 +254,7 @@ rem Make C++ Builder 4
 IF NOT EXIST "%CB4%\bin\dcc32.exe" goto CB5
 call :mkdir Units\cb4
 call :mkdir Packages\cb4
+del source\*.dcu *.obj *.hpp
 rem compile jpeglib first in order to avoid bug
 "%CB4%\bin\dcc32" -D_RTLDLL;USEPACKAGES;STATIC_LIBRARY;%DEFS% -Oobj -$Y -$W -$O-  -JPHN source\jpeglib.pas /NUnits\cb4 
 IF ERRORLEVEL 1 goto Quit
@@ -272,18 +286,19 @@ rem Make C++Builder 5.0
 IF NOT EXIST "%CB5%\bin\dcc32.exe" goto CB6
 call :mkdir Units\cb5
 call :mkdir Packages\cb5
+del source\*.dcu *.obj *.hpp
 rem compile jpeglib first in order to avoid bug
 "%CB5%\bin\dcc32" -D_RTLDLL;USEPACKAGES;STATIC_LIBRARY;CBUILDER5;%DEFS% -Oobj -$Y -$W -$O-  -JPHN source\jpeglib.pas /N0Units\cb5 /NHUnits\cb5 /NO.
 IF ERRORLEVEL 1 goto Quit
 "%CB5%\bin\dcc32" -B -D_RTLDLL;USEPACKAGES;NODLL;CBUILDER5;%DEFS% -$Y -$W -$O- -Oobj  -JPN source\jpeglib.pas  /N0Units\cb5 /NHUnits\cb5 /NO.
 IF ERRORLEVEL 1 goto Quit
 rename source\jpeglib.pas _jpeglib.pas
+Set BCB=%CB5%
 "%CB5%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5
 IF ERRORLEVEL 1 goto QUIT1
 
 move mwajpg.bpl Packages\dclmwajpgcb5.bpl
 move mwajpg.bpi Packages\cb5\dclmwajpg.bpi
-Set BCB=%CB5%
 "%CB5%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DB5 -DUNITDIR=Units\cb5 -DRUNTIME
 IF ERRORLEVEL 1 goto QUIT1
 rename source\_jpeglib.pas jpeglib.pas
@@ -300,6 +315,7 @@ rem Make C++Builder 6.0
 IF NOT EXIST "%CB6%\bin\dcc32.exe" goto DONE
 call :mkdir Units\cb6
 call :mkdir Packages\cb6
+del source\*.dcu *.obj *.hpp
 rem compile jpeglib first in order to avoid bug
 "%CB6%\bin\dcc32" -D_RTLDLL;USEPACKAGES;STATIC_LIBRARY;CBUILDER5;%DEFS% -Oobj -$Y -$W -$O-  -JPHN source\jpeglib.pas /N0Units\cb6 /NHUnits\cb6 /NO.
 IF ERRORLEVEL 1 goto Quit
