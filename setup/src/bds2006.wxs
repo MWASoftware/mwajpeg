@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: bds2006.wxs,v 1.9 2007-08-18 18:01:43 tony Exp $ -->
+<!-- $Id: bds2006.wxs,v 1.10 2007-08-19 17:16:51 tony Exp $ -->
 
 <!-- This Fragment installs the Files for BDS2006 -->
 
@@ -12,17 +12,14 @@
 <?define guidQRDCPJPEGDCP="8D70524B-7D0E-44A1-BDC4-A9E8D8F90646"?>
 <?define guidJPEGQRstdBPL="9CBFDB97-2569-4825-B4CE-AF465851206C"?>
 <?define guidQRstdDCPJPEGDCP="BF02E0BA-2342-4F9B-9641-FB69859C249B"?>
-<?define guidDCPJPEGBPI="A5808A6A-4BBC-47D5-AAF4-63AE91D4A8FE"?>
-<?define guidQRDCPJPEGBPI="22D90976-5F46-4D85-B0D0-BF5CDEC858F4"?>
 <?define guidQRstdDCPJPEGBPI="E01E2F11-AA45-4621-B106-709137632BD2"?>
-<?define guidDCPJPEGlib="625B5D97-01D4-47B4-89E5-78EB26C6167C"?>
-<?define guidQRDCPJPEGlib="964C8C0D-81EB-40B5-A702-303F4D4A3058"?>
-<?define guidQRstdDCPJPEGlib="9326AD31-94C6-4020-8957-0BFF4BDEA27A"?>
 <?define guidSTDBPI="2B8CFCF7-D068-4451-AC4F-846056593F79"?>
 <?define guidSTDLIB="7E94C22A-2333-45A1-A618-99D8DC876025"?>
+<?define guidJPEGQRCBPL="23870BF6-82F0-4174-95BF-C89B39C6A0FA"?>
 
 <?ifdef EVALUATION?>
 <?define dcuDir="source\evaluationUnits\d10"?>
+<?define objDir="source\evaluationUnits\d10"?>
 <?define guidJPEGLIB="25AEDF1F-2D29-4642-846D-D38818E7F90C"?>
 <?define guidMWAJPEG="54A9A730-C036-4FF9-A687-76F455EB0EA5"?>
 <?define guidMWADBJPEG="76E191E2-3220-4D13-B890-BBDCE381B638"?>
@@ -35,9 +32,11 @@
 <?define guidHdr4VER180="12DDA8CA-5DC7-47E8-92B5-5192BD6A58AC"?>
 <?else?>
 <?define dcuDir="source\Units\d10"?>
+<?define objDir="source\units\c2006" ?>
 <?define guidJPEGLIB="3FB3BA26-09BF-4A20-8F90-81EDC88F7DFF"?>
 <?define guidMWAJPEG="D957DBCE-54C9-473E-A0CE-622EDB9ED3A9"?>
 <?define guidMWADBJPEG="2999027F-CB3E-423D-9D10-6C0A7CF66675"?>
+<?define guidQRC2006JPEGBPI="6F711EFB-2B32-4214-97DD-78A691DAD755"?>
 <?define guidObj1VER180="5DB4351A-1057-416A-B8A1-7ADD2ADB184B"?>
 <?define guidObj2VER180="D0A17948-E1E2-40A2-8C73-82845A7E37D1"?>
 <?define guidObj3VER180="5BC6281D-F4B7-4008-AAB5-66CAA5360EB0"?>
@@ -122,48 +121,62 @@
 
 	   <Component Id="DesignTimePkgeVER180" Guid="$(var.guidJPEGBPL)" DiskId="1">
 	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
-  	     <File Id="dcljpg10bpl" Name="dcljpg10.bpl" LongName="dclmwajpgD2006.bpl"
+  	     <File Id="DesignTimePkgeVER180bpl" Name="dcljpg10.bpl" LongName="dclmwajpgD2006.bpl"
 	   	     Source="source\Packages\dclmwajpgD2006.bpl"/>
 	     <Registry Id="AddStd2PackageListVER180"
 		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\4.0\Known Packages"
-				   Name="[#dcljpg10bpl]"
+				   Name="[#DesignTimePkgeVER180bpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
 	   </Component>
 
-       <!-- Quick Reports Design Time Package -->
+       <!-- Quick Reports 4 Design Time Package -->
 
-	   <Component Id="DesignTimePkgeQRVER180" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
-  	     <File Id="qcljpg10bpl" Name="qcljpg10.bpl" LongName="qclmwajpgD2006.bpl"
+	   <Component Id="DesignTimePkgeDqrVER180" Guid="$(var.guidJPEGQRBPL)" DiskId="1">
+	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+  	     <File Id="DesignTimePkgeDqrVER180bpl" Name="qcljpg10.bpl" LongName="qclmwajpgD2006.bpl"
 	   	     Source="source\Packages\QR\dclmwajpgD2006.bpl">
-		   <CopyFile Id="CopyQclVER180" DestinationName="dcljpg10.bpl"
+		   <CopyFile Id="CopyDprVER180" DestinationName="dcljpg10.bpl"
                      DestinationLongName="dclmwajpgD2006.bpl"/>
 		 </File>
-		 <RemoveFile Id="RemoveQclVER180" Name="dcljpg10.bpl"
+		 <RemoveFile Id="RemoveDqrVER180" Name="dcljpg10.bpl"
                      LongName="dclmwajpgD2006.bpl" On="uninstall"/>
-	     <Registry Id="AddQR2PackageListVER180"
+	     <Registry Id="AddDqr2PackageListVER180"
 		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\4.0\Known Packages"
-				   Name="[#dcljpg10bpl]"
+				   Name="[#DesignTimePkgeVER180bpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
 	   </Component>
 
-       <!-- Quick Reports Standand Design Time Package -->
+       <!-- C++2006 Quick Reports 4 Design Time Package -->
 
-	   <Component Id="DesignTimePkgeQRstdVER180" Guid="$(var.guidJPEGQRstdBPL)" DiskId="1">
+	   <Component Id="DesignTimePkgeCqrVER180" Guid="$(var.guidJPEGQRCBPL)" DiskId="1">
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4C2006</Condition>
+  	     <File Id="DesignTimePkgeCqrVER180bpl" Name="dcljpc10.bpl" LongName="dclmwajpgC2006.bpl"
+	   	     Source="source\Packages\QR\dclmwajpgC2006.bpl">
+		 </File>
+	     <Registry Id="AddCqr2PackageListVER180"
+		 		   Root="HKCU" Type="string"
+		 	       Key="Software\Borland\BDS\4.0\Known Packages"
+				   Name="[#DesignTimePkgeCqrVER180bpl]"
+				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
+	   </Component>
+
+       <!-- Quick Reports 4 Standand Design Time Package -->
+
+	   <Component Id="DesignTimePkgeDqrStdVER180" Guid="$(var.guidJPEGQRstdBPL)" DiskId="1">
 	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
-  	     <File Id="qsljpg10bpl" Name="qsljpg10.bpl" LongName="qslmwajpgD2006.bpl"
+  	     <File Id="DesignTimePkgeDqrStdVER180bpl" Name="qsljpg10.bpl" LongName="qslmwajpgD2006.bpl"
 	   	     Source="source\Packages\QRstd\dclmwajpgD2006.bpl">
-		   <CopyFile Id="CopyQslVER180" DestinationName="dcljpg10.bpl"
+		   <CopyFile Id="CopyDqrStdVER180" DestinationName="dcljpg10.bpl"
                      DestinationLongName="dclmwajpgD2006.bpl"/>
 		 </File>
 		 <RemoveFile Id="RemoveQslVER180" Name="dcljpg10.bpl"
                      LongName="dclmwajpgD2006.bpl" On="uninstall"/>
-	     <Registry Id="AddQS2PackageListVER180"
+	     <Registry Id="AddDqrStd2PackageListVER180"
 		 		   Root="HKCU" Type="string"
 		 	       Key="Software\Borland\BDS\4.0\Known Packages"
-				   Name="[#dcljpg10bpl]"
+				   Name="[#DesignTimePkgeVER180bpl]"
 				   Value="MWA JPEG Component Library v$(env.RELEASE)" />
 	   </Component>
 	  </Directory>
@@ -171,91 +184,85 @@
 
       <?ifndef EVALUATION?>
 
-      <!-- dcp, bpi and lib files -->
+      <!-- dcp, bpi and lib files for standard Design Time Package -->
 
-	    <Component Id="dcljpgdcpVER180" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
+	    <Component Id="DesignTimedcpVER180" Guid="$(var.guidDCPJPEGDCP)" DiskId="1">
 	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpgVER180" Name="dclmjpg.dcp" LongName="dclmwajpg.dcp"
 		  	    Source="source\Packages\d10\dclmwajpg.dcp" />
- 	    </Component>
-
-	    <Component Id="dcljpgqrdcpVER180" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
-		  <File Id="qclmwajpgVER180" Name="qclmjpq.dcp" LongName="qclmwajpg.dcp"
-		  	    Source="source\Packages\QR\d10\dclmwajpg.dcp" >
-		   <CopyFile Id="CopyQcpVER180" DestinationName="dclmjpg.dcp"
-                     DestinationLongName="dclmwajpg.dcp"/>
-		 </File>
-		 <RemoveFile Id="RemoveQcpVER180" Name="dclmjpg.dcp"
-                     LongName="dclmwajpg.dcp" On="uninstall"/>
- 	    </Component>
-
-	    <Component Id="dcljpgqsdcpVER180" Guid="$(var.guidQRstdDCPJPEGDCP)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
-		  <File Id="qslmwajpgVER180" Name="qslmjpq.dcp" LongName="qslmwajpg.dcp"
-		  	    Source="source\Packages\QRstd\d10\dclmwajpg.dcp" >
-		   <CopyFile Id="CopyQspVER180" DestinationName="dclmjpg.dcp"
-                     DestinationLongName="dclmwajpg.dcp"/>
-		 </File>
-		 <RemoveFile Id="RemoveQspVER180" Name="dclmjpg.dcp"
-                     LongName="dclmwajpg.dcp" On="uninstall"/>
- 	    </Component>
-
-	    <Component Id="dcljpgbpiVER180" Guid="$(var.guidDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpgbpiVER180" Name="dclmjpg.bpi" LongName="dclmwajpg.bpi"
 		  	    Source="source\Packages\d10\dclmwajpg.bpi" />
- 	    </Component>
-
-	    <Component Id="dcljpgqrbpiVER180" Guid="$(var.guidQRDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
-		  <File Id="qclmwajpgbpiVER180" Name="qclmjpq.bpi" LongName="qclmwajpg.bpi"
-		  	    Source="source\Packages\QR\d10\dclmwajpg.bpi" >
-		   <CopyFile Id="CopyQcpbpiVER180" DestinationName="dclmjpg.bpi"
-                     DestinationLongName="dclmwajpg.bpi"/>
-		 </File>
-		 <RemoveFile Id="RemoveQcpbpiVER180" Name="dclmjpg.bpi"
-                     LongName="dclmwajpg.bpi" On="uninstall"/>
- 	    </Component>
-
-	    <Component Id="dcljpgqsbpiVER180" Guid="$(var.guidQRstdDCPJPEGBPI)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
-		  <File Id="qslmwajpgbpiVER180" Name="qslmjpq.bpi" LongName="qslmwajpg.bpi"
-		  	    Source="source\Packages\QRstd\d10\dclmwajpg.bpi" >
-		   <CopyFile Id="CopyQspbpiVER180" DestinationName="dclmjpg.bpi"
-                     DestinationLongName="dclmwajpg.bpi"/>
-		 </File>
-		 <RemoveFile Id="RemoveQspbpiVER180" Name="dclmjpg.bpi"
-                     LongName="dclmwajpg.bpi" On="uninstall"/>
- 	    </Component>
-
-	    <Component Id="dcljpglibVER180" Guid="$(var.guidDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not QR4D2006 and not QR4C2006 and not QR4STDD2006</Condition>
 		  <File Id="dclmwajpglibVER180" Name="dclmjpg.lib" LongName="dclmwajpg.lib"
 		  	    Source="source\Packages\d10\dclmwajpg.lib" />
  	    </Component>
 
-	    <Component Id="dcljpgqrlibVER180" Guid="$(var.guidQRDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
+      <!-- dcp, bpi and lib files for Delphi QR4 Design Time Package -->
+
+	    <Component Id="DesignTimeDqrdcpVER180" Guid="$(var.guidQRDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRD2006 and QR4D2006</Condition>
+		  <File Id="qclmwajpgVER180" Name="qclmjpq.dcp" LongName="qclmwajpg.dcp"
+		  	    Source="source\Packages\QR\d10\dclmwajpg.dcp" >
+		   <CopyFile Id="CopyDqrDcpVER180" DestinationName="dclmjpg.dcp"
+                     DestinationLongName="dclmwajpg.dcp"/>
+		 </File>
+		 <RemoveFile Id="RemoveQcpVER180" Name="dclmjpg.dcp"
+                     LongName="dclmwajpg.dcp" On="uninstall"/>
+		 <File Id="qclmwajpgbpiVER180" Name="qclmjpq.bpi" LongName="qclmwajpg.bpi"
+		  	    Source="source\Packages\QR\d10\dclmwajpg.bpi" >
+		   <CopyFile Id="CopyDqrpbpiVER180" DestinationName="dclmjpg.bpi"
+                     DestinationLongName="dclmwajpg.bpi"/>
+		 </File>
+		 <RemoveFile Id="RemoveQcpbpiVER180" Name="dclmjpg.bpi"
+                     LongName="dclmwajpg.bpi" On="uninstall"/>
 		  <File Id="qclmwajpglibVER180" Name="qclmjpq.lib" LongName="qclmwajpg.lib"
 		  	    Source="source\Packages\QR\d10\dclmwajpg.lib" >
-		   <CopyFile Id="CopyQcplibVER180" DestinationName="dclmjpg.lib"
+		   <CopyFile Id="CopyDqrlibVER180" DestinationName="dclmjpg.lib"
                      DestinationLongName="dclmwajpg.lib"/>
 		 </File>
 		 <RemoveFile Id="RemoveQcplibVER180" Name="dclmjpg.lib"
                      LongName="dclmwajpg.lib" On="uninstall"/>
  	    </Component>
 
-	    <Component Id="dcljpgqslibVER180" Guid="$(var.guidQRstdDCPJPEGlib)" DiskId="1">
-	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
-		  <File Id="qslmwajpglibVER180" Name="qslmjpq.lib" LongName="qslmwajpg.lib"
-		  	    Source="source\Packages\QRstd\d10\dclmwajpg.lib" >
-		   <CopyFile Id="CopyQsplibVER180" DestinationName="dclmjpg.lib"
+      <!-- dcp, bpi and lib files for C++Builder + QR4  Design Time Package -->
+
+	    <Component Id="DesignTimeCqrbpiVER180" Guid="$(var.guidQRC2006JPEGBPI)" DiskId="1">
+	     <Condition>INSTALLDIRD2006 and not QR4D2006 and QR4C2006</Condition>
+		  <File Id="cclmwajpgVER180" Name="cclmjpq.bpi" LongName="cclmwajpg.bpi"
+		  	    Source="source\Packages\QR\c2006\dclmwajpg.bpi" >
+		   <CopyFile Id="CopyCqrBpiVER180" DestinationName="dclmjpg.bpi"
+                     DestinationLongName="dclmwajpg.bpi"/>
+		 </File>
+		 <RemoveFile Id="RemoveCqrBpiVER180" Name="dclmjpg.bpi"
+                     LongName="dclmwajpg.bpi" On="uninstall"/>
+		  <File Id="cclmwajpglibVER180" Name="cclmjpq.lib" LongName="cclmwajpg.lib"
+		  	    Source="source\Packages\QR\d10\dclmwajpg.lib" >
+		   <CopyFile Id="CopyCqrlibVER180" DestinationName="dclmjpg.lib"
                      DestinationLongName="dclmwajpg.lib"/>
 		 </File>
-		 <RemoveFile Id="RemoveQsplibVER180" Name="dclmjpg.lib"
+		 <RemoveFile Id="RemoveCqrLibVER180" Name="dclmjpg.lib"
                      LongName="dclmwajpg.lib" On="uninstall"/>
  	    </Component>
+
+      <!-- dcp, bpi and lib files for Delphi + QR4 Std Design Time Package -->
+
+	    <Component Id="DesignTimeDqrStdbpiVER180" Guid="$(var.guidQRstdDCPJPEGDCP)" DiskId="1">
+	     <Condition>INSTALLDIRD2006 and not (QR4D2006 or QR4C2006) and QR4STDD2006</Condition>
+		  <File Id="qslmwajpgVER180" Name="qslmjpq.dcp" LongName="qslmwajpg.dcp"
+		  	    Source="source\Packages\QRstd\d10\dclmwajpg.dcp" >
+		   <CopyFile Id="CopyDqrStddcpVER180" DestinationName="dclmjpg.dcp"
+                     DestinationLongName="dclmwajpg.dcp"/>
+		 </File>
+		 <RemoveFile Id="RemoveDqrStddcpVER180" Name="dclmjpg.dcp"
+                     LongName="dclmwajpg.dcp" On="uninstall"/>
+		  <File Id="qslmwajpglibVER180" Name="qslmjpq.lib" LongName="qslmwajpg.lib"
+		  	    Source="source\Packages\QRstd\d10\dclmwajpg.lib" >
+		   <CopyFile Id="CopyDqrStdlibVER180" DestinationName="dclmjpg.lib"
+                     DestinationLongName="dclmwajpg.lib"/>
+		 </File>
+		 <RemoveFile Id="RemoveDqrStdlibVER180" Name="dclmjpg.lib"
+                     LongName="dclmwajpg.lib" On="uninstall"/>
+ 	    </Component>
+
 	   <?endif?>
 
        <!-- dcu  files -->
@@ -282,6 +289,8 @@
 	     <Condition>INSTALLDIRD2006</Condition>
 		  <File Id="mwaQRjpgpasVER180" Name="mwaQRjpg.pas"
 		  	    Source="source\source\mwaQRjpg.pas" />
+		  <File Id="mwaQRjpgcppVER180" Name="mwaQRjpg.cpp"
+		  	    Source="source\source\cbuilder\mwaQRjpg.cpp" />
  	    </Component>
 
         <!-- obj Files -->
@@ -289,20 +298,20 @@
         <Directory Id="LibDirVER180" Name="obj">
         <Component Id="Obj1VER180" DiskId="1" Guid="$(var.guidObj1VER180)">
 	     <Condition>INSTALLDIRD2006</Condition>
-            <File Id="jpeglibobjVER180" Name="jpeglib.obj" Source="$(var.dcuDir)\jpeglib.obj" />
+            <File Id="jpeglibobjVER180" Name="jpeglib.obj" Source="$(var.objDir)\jpeglib.obj" />
         </Component>
         <Component Id="Obj2VER180" DiskId="1" Guid="$(var.guidObj2VER180)">
 	     <Condition>INSTALLDIRD2006</Condition>
-            <File Id="mwadbjpgobjVER180" Name="mwadbjpg.obj" Source="$(var.dcuDir)\mwadbjpg.obj" />
+            <File Id="mwadbjpgobjVER180" Name="mwadbjpg.obj" Source="$(var.objDir)\mwadbjpg.obj" />
         </Component>
         <Component Id="Obj3VER180" DiskId="1" Guid="$(var.guidObj3VER180)">
 	     <Condition>INSTALLDIRD2006</Condition>
-            <File Id="mwajpegobjVER180" Name="mwajpeg.obj" Source="$(var.dcuDir)\mwajpeg.obj" />
+            <File Id="mwajpegobjVER180" Name="mwajpeg.obj" Source="$(var.objDir)\mwajpeg.obj" />
         </Component>
 	    <Component Id="mwaQRjpgVER180" Guid="$(var.guidMWAQRJPEG)" DiskId="1">
 	     <Condition>INSTALLDIRCB6</Condition>
 		  <File Id="mwaQRjpgobjVER180" Name="mwaQRjpg.obj"
-		  	    Source="source\Units\cb6\mwaQRjpg.obj" />
+		  	    Source="source\Units\c2006\mwaQRjpg.obj" />
  	    </Component>
 		</Directory>
 	  </Directory>
@@ -374,8 +383,9 @@
    
   <ComponentGroup Id="Delphi2006" >
     <ComponentRef Id="DesignTimePkgeVER180"/>
-    <ComponentRef Id="DesignTimePkgeQRVER180"/>
-    <ComponentRef Id="DesignTimePkgeQRstdVER180"/>
+    <ComponentRef Id="DesignTimePkgeDqrVER180"/>
+    <ComponentRef Id="DesignTimePkgeCqrVER180"/>
+    <ComponentRef Id="DesignTimePkgeDqrStdVER180"/>
     <ComponentRef Id="jpeglibVER180"/>
     <ComponentRef Id="mwajpegVER180"/>
     <ComponentRef Id="mwadbjpgVER180"/>
@@ -391,15 +401,10 @@
     <?ifndef EVALUATION?>
     <ComponentRef Id="RTDCPVER180"/>
     <ComponentRef Id="STDruntimeVER180"/>
-    <ComponentRef Id="dcljpgdcpVER180"/>
-    <ComponentRef Id="dcljpgqrdcpVER180"/>
-    <ComponentRef Id="dcljpgqsdcpVER180"/>
-    <ComponentRef Id="dcljpgbpiVER180"/>
-    <ComponentRef Id="dcljpgqrbpiVER180"/>
-    <ComponentRef Id="dcljpgqsbpiVER180"/>
-    <ComponentRef Id="dcljpglibVER180"/>
-    <ComponentRef Id="dcljpgqrlibVER180"/>
-    <ComponentRef Id="dcljpgqslibVER180"/>
+    <ComponentRef Id="DesignTimedcpVER180"/>
+    <ComponentRef Id="DesignTimeDqrdcpVER180"/>
+    <ComponentRef Id="DesignTimeCqrbpiVER180"/>
+    <ComponentRef Id="DesignTimeDqrStdbpiVER180"/>
     <ComponentRef Id="STDBPIVER180"/>
     <ComponentRef Id="STDLIBVER180"/>
     <?endif?>

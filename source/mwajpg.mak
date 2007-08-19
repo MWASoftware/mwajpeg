@@ -13,11 +13,16 @@ BCB = $(MAKEDIR)\..
 
 # ---------------------------------------------------------------------------
 PROJECT = .\mwajpg.bpl
-!if $d(RUNTIME)
-OBJFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj
+!if $d(B3) || $d(B4) || $d(B5)
+JPEGFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj macros.obj
 !else
-OBJFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeg_reg.obj\
-    jpeglib.obj mwajpgpe.obj mwaQRjpg.obj 
+JPEGFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj
+!endif
+
+!if $d(RUNTIME)
+OBJFILES = $(JPEGFILES)
+!else
+OBJFILES = $(JPEGFILES) jpeg_reg.obj mwajpgpe.obj mwaQRjpg.obj 
 !endif
 RESFILES = mwajpg.res
 MAINSOURCE = mwajpg.cpp
@@ -33,6 +38,7 @@ PACKAGES = rtl.bpi vcl.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi bdertl.bpi \
 SPARELIBS = rtl.lib vcl.lib vclx.lib vcljpg.lib bcbsmp.lib qrpt.lib dbrtl.lib \
     vcldb.lib bdertl.lib ibsmp.lib vcldbx.lib teeui.lib teedb.lib tee.lib \
     nmfast.lib dclocx.lib
+
 !elif $d(B6)
 VERSION = BCB.06.00
 LIBRARIES = dclocx.lib nmfast.lib tee.lib teedb.lib teeui.lib vcldbx.lib ibsmp.lib 
@@ -40,6 +46,7 @@ PACKAGES = rtl.bpi vcl.bpi qrpt.bpi vclx.bpi bcbsmp.bpi dbrtl.bpi vcldb.bpi \
     bdertl.bpi designide.bpi
 SPARELIBS = rtl.lib vcl.lib vclx.lib vcljpg.lib bcbsmp.lib dbrtl.lib vcldb.lib \
 		bdertl.lib vcldbx.lib teeui.lib teedb.lib tee.lib 
+
 !elif $d(B5)
 VERSION = BCB.05.03
 LIBRARIES = dclocx50.lib nmfast50.lib tee50.lib teedb50.lib teeui50.lib vcldbx50.lib \
@@ -49,6 +56,7 @@ PACKAGES = vcl50.bpi qrpt50.bpi vclx50.bpi bcbsmp50.bpi vcldb50.bpi vclbde50.bpi
 SPARELIBS = vcl50.lib vclx50.lib vcljpg50.lib bcbsmp50.lib qrpt50.lib vcldb50.lib \
     vclbde50.lib ibsmp50.lib vcldbx50.lib teeui50.lib teedb50.lib tee50.lib \
     nmfast50.lib dclocx50.lib
+
 !elif $d(B4)
 VERSION = BCB.04.04
 LIBRARIES = dclocx40.lib nmfast40.lib tee40.lib teedb40.lib teeui40.lib vcldbx40.lib \
@@ -57,12 +65,14 @@ SPARELIBS =  Vcl40.lib vclx40.lib vcljpg40.lib bcbsmp40.lib qrpt40.lib vcldb40.l
   ibsmp40.lib vcldbx40.lib teeui40.lib teedb40.lib tee40.lib nmfast40.lib \
   dclocx40.lib
 PACKAGES = vcl40.bpi dbx40.bpi qrpt40.bpi Vclx40.bpi bcbsmp40.bpi Vcldb40.bpi
+
 !elif $d(B3)
 VERSION = BCB.03
 LIBRARIES = 
 SPARELIBS =  VCL35.lib vcldb35.lib Qrpt35.lib vclx35.lib
 PACKAGES = vcl35.bpi vcldb35.bpi qrpt35.bpi vclx35.bpi
 !endif
+
 DEFFILE = 
 OTHERFILES = 
 # ---------------------------------------------------------------------------
@@ -83,20 +93,24 @@ PATHOBJ = .;$(LIBPATH)
 CFLAG1 = -Od -H="$(BCB)\lib\vcl100.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR) 
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
+
 !elif $d(B6)
 CFLAG1 = -Od -H="$(BCB)\lib\vcl60.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
+
 !elif $d(B5)
 CFLAG1 = -Od -H="$(BCB)\lib\vcl50.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
     -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
+
 !elif $d(B4)
 CFLAG1 = -I".;$(BCB)\include;$(BCB)\include\vcl" -Od -Hc -H="$(BCB)\lib\vcl40.csm" \
   -w -Ve -r- -a8 -k -y -v -vi- -c -b- -w-par -w-inl -Vx -tWM \
   -D$(SYSDEFINES);$(USERDEFINES)
 PFLAGS = -U"$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(RELEASELIBPATH)" \
   -D$(PDEFS);$(DLLSTATE) -I"$(BCB)\include;$(BCB)\include\vcl" -$YD -$W -$O- -OObj -v -JPHNE -M -U$(UNITDIR) -N$(UNITDIR)
+
 !elif $d(B3)
 CFLAG1 = -Od -Hc -w -Ve -r- -k -y -v -vi- -c -b- -w-par -w-inl -Vx \
   -D_RTLDLL;USEPACKAGES -I".;$(BCB)\include;$(BCB)\include\vcl" \

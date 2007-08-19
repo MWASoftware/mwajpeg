@@ -142,6 +142,7 @@ rem MAKE BDS 2006
 IF NOT EXIST "%D10%\bin\dcc32.exe" goto D11
 call :mkdir Units\d10
 call :mkdir Packages\d10
+
 If NOT EXIST "%D10%\QuickRep\bpl\QR4runD2006.dcp" goto D10QRSTD
 call :mkdir Packages\QR\d10
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4DesignD2006 -u"%D10%\QuickRep\bpl" /OObj /NUnits\D10  /LEPackages\QR
@@ -149,8 +150,9 @@ IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\QR\D10\dclmwajpg.dcp
 move mwajpg.bpi Packages\QR\D10\dclmwajpg.bpi
 move mwajpg.lib Packages\QR\D10\dclmwajpg.lib
+
 :D10QRSTD
-If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto D10STD
+If NOT EXIST "%D10%\QRStandard\QR4StdRunD2006.dcp" goto C10
 call :mkdir Packages\QRstd
 call :mkdir Packages\QRstd\d10
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4StdDesD2006 -u"%D10%\QRStandard" /OObj /NUnits\D10  /LEPackages\QRstd
@@ -158,12 +160,29 @@ IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\QRstd\D10\dclmwajpg.dcp
 move mwajpg.bpi Packages\QRstd\D10\dclmwajpg.bpi
 move mwajpg.lib Packages\QRstd\D10\dclmwajpg.lib
+
+:C10
+If NOT EXIST "%D10%\projects\lib\QR4DesignC2006.bpi" goto D10STD
+Call :mkdir Units\c2006
+Call :mkdir Packages\c2006
+Call :mkdir Packages\QR\c2006
+Set BCB=%D10%
+"%D10%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DC2006 -DUNITDIR=Units\c2006
+IF ERRORLEVEL 1 goto Quit
+Set C2006=
+move *.obj units\c2006
+move mwajpg.bpl Packages\QR\dclmwajpgC2006.bpl
+move mwajpg.bpi Packages\QR\c2006\dclmwajpg.bpi
+move mwajpg.dcp Packages\QR\c2006\dclmwajpg.dcp
+move mwajpg.lib Packages\QR\c2006\dclmwajpg.lib
+
 :D10STD
 "%D10%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /OObj /B /Z- /JL /UUnits\d10 /NUnits\D10 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\D10\dclmwajpg.dcp
 move mwajpg.bpi Packages\D10\dclmwajpg.bpi
 move mwajpg.lib Packages\D10\dclmwajpg.lib
+
 "%D10%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D10 /NUnits\D10 /JL /LNPackages\D10 /LEPackages /NBPackages\D10
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.lib Packages\D10\mwajpg.lib
@@ -173,17 +192,6 @@ IF ERRORLEVEL 1 goto Quit
 "%D10%\bin\dcc32" source\jpeglib.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0. /NHUnits\d10 /NOUnits\d10
 IF ERRORLEVEL 1 goto Quit
 del jpeglib.dcu
-If NOT EXIST "%D10%\projects\lib\QR4DesignC2006.bpi" goto D11
-Call :mkdir Units\c2006
-Call :mkdir Packages\c2006
-Call :mkdir Packages\QR\c2006
-Set BCB=%D10%
-"%D10%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DC2006 -DUNITDIR=Units\c2006
-IF ERRORLEVEL 1 goto Quit
-Set C2006=
-move mwajpg.bpl Packages\QR\dclmwajpgC2006.bpl
-move mwajpg.bpi Packages\QR\c2006\dclmwajpg.bpi
-del mwajpg.lib
 
 rem MAKE Delphi 2007
 
