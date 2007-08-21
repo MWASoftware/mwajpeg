@@ -14,15 +14,15 @@ BCB = $(MAKEDIR)\..
 # ---------------------------------------------------------------------------
 PROJECT = .\mwajpg.bpl
 !if $d(B3) || $d(B4) || $d(B5)
-JPEGFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj macros.obj
+JPEGFILES =  jpeglib.obj macros.obj mwajpeg.obj  mwadbjpg.obj mwajpg.obj 
 !else
-JPEGFILES = mwajpeg.obj  mwadbjpg.obj mwajpg.obj jpeglib.obj
+JPEGFILES =  jpeglib.obj mwajpeg.obj  mwadbjpg.obj mwajpg.obj
 !endif
 
 !if $d(RUNTIME)
 OBJFILES = $(JPEGFILES)
 !else
-OBJFILES = $(JPEGFILES) jpeg_reg.obj mwajpgpe.obj mwaQRjpg.obj 
+OBJFILES = $(JPEGFILES)  mwajpgpe.obj mwaQRjpg.obj jpeg_reg.obj
 !endif
 RESFILES = mwajpg.res
 MAINSOURCE = mwajpg.cpp
@@ -78,7 +78,7 @@ OTHERFILES =
 # ---------------------------------------------------------------------------
 DEBUGLIBPATH = $(BCB)\lib\debug
 RELEASELIBPATH = $(BCB)\lib\release
-USERDEFINES = 
+USERDEFINES = QREPORT2
 SYSDEFINES = _RTLDLL;NO_STRICT;USEPACKAGES
 INCLUDEPATH = $(UNITDIR);source;source\cbuilder;.;$(BCB)\include;$(BCB)\include\vcl
 LIBPATH = source;source\cbuilder;$(UNITDIR);$(BCB)\Lib;$(BCB)\lib\obj;$(RESPATH);$(BCB)\lib\release
@@ -91,7 +91,7 @@ PATHOBJ = .;$(LIBPATH)
 # ---------------------------------------------------------------------------
 !if $d(C2006)
 CFLAG1 = -Od -H="$(BCB)\lib\vcl100.csm" -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- \
-    -c -tWM -n$(UNITDIR) 
+    -c -tWM -n$(UNITDIR)
 PFLAGS = -$YD -$W -$O- -$A8 -v -JPHNE -M -D$(PDEFS);$(DLLSTATE);CBUILDER5 -OObj -U$(UNITDIR) -N0$(UNITDIR) -NO. -NH$(UNITDIR)
 
 !elif $d(B6)

@@ -166,6 +166,7 @@ If NOT EXIST "%D10%\projects\lib\QR4DesignC2006.bpi" goto D10STD
 Call :mkdir Units\c2006
 Call :mkdir Packages\c2006
 Call :mkdir Packages\QR\c2006
+del source\*.dcu *.obj *.hpp
 Set BCB=%D10%
 "%D10%\bin\make" -B PDEFS=%DEFS% DLLSTATE=NODLL -f mwajpg.mak -DC2006 -DUNITDIR=Units\c2006
 IF ERRORLEVEL 1 goto Quit
