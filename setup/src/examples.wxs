@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: examples.wxs,v 1.7 2007-08-21 08:11:34 tony Exp $ -->
+<!-- $Id: examples.wxs,v 1.8 2007-08-22 21:47:19 tony Exp $ -->
 <!-- This fragment specifies the example programs -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
@@ -16,17 +16,17 @@
               <Component Id="Ex1DBDemoCB5" DiskId="1" Guid="3F172779-5FD6-4B6B-A2B1-97C10BF3334D">
 	     		<Condition>INSTALLDIRCB5</Condition>
                 <File Id="Examplefile3C5" Name="DBDemo5.bpr" LongName="DBdemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder5.bpr" />
-                <File Id="Examplefile6C5" Name="GRDemo5.dpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder5.bpr" />
+                <File Id="Examplefile6C5" Name="GRDemo5.bpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder5.bpr" />
 			  </Component>
               <Component Id="Ex1DBDemoCB6" DiskId="1" Guid="7A4B8347-BBA8-4660-BED8-8343E83E633A">
 	     		<Condition>INSTALLDIRCB6</Condition>
                 <File Id="Examplefile3C6" Name="DBDemo6.bpr" LongName="DBdemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\DBdemo_cbuilder6.bpr" />
-                <File Id="Examplefile6C6" Name="GRDemo6.dpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder6.bpr" />
+                <File Id="Examplefile6C6" Name="GRDemo6.bpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_cbuilder6.bpr" />
 			  </Component>
               <Component Id="Ex1DBDemoBDS2006" DiskId="1" Guid="726B7ABB-CC5E-4A8D-BD80-9B937AEBF6DC">
 	     		<Condition>INSTALLDIRD2006 and (QR4D2006 or QR4C2006)</Condition>
-                <File Id="Examplefile3C10" Name="DBDemo10.bpr" LongName="DBdemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\DBdemo_BDS2006.bpr" />
-                <File Id="Examplefile6C10" Name="GRDemo10.dpr" LongName="dbGrDemo_BDS2006.bpr" Source="Examples\db\qr\cbuilder\dbGrDemo_BDS2006.bpr" />
+                <File Id="Examplefile3C10" Name="DBDemo10.bpj" LongName="DBdemo_BDS2006.bdsproj" Source="Examples\db\qr\cbuilder\DBdemo_BDS2006.bdsproj" />
+                <File Id="Examplefile6C10" Name="GRDemo10.dpj" LongName="dbGrDemo_BDS2006.bdsproj" Source="Examples\db\qr\cbuilder\dbGrDemo_BDS2006.bdsproj" />
 			  </Component>
               <Component Id="ExDbQrCb" DiskId="1" Guid="D73FF10D-152F-4939-81C1-1554C207F445">
 	     		<Condition>INSTALLDIRCB5 or INSTALLDIRCB6 or (INSTALLDIRD2006 and (QR4D2006 or QR4C2006))</Condition>
@@ -59,7 +59,7 @@
             </Directory>
             <Directory Id="ExampleDir4" Name="delphi">
               <Component Id="ExDbQrDelphi" DiskId="1" Guid="5F9D03B5-045E-429D-B946-B1C001656281">
-	     	    <Condition>INSTALLDIRD6 or INSTALLDIRD7 or (INSTALLDIRD2005 and QR4D2005) or (INSTALLDIRD2006 and (QR4STDD2006 or QR4D2006 or QR4C2006)) or INSTALLDIRD2007</Condition>
+	     	    <Condition>INSTALLDIRD6 or INSTALLDIRD7 or (INSTALLDIRD2005 and QR4D2005) or (INSTALLDIRD2006 and (QR4STDD2006 or QR4D2006 or QR4C2006)) or (INSTALLDIRD2007 and QR4D2007 and D2007)</Condition>
                 <File Id="Examplefile27" Name="about.dfm" Source="Examples\db\qr\delphi\about.dfm" />
                 <File Id="Examplefile28" Name="about.pas" Source="Examples\db\qr\delphi\about.pas" />
                 <File Id="Examplefile29" Name="DBdemo.dpr" Source="Examples\db\qr\delphi\DBdemo.dpr" />
@@ -86,20 +86,25 @@
               <Component Id="Ex2DBDemoCB5" DiskId="1" Guid="BCA6D58F-E808-4F95-9A19-4A854F0FC680">
 	     		<Condition>INSTALLDIRCB5</Condition>
                 <File Id="Examplefile52C5" Name="DBDemo5.bpr" LongName="DBdemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder5.bpr" />
-                <File Id="Examplefile55C5" Name="GRDemo5.dpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder5.bpr" />
+                <File Id="Examplefile55C5" Name="GRDemo5.bpr" LongName="dbGrDemo_cbuilder5.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder5.bpr" />
 			  </Component>
               <Component Id="Ex2DBDemoCB6" DiskId="1" Guid="C9516475-FBBF-4662-B4C0-52C3BE8E4C21">
 	     		<Condition>INSTALLDIRCB6</Condition>
                 <File Id="Examplefile52C6" Name="DBDemo6.bpr" LongName="DBdemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\DBdemo_cbuilder6.bpr" />
-                <File Id="Examplefile55C6" Name="GRDemo6.dpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder6.bpr" />
+                <File Id="Examplefile55C6" Name="GRDemo6.bpr" LongName="dbGrDemo_cbuilder6.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_cbuilder6.bpr" />
 			  </Component>
               <Component Id="Ex2DBDemoBDS2006" DiskId="1" Guid="6B35F353-597E-48C7-AB7A-4A17C0236586">
 	     		<Condition>INSTALLDIRD2006</Condition>
-                <File Id="Examplefile52C10" Name="DBDemo10.bpr" LongName="DBdemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\DBdemo_BDS2006.bpr" />
-                <File Id="Examplefile55C10" Name="GRDemo10.dpr" LongName="dbGrDemo_BDS2006.bpr" Source="Examples\db\std\cbuilder\dbGrDemo_BDS2006.bpr" />
+                <File Id="Examplefile52C10" Name="DBDemo10.bpj" LongName="DBdemo_BDS2006.bdsproj" Source="Examples\db\std\cbuilder\DBdemo_BDS2006.bdsproj" />
+                <File Id="Examplefile55C10" Name="GRDemo10.bpj" LongName="dbGrDemo_BDS2006.bdsproj" Source="Examples\db\std\cbuilder\dbGrDemo_BDS2006.bdsproj" />
+			  </Component>
+              <Component Id="Ex2DBDemoBDS2007" DiskId="1" Guid="B59C64A8-A54F-4B51-9139-8FB3C5AB8F03">
+	     		<Condition>INSTALLDIRD2007 and C2007</Condition>
+                <File Id="Examplefile52C11" Name="DBDemo11.cpr" LongName="DBdemo_BDS2007.cbproj" Source="Examples\db\std\cbuilder\DBdemo_BDS2007.cbproj" />
+                <File Id="Examplefile55C11" Name="GRDemo11.cpr" LongName="dbGrDemo_BDS2007.cbproj" Source="Examples\db\std\cbuilder\dbGrDemo_BDS2007.cbproj" />
 			  </Component>
               <Component Id="Exdbstdcb" DiskId="1" Guid="023B612E-D710-4F54-8526-4E5F684445D7">
-	     		<Condition>INSTALLDIRCB5 or INSTALLDIRCB6 or INSTALLDIRD2006</Condition>
+	     		<Condition>INSTALLDIRCB5 or INSTALLDIRCB6 or INSTALLDIRD2006 or (INSTALLDIRD2007 and C2007)</Condition>
                 <File Id="Examplefile49" Name="about.cpp" Source="Examples\db\std\cbuilder\about.cpp" />
                 <File Id="Examplefile50" Name="about.dfm" Source="Examples\db\std\cbuilder\about.dfm" />
                 <File Id="Examplefile51" Name="about.h" Source="Examples\db\std\cbuilder\about.h" />
@@ -126,7 +131,7 @@
             </Directory>
             <Directory Id="ExampleDir8" Name="delphi">
               <Component Id="ExdbstdDelphi" DiskId="1" Guid="CB319197-32E4-4078-80FF-C1D02BBB6AED">
-	     	    <Condition>INSTALLDIRD6 or INSTALLDIRD7 or INSTALLDIRD2005 or INSTALLDIRD2006 or INSTALLDIRD2007</Condition>
+	     	    <Condition>INSTALLDIRD6 or INSTALLDIRD7 or INSTALLDIRD2005 or INSTALLDIRD2006 or (INSTALLDIRD2007 and D2007)</Condition>
                 <File Id="Examplefile73" Name="about.dfm" Source="Examples\db\std\delphi\about.dfm" />
                 <File Id="Examplefile74" Name="about.pas" Source="Examples\db\std\delphi\about.pas" />
                 <File Id="Examplefile75" Name="DBdemo.dpr" Source="Examples\db\std\delphi\DBdemo.dpr" />
@@ -161,10 +166,14 @@
   		     </Component>
              <Component Id="Ex3DBDemoBDS2006" DiskId="1" Guid="554FA3BA-766B-4A6C-8DCE-E7F5DFF640A9">
      		   <Condition>INSTALLDIRD2006</Condition>
-              <File Id="Examplefile943" Name="VDemo10.bpr" LongName="jpegdemo_BDS2006.bpr" Source="Examples\Viewer\cbuilder\jpegdemo_BDS2006.bpr" />
+              <File Id="Examplefile943" Name="VDemo10.bpj" LongName="jpegdemo_BDS2006.bdsproj" Source="Examples\Viewer\cbuilder\jpegdemo_BDS2006.bdsproj" />
+			 </Component>
+             <Component Id="Ex3DBDemoBDS2007" DiskId="1" Guid="07A818A4-92A0-400D-8D0E-490353D34C93">
+     		   <Condition>INSTALLDIRD2007 and C2007</Condition>
+              <File Id="Examplefile9433" Name="VDemo11.cpr" LongName="jpegdemo_BDS2007.cbproj" Source="Examples\Viewer\cbuilder\jpegdemo_BDS2007.cbproj" />
 			 </Component>
             <Component Id="ExViewerCB" DiskId="1" Guid="0F4F673E-FC81-48CE-B537-1007A6EFAB59">
-      		  <Condition>INSTALLDIRCB5 or INSTALLDIRCB6 or INSTALLDIRD2006</Condition>
+      		  <Condition>INSTALLDIRCB5 or INSTALLDIRCB6 or INSTALLDIRD2006 or (INSTALLDIRD2007 and C2007)</Condition>
               <File Id="Examplefile91" Name="about.cpp" Source="Examples\Viewer\cbuilder\about.cpp" />
               <File Id="Examplefile92" Name="about.dfm" Source="Examples\Viewer\cbuilder\about.dfm" />
               <File Id="Examplefile93" Name="about.h" Source="Examples\Viewer\cbuilder\about.h" />
@@ -182,7 +191,7 @@
           </Directory>
           <Directory Id="ExampleDir11" Name="delphi">
             <Component Id="ExViewerDelphi" DiskId="1" Guid="CE6EF22B-E242-4869-8DF9-75EEB96AB3C7">
-     	      <Condition>INSTALLDIRD6 or INSTALLDIRD7 or INSTALLDIRD2005 or INSTALLDIRD2006 or INSTALLDIRD2007</Condition>
+     	      <Condition>INSTALLDIRD6 or INSTALLDIRD7 or INSTALLDIRD2005 or INSTALLDIRD2006 or (INSTALLDIRD2007 and D2007)</Condition>
               <File Id="Examplefile105" Name="ABOUT.dfm" Source="Examples\Viewer\delphi\ABOUT.dfm" />
               <File Id="Examplefile106" Name="ABOUT.PAS" Source="Examples\Viewer\delphi\ABOUT.PAS" />
               <File Id="Examplefile107" Name="jpegdemo.dpr" Source="Examples\Viewer\delphi\jpegdemo.dpr" />
@@ -203,12 +212,14 @@
 	  <ComponentRef Id="Ex1DBDemoCB5"/>
 	  <ComponentRef Id="Ex1DBDemoCB6"/>
 	  <ComponentRef Id="Ex1DBDemoBDS2006"/>
-	  <ComponentRef Id="Ex2DBDemoCB5"/>
+  	  <ComponentRef Id="Ex2DBDemoCB5"/>
 	  <ComponentRef Id="Ex2DBDemoCB6"/>
 	  <ComponentRef Id="Ex2DBDemoBDS2006"/>
+ 	  <ComponentRef Id="Ex2DBDemoBDS2007"/>
 	  <ComponentRef Id="Ex3DBDemoCB5"/>
 	  <ComponentRef Id="Ex3DBDemoCB6"/>
 	  <ComponentRef Id="Ex3DBDemoBDS2006"/>
+	  <ComponentRef Id="Ex3DBDemoBDS2007"/>
 	  <ComponentRef Id="ExDbQrCb"/>
 	  <ComponentRef Id="ExDbQrDelphi"/>
 	  <ComponentRef Id="Exdbstdcb"/>

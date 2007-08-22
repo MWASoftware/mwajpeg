@@ -96,8 +96,11 @@ rem MAKE Delphi 2007
 :D11
 call :mkdir evaluationUnits\d11
 IF NOT EXIST "%D11%\bin\dcc32.exe" goto CB5
-"%D11%\bin\dcc32" source\mwadbjpg.pas /DDELPHI_REQUIRED;NODLL /$D-,L-,Y-,R- /B /Z- /OObj /NevaluationUnits\D11 
+"%D11%\bin\dcc32" source\mwadbjpg.pas /DDELPHI_REQUIRED;NODLL /$D-,L-,Y-,R- /JPHNE /B /Z- /OObj /N0evaluationUnits\D11 /NOevaluationUnits\D11 /NHevaluationUnits\D11 
 IF ERRORLEVEL 1 goto QUIT1
+"%D11%\bin\dcc32" source\jpeglib.pas /DDELPHI_REQUIRED;NODLL;CBUILDER; /$D-,L-,Y-,R- /JPHNE /B /Z- /OObj /N0. /NOevaluationUnits\D11 /NHevaluationUnits\D11
+IF ERRORLEVEL 1 goto QUIT1
+del jpeglib.dcu
 
 rem Make C++ Builder 
 rem

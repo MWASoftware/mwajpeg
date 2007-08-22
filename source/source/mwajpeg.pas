@@ -1179,8 +1179,10 @@ begin
      (GetWindowText(Handle,@WTextBuffer,sizeof(WTextBuffer)) > 0) then
   begin
      ClassName := StrPas(ClassNameBuffer);
-     if (ClassName = 'TAppBuilder')  and
-        (Pos('CodeGear Delphi',StrPas(WTextBuffer)) > 0) then Proof1 := true
+     if (ClassName = 'TAppBuilder')  and (
+        (Pos('CodeGear Delphi',StrPas(WTextBuffer)) > 0) or
+        (Pos('CodeGear C++Builder',StrPas(WTextBuffer)) > 0) 
+     ) then Proof1 := true
   end;
   Result := not Proof1
 end;

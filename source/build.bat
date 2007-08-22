@@ -203,16 +203,21 @@ call :mkdir Packages\d11
 
 If NOT EXIST "%D11%\QuickRep\bpl\QR4runD2007.dcp" goto D11STD
 call :mkdir Packages\QR\d11
-"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /LUQR4DesignD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11  /LEPackages\QR
+"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;QREPORTS;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /LUQR4DesignD2007 -u"%D11%\QuickRep\bpl" /OObj /NUnits\D11  /LEPackages\QR
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\QR\D11\dclmwajpg.dcp
 :D11STD
-"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /NUnits\D11 /LEPackages 
+"%D11%\bin\dcc32" mwajpg.dpk /DDESIGNTIME;NODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /JL /OObj /NUnits\D11 /LEPackages 
 IF ERRORLEVEL 1 goto Quit
 move mwajpg.dcp Packages\D11\dclmwajpg.dcp
-"%D11%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /UUnits\D11 /NUnits\D11 /LNPackages\D11 /LEPackages
+"%D11%\bin\dcc32" mwajpg.dpk /DNODLL;%DEFS% /$D-,L-,Y-,R- /B /Z- /OObj /JL /UUnits\D11 /N0Units\D11 /NOUnits\D11 /NHUnits\D11 /LNPackages\D11 /LEPackages
 IF ERRORLEVEL 1 goto Quit
 del Units\D11\jpegreg2.dcu Units\D11\mwajpg.dcu
+"%D10%\bin\dcc32" source\mwadbjpg.pas /DNODLL;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0Units\d11 /NHUnits\d11 /NOUnits\d11
+IF ERRORLEVEL 1 goto Quit
+"%D11%\bin\dcc32" source\jpeglib.pas /DNODLL;CBUILDER;%DEFS% /$D-,L-,Y-,R- /JPHNE /B  /OObj  /N0. /NHUnits\d11 /NOUnits\d11
+IF ERRORLEVEL 1 goto Quit
+del jpeglib.dcu
 
 rem
 rem Make C++ Builder 

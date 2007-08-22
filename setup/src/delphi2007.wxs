@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: delphi2007.wxs,v 1.9 2007-08-11 16:10:32 tony Exp $ -->
+<!-- $Id: delphi2007.wxs,v 1.10 2007-08-22 21:47:19 tony Exp $ -->
 
 <!-- This Fragment installs the Files for Delphi 2007 -->
 
@@ -13,14 +13,28 @@
 
 <?ifdef EVALUATION?>
 <?define dcuDir="source\evaluationUnits\d11"?>
+<?define objDir="source\evaluationUnits\d11"?>
 <?define guidJPEGLIB="51668FE9-18C7-41A0-84CD-EDFC62376940"?>
 <?define guidMWAJPEG="F0B68401-D02F-476F-A490-7CDBF0A538FE"?>
 <?define guidMWADBJPEG="2478D29D-EDCF-4919-8BCB-02E9B16ACE42"?>
+<?define guidObj1VER185="FD591243-08A7-4D1C-9BD9-612FEF0EDD65"?>
+<?define guidObj2VER185="FEE24729-62C6-4CA2-91A5-35C894AC76F3"?>
+<?define guidObj3VER185="9EB07F49-BD87-4F75-BD0F-7D2AF83BFB72"?>
+<?define guidHdr1VER185="A8A52D47-3451-4856-8132-8F8FCF998D36"?>
+<?define guidHdr2VER185="6926DEC9-310A-44CE-BFEF-B7F589C0BF6D"?>
+<?define guidHdr3VER185="DE27AC24-0CC3-4948-A4DD-E00FD1E7E9AD"?>
 <?else?>
 <?define dcuDir="source\Units\d11"?>
+<?define objDir="source\Units\d11"?>
 <?define guidJPEGLIB="3D658EAB-3272-4212-9179-215F1FC04A69"?>
 <?define guidMWAJPEG="8F4BC71B-E2B7-4EA7-8D11-0239114CE0D2"?>
 <?define guidMWADBJPEG="B2E81CD0-0D8F-4F62-8EF7-9A2C58AFC777"?>
+<?define guidObj1VER185="47F039FD-5019-4A6E-9ED2-473EF555AFAA"?>
+<?define guidObj2VER185="DB0408E4-69DB-4FF5-8F30-B010C9632530"?>
+<?define guidObj3VER185="6050B47E-60C7-4A36-955B-D2924E1B31BE"?>
+<?define guidHdr1VER185="8AC41B73-E535-4DFA-A3EC-A2BA65AC47E9"?>
+<?define guidHdr2VER185="D638C349-660F-45D3-AD1A-71A56D13A049"?>
+<?define guidHdr3VER185="7F64ED83-88A8-4F5E-8448-1BCFF81A6AC9"?>
 <?endif?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
@@ -29,6 +43,16 @@
   <Property Id="INSTALLDIRD2007">
     <RegistrySearch Id="ROOTVER185" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0"
                       Name="RootDir" Type="directory" />
+  </Property>
+
+  <Property Id="D2007">
+    <RegistrySearch Id="DelphiPersonality" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0\Personalities"
+                      Name="Delphi.Win32" Type="raw" />
+  </Property>
+
+  <Property Id="C2007">
+    <RegistrySearch Id="BCBPersonality" Root="HKLM" Key="SOFTWARE\Borland\BDS\5.0\Personalities"
+                      Name="BCB" Type="raw" />
   </Property>
 
   <CustomTable Id="MWARegSearchParams" >
@@ -142,7 +166,42 @@
 		  <File Id="mwaQRjpgpasVER185" Name="mwaQRjpg.pas"
 		  	    Source="source\source\mwaQRjpg.pas" />
  	    </Component>
+
+        <!-- obj Files -->
+
+        <Directory Id="LibDirVER185" Name="obj">
+        <Component Id="Obj1VER185" DiskId="1" Guid="$(var.guidObj1VER185)">
+	     <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="jpeglibobjVER185" Name="jpeglib.obj" Source="$(var.objDir)\jpeglib.obj" />
+        </Component>
+        <Component Id="Obj2VER185" DiskId="1" Guid="$(var.guidObj2VER185)">
+	     <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="mwadbjpgobjVER185" Name="mwadbjpg.obj" Source="$(var.objDir)\mwadbjpg.obj" />
+        </Component>
+        <Component Id="Obj3VER185" DiskId="1" Guid="$(var.guidObj3VER185)">
+	     <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="mwajpegobjVER185" Name="mwajpeg.obj" Source="$(var.objDir)\mwajpeg.obj" />
+        </Component>
+		</Directory>
 	  </Directory>
+
+
+      <!-- Header Files -->
+
+        <Directory Id="IncludeVER185" Name="include">
+          <Component Id="Hdr1VER185" DiskId="1" Guid="$(var.guidHdr1VER185)">
+	        <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="jpeglibhppVER185" Name="jpeglib.hpp" Source="$(var.dcuDir)\jpeglib.hpp" />
+          </Component>
+          <Component Id="Hdr2VER185" DiskId="1" Guid="$(var.guidHdr2VER185)">
+	        <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="mwadbjpghppVER185" Name="mwadbjpg.hpp" Source="$(var.dcuDir)\mwadbjpg.hpp" />
+          </Component>
+          <Component Id="Hdr3VER185" DiskId="1" Guid="$(var.guidHdr3VER185)">
+	        <Condition>INSTALLDIRD2007 and C2007</Condition>
+            <File Id="mwajpeghppVER185" Name="mwajpeg.hpp" Source="$(var.dcuDir)\mwajpeg.hpp" />
+          </Component>
+        </Directory>
       <?ifndef EVALUATION?>
 
       <!-- Run Time Package -->
@@ -185,6 +244,12 @@
     <ComponentRef Id="mwajpegVER185"/>
     <ComponentRef Id="mwadbjpgVER185"/>
     <ComponentRef Id="mwaQRjpgVER185"/>
+    <ComponentRef Id="Obj1VER185"/>
+    <ComponentRef Id="Obj2VER185"/>
+    <ComponentRef Id="Obj3VER185"/>
+    <ComponentRef Id="Hdr1VER185"/>
+    <ComponentRef Id="Hdr2VER185"/>
+    <ComponentRef Id="Hdr3VER185"/>
     <?ifndef EVALUATION?>
     <ComponentRef Id="dcljpgdcpVER185"/>
     <ComponentRef Id="dcljpgqrdcpVER185"/>
