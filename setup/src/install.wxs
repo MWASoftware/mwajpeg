@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: install.wxs,v 1.14 2007-08-22 21:47:19 tony Exp $ -->
+<!-- $Id: install.wxs,v 1.15 2007-08-27 17:41:16 tony Exp $ -->
 <?define FullUpgradeCode="670DA6B2-6621-48C1-B3E6-648016D43312" ?>
 <?define EvalUpgradeCode="B2B12033-1690-498E-B5E9-FEC543BA6EA9" ?>
 <?ifdef EVALUATION?>
@@ -67,22 +67,18 @@
 	      <Directory Id="JPEGSource" Name="source"  />
 		  <Directory Id="HelpFiles" Name="help">
 		   <Component Id="jpeghelp" Guid="$(var.guidHelpFile)" DiskId="1">
-            <File Id="mwajpeghlp" Name="mwjpeg.hlp" KeyPath="yes"
-				  Source="help\mwjpeg.hlp" >
+            <File Id="mwajpeghlp" Name="mwajpeg.chm" KeyPath="yes"
+				  Source="help\delphi\mwajpeg.chm" >
               <Shortcut Id="startmenuhelp" Directory="ProgramMenuDir" Name="Help"
                   LongName="Help for Delphi" WorkingDirectory='HelpFiles' />
 			</File>
-            <File Id="mwajpegcnt" Name="mwjpeg.cnt"
-				  Source="help\mwjpeg.cnt" />
            </Component>
 		   <Component Id="jpeghelpcb" Guid="$(var.guidHelpCBFile)" DiskId="1">
-            <File Id="mwajpegcbhlp" Name="mwajpgcb.hlp" LongName="mwjpegcb.hlp" KeyPath="yes"
-				  Source="help\mwjpegcb.hlp" >
+            <File Id="mwajpegcbhlp" Name="mwajpegc.chm" KeyPath="yes"
+				  Source="help\cbuilder\mwajpeg.chm" >
               <Shortcut Id="startmenucbhelp" Directory="ProgramMenuDir" Name="Helpcb"
                   LongName="Help for C++Builder" WorkingDirectory='HelpFiles' />
 			</File>
-            <File Id="mwajpegcbcnt" Name="mwajpgcb.cnt" LongName="mwjpegcb.cnt"
-				  Source="help\mwjpegcb.cnt" />
            </Component>
 		  </Directory>
 		  <Component Id="jpeglicence" Guid="$(var.guidLicence)" DiskId="1">

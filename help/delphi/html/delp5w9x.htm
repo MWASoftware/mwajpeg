@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>How to make a JPEG Image into a user defined resource</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="Resources">
+</OBJECT>
+
+<P><A NAME="topic_jpegresource"></A><B>How to make a JPEG Image into a user defined resource</B></P>
+
+<P>The methods <A HREF="delp4rol.htm">LoadPictureFromResource</A> and <A HREF="delp4j38.htm">LoadPictureFromResID</A> provide ways of loading a JPEG Image at run time into a TPicture from a user defined resource. (An example is provided by the Viewer Demo program’s about box).</P>
+
+<P>Such a resource is simply binary data linked into the same .exe file as the program and accessed at run-time by either a name or a numeric identifier. It is created using the command line tool BRCC.EXE (Delphi 1) or BRCC32.EXE (all other versions).</P>
+
+<P>To create such a resource, you must first create a text file (you may use any available text editor such as Notepad), containing a line for each image that you want to make into a resource. This line will be in the form:</P>
+
+<p class="code">&lt;name&gt; JPEG DISCARDABLE &lt;jpegfilename&gt;</p>
+
+<P>The &lt;name&gt; can be any unique string (that is if you bind in multiple JPEG images, each must have a different name), and the &lt;jpegfilename&gt; is simply the filename and path (including extension) of the file containing the JPEG Image. Alternatively, &lt;name&gt; can be a unique number (&gt; 256).</P>
+
+<P>For example, if the JPEG Image is in the file “MyImage.jpg” (in the current directory) and you decide to name it “MyPhoto”. Then this line will read:</P>
+
+<p class="code">MyPhoto JPEG DISCARDABLE MyImage.jpg</p>
+
+<P>Save this text file in the same directory as the project .pas files and give it a name with the extension “.rc” (e.g. “MyPhoto.rc”). You must now compile it with Brcc or Brcc32 from the command line. E.g.</P>
+
+<p class="code">BRCC32 MyImage.rc</p>
+
+<P>Note that the above assumes that “MyImage.rc” is in the current directory and that BRCC32.EXE is in your program path. If not, then you will have to provide its path explicitly. Note this utility is installed into the Delphi\bin directory.</P>
+
+<P>Once BRCC32 finishes, it will create a .res file with the same name as the .rc file (e.g. “MyPhoto.res”) in the same directory. The final step is to link the .res file into your program. This is done by putting a directive into one of your project’s .pas files (typically the same one that loads the resource) i.e.</P>
+
+<p class="code">{$R MyPhoto.res}</p>
+
+<P>on a line by itself (note that Delphi always puts a similar directive into your .pas files for the .dfm file).</P>
+
+<P>All you have to do now is to compile your program and load the resource!</P>
+
+</BODY>
+</HTML>

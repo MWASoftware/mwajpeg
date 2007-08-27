@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>ABOUT THE COMPONENT LIBRARY</TITLE>
+
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="ABOUT THE COMPONENT LIBRARY">
+</OBJECT>
+
+<H1><SUP><A NAME="topic_aboutthecomponentlibrary"></A></SUP>ABOUT THE COMPONENT LIBRARY</H1>
+
+<P>The JPEG Component Library provides two additional non-visual components for use under either the various versions of Delphi, C++Builder and the Borland Developer Studio, Win16 and Win32 environments. It also provides a Data Aware JPEG Image component which may be used to save and access JPEG encoded images in a database blob field. A corresponding printable component is also provided so that you may print images from a database using Quick Reports. Not that Quick Reports is only available with Delphi 2005, 2007 or the Borland Developer Studio 2006 when you also have Quick Reports 4 installed. </P>
+
+<P>The two non-visual components are <A HREF="comm2982.htm">TJPEGFileCompressor</A> and <A HREF="comm5c1e.htm">TJPEGFileDecompressor</A>. These support compression of images to JPEG Format and decompression respectively. The data aware component is<A HREF="comm82lh.htm">TDBJPEGImage</A>, and the printable component is<A HREF="comm0v51.htm">TQRDBJPEGImage</A>.</P>
+
+<P>Simply installing these components JPEG enables the Delphi IDE. The components register themselves as supporting .jpg files and the JPEG compression format and, when you come to load an image into a TImage Picture, the JPEG format will be found amongst the list of supported file formats. An image loaded from a JPEG source can also be saved back to JPEG. These components support the JPEG File Interchange Format (JFIF).</P>
+
+<P>These two components also support TImage at run-time too. As at design time, if TJPEGFileDecompressor is included in your project, then calling TImage.Picture.LoadFromFile when the file extension is .jpg will automatically invoke the JPEG decompressor. You can also explicitly call TJPEGFileDecompressor to load a JPEG image from any file.</P>
+
+<P>TJPEGFileCompressor can be used to save a TImage.Picture in JPEG format, and can handle pictures that are either bitmaps or metafiles. It can also compress a device independent bitmap, and change the size of bitmaps before compression.</P>
+
+<P>TDBJPEGImage is linked to a database blob field and also uses TJPEGFileDecompressor and TJPEGFileCompressor to save and load JPEG encoded images from the Blob Field. Use of the JPEG compressor and decompressor components can be implicit if the default parameter settings are sufficient. On the other hand, the reference may be explicit to copies of these components with non-default parameter settings. TQRDBJPEGImage can be used to print a JPEG Image using Quick Reports 2. </P>
+
+<P>This software uses original software for JPEG developed by the Independent JPEG Group (see ftp://ftp.uu.net/graphics/jpeg). The IDG have made available a library of generic 'C' code supporting JPEG compression and decompression and have permitted its free use provided the source is acknowledged. The IDG code has been modified for use with Delphi and MS Windows and is provided as compiled object files. Optionally, they may be separately compiled into a dll.</P>
+
+<P>An interface to this software is provided by the unit jpeglib.pas. This is encapsulated as a set of Delphi components in the unit mwajpeg.pas, which also supports the mapping of the environment independent image format expected by the IJG code into MS Windows bitmap and metafile formats.</P>
+
+<P>When you purchase a licence to this product, you purchase a licence for the source code to the mwajpeg and jpeglib units and the right to include binaries derived from them in your own products without having to pay additional royalties. You also have a right to freely distribute the mwjpeg and mwjpeg32 dlls (if used), and copies of the modified 'C' source is also included in the registered version. Support is also provided by EMail albeit without a guaranteed response time. </P>
+
+</BODY>
+</HTML>

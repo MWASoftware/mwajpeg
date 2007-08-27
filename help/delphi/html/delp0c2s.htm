@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DCTMethod Property</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="DCTMethod">
+</OBJECT>
+
+<p class="code"><SUP><A NAME="topic_dctmethod"></A></SUP>DCTMethod: J_DCT_METHOD;</p>
+
+<P><B>Classes: <A HREF="comm5c1e.htm">TJPEGFileDecompressor</A> and  <A HREF="comm2982.htm">TJPEGFileCompressor</A></B></P>
+
+<P>Selects the algorithm used for the DCT quantisation step.  Choices are: </P>
+
+<TABLE cols=2 width=372>
+
+<TR VALIGN="top">
+<TD width=35%>JDCT_ISLOW:</TD>
+<TD width=65%>slow but accurate integer algorithm </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>JDCT_IFAST:</TD>
+<TD width=65%>faster, less accurate integer method </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=35%>JDCT_FLOAT:</TD>
+<TD width=65%>floating-point method. </TD>
+</TR>
+</TABLE><BR>
+
+<P>The FLOAT method is very slightly more accurate than the ISLOW method, but may give different results on different machines due to varying roundoff behaviour.  The integer methods should give the same results on all machines.  On machines with sufficiently fast FP hardware, the floating-point method may also be the fastest.  The IFAST method is considerably less accurate than the other two; its use is not recommended if high quality is a concern.  </P>
+
+</BODY>
+</HTML>

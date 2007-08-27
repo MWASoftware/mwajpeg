@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>USING THE JPEG DEMO APPLICATION</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="USING THE JPEG DEMO APPLICATION">
+</OBJECT>
+
+<H1><SUP><A NAME="topic_usingthejpegdemoapplication"></A></SUP>USING THE JPEG DEMO APPLICATIONS</H1>
+
+<P>Two demo applications are provided. A JPEG Viewer application demonstrates the opening and saving JPEG image files and conversion to and from bitmap files (.bmp) and from Windows Metafiles (.wmf). A database application demonstrates use of the data aware component.</P>
+
+<P>The JPEG Viewer application may be found in the Examples\Viewer subdirectory created above (note that for Delphi 2 and C++Builder 1) there are two versions for Quick Reports 1 and 2, in the Q1 and Q2 subdirectories respectively). To activate, load the jpegdemo.dpr file into the IDE using the File|Open Project menu item. This provides a simple application that can open and save .jpg (JPEG), .bmp (Windows Bitmap) and .wmf (Windows metfaile) files, and copy and paste bitmaps and metafiles to and from the clipboard. To test out, simply compile and run the application.</P>
+
+<P>To load and view a JPEG file, click on the open button and load the test.jpg file contained in the subdirectory created above. You can also try saving it to another file name (you can save it as either a JPEG or a bitmap). You can also use the demo application to convert windows bitmaps and metafiles to jpegs simply by opening the file containing them (or pasting from the clipboard) and saving them as jpegs. The viewer window can also be resized by simply dragging the bottom right hand corner with the mouse. Saving the image will save it at the new size.</P>
+
+<P>The application also demonstrates a simple method for printing a JPEG Image using Quick Reports (even with no database).</P>
+
+<P>You can also use the Object Inspector to see the properties published by the two JPEG components.</P>
+
+<P>The JPEG database application may also be found in the Examples\db subdirectory created above. To activate, load the DBDemo.dpr file into the IDE using the File|Open Project menu item. This application is an extension of the Viewer and presents images held in an example database. The database records may be perused using the DBNavigator bar provided. It is still possible to save images from the database record and to replace/insert images from files or the clipboard. For Delphi 2 and C+++Builder 1, there are again two version of the application for Quick Reports 1 and 2. The application also demonstrates how to print a report including JPEG Images.</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>OnJPEGMarker Property</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="OnJPEGMarker">
+</OBJECT>
+
+<p class="code"><SUP><A NAME="topic_onjpegmarker"></A></SUP>OnJPEGMarker: TJPEGMarkerEvent
+  TJPEGMarkerEvent = procedure(sender: TJPEGBase; Marker: int; var Done: boolean) of object;</p>
+
+<P><B>Class: <A HREF="comm5c1e.htm">TJPEGFileDecompressor</A> </B></P>
+
+<P>This event occurs when any other JPEG marker is found in the JPEG image (except for APP1 the JFIF marker). The marker is identified by the Marker parameter (range 1..13), and the response method may read successive bytes from the stream after the marker by calling the GetByte method (this is a parameterless function that returns a single byte value). Note that marker processing is application specific.</P>
+
+<P>If the marker is not processed, then the response method should return with Done set to false. The marker text will then be skipped, otherwise, Done should be set to true to indicate that the response method has handled the marker itself.</P>
+
+</BODY>
+</HTML>

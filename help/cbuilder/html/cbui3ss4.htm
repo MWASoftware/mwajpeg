@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>Abort</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="Abort">
+</OBJECT>
+
+<p class="code"><A NAME="topic_abort"></A><B>virtual void __fastcall Abort(void);</B></p>
+
+<H2>Classes: <A HREF="comm5c1e.htm">TJPEGFileDecompressor</A> and  <A HREF="comm2982.htm">TJPEGFileCompressor</A></H2>
+
+<P>The Abort method may be called to abandon a compression or decompression operation. It must be called from the same thread as the compression or decompression operation. Practically, this limits its use to an event handler (e.g. <A HREF="cbui9iic.htm">OnProgressReport</A>), when it may be used to abort the operation, perhaps in response to a user cancellation request.</P>
+
+</BODY>
+</HTML>

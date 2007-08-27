@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DitherMode Property</TITLE>
+<link href="mwajpeg.css" rel="stylesheet" type="text/css"></HEAD>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+<OBJECT TYPE="application/x-oleobject" CLASSID="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<PARAM NAME="Keyword" VALUE="DitherMode">
+</OBJECT>
+
+<p class="code"><SUP><A NAME="topic_dithermode"></A></SUP>DitherMode: J_DITHER_MODE </p>
+
+<P><B>Class: <A HREF="comm5c1e.htm">TJPEGFileDecompressor</A> </B></P>
+
+<P>Selects color dithering method.  Supported values are:</P>
+
+<TABLE cols=2 width=318>
+
+<TR VALIGN="top">
+<TD width=47%>JDITHER_NONE</TD>
+<TD width=53%>no dithering: fast, very low quality </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>JDITHER_ORDERED</TD>
+<TD width=53%>ordered dither: moderate speed and quality </TD>
+</TR>
+
+<TR VALIGN="top">
+<TD width=47%>JDITHER_FS</TD>
+<TD width=53%>Floyd-Steinberg dither: slow, high quality</TD>
+</TR>
+</TABLE><BR>
+
+<P>Default is JDITHER_FS.  (At present, ordered dither is implemented only in the single-pass, standard-colormap case.  If you ask for ordered dither when two_pass_quantize is TRUE or when you supply an external color map, you'll get F-S dithering.)</P>
+
+</BODY>
+</HTML>
