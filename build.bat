@@ -5,8 +5,10 @@ updttext version.txt source\mwajpg.rc %major% %minor% %step% @BuildNo.dat %year%
 IF ERRORLEVEL 1 goto Quit
 "%BRCC%\bin\brcc32" -i"%BRCC%\include" -dWIN32 source\mwajpg.rc
 IF ERRORLEVEL 1 goto Quit
-%hc32% /c /m /e help\mwjpeg.hpj
-%hc32% /c /m /e help\mwjpegcb.hpj
+"%hhc%" help\delphi\mwajpeg.hhp
+IF ERRORLEVEL 1 goto Quit
+"%hhc%" help\cbuilder\mwajpeg.hhp
+IF ERRORLEVEL 1 goto Quit
 
 cd source
 del mwajpg.rc
