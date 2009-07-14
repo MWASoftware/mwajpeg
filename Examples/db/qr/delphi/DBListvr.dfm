@@ -2,7 +2,6 @@ object ListVr: TListVr
   Left = 515
   Top = 207
   ActiveControl = SpeedPanel
-  AutoScroll = False
   Caption = 'Image List Viewer'
   ClientHeight = 230
   ClientWidth = 437
@@ -30,7 +29,7 @@ object ListVr: TListVr
     TabOrder = 0
     object OpenBtn: TSpeedButton
       Left = 10
-      Top = 2
+      Top = 3
       Width = 25
       Height = 25
       Hint = 'Open|'

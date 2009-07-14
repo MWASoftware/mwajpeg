@@ -122,7 +122,7 @@ begin
     if CompareText(ExtractFileExt(FileName),'.jpg') = 0 then
        ShowProgressBox('Opening ' + FileName);
     try
-      Image1.Picture.LoadFromFile(FileName);
+      JPEGFileDecompressor1.LoadPictureFromFile(Image1.Picture,FileName);
       ReSizeViewer;
       Caption := sCaption + ' - ' + OpenDialog.FileName;
       with DataModule1 do

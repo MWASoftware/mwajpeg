@@ -105,7 +105,7 @@ begin
     try
       Image1.Stretch := false;
       Image1.Align := alNone;
-      Image1.Picture.LoadFromFile(FileName);
+      JPEGFileDecompressor1.LoadPictureFromFile(Image1.Picture,FileName);
       ReSize;
       Image1.Stretch  := true;
       Image1.Align := alClient;

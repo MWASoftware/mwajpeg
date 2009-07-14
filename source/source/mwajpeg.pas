@@ -2812,13 +2812,13 @@ begin
   begin
     if CMYKInvert then
     begin
-      C := 1- Source^;
+      C := not Source^;
       Inc(Source);
-      M := 1- (Source)^;
+      M := not (Source)^;
       Inc(Source);
-      Y := 1- (Source)^;
+      Y := not (Source)^;
       Inc(Source);
-      K := 1- (Source)^;
+      K := not (Source)^;
       Inc(Source);
     end
     else

@@ -2,7 +2,6 @@ object ListVr: TListVr
   Left = 515
   Top = 207
   ActiveControl = SpeedPanel
-  AutoScroll = False
   Caption = 'Image List Viewer'
   ClientHeight = 211
   ClientWidth = 437

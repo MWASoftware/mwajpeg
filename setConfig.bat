@@ -1,8 +1,8 @@
-set year=2007
+set year=2009
 set major=1
-set minor=10
+set minor=11
 set step=0
-set PREVPRODUCTVERSION=1.9
+set PREVPRODUCTVERSION=1.10
 set RELEASE=%major%.%minor%.%step%
 set BRCC=C:\Program Files\CodeGear\RAD Studio\5.0
 set QRXI=C:\Program Files\QuickReportsXI

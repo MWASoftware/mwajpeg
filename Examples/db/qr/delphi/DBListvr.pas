@@ -116,7 +116,7 @@ begin
     if CompareText(ExtractFileExt(FileName),'.jpg') = 0 then
        ShowProgressBox('Opening ' + FileName);
     try
-      Image1.Picture.LoadFromFile(FileName);
+      JPEGFileDecompressor1.LoadPictureFromFile(Image1.Picture,FileName);
       Caption := sCaption + ' - ' + OpenDialog.FileName;
       DataModule1.Table1Subject.AsString := 'Picture From ' + OpenDialog.FileName;
       ShowHint(Sender);

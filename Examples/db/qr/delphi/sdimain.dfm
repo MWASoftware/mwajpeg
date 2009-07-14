@@ -2,7 +2,6 @@ object SDIAppForm: TSDIAppForm
   Left = 282
   Top = 123
   ActiveControl = SpeedPanel
-  AutoScroll = False
   Caption = 'Image Viewer'
   ClientHeight = 362
   ClientWidth = 437
