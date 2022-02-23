@@ -702,7 +702,7 @@ J_DITHER_MODE = (
     output_message : procedure (cinfo : j_common_ptr);
                                     {$IFDEF WIN32} stdcall; {$ENDIF}
     { Format a message string for the most recent JPEG error or message }
-    format_message : procedure  (cinfo : j_common_ptr; buffer : PChar);
+    format_message : procedure  (cinfo : j_common_ptr; buffer : PByte);
                                     {$IFDEF WIN32} stdcall; {$ENDIF}
 
     { Reset error state variables at start of a new image }

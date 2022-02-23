@@ -66,8 +66,8 @@ type
  * arrays is very slow on your hardware, you might want to change these.
  *)
 
-(*#if BITS_IN_JSAMPLE == 8
-(* JSAMPLE should be the smallest type that will hold the values 0..255.
+(* #if BITS_IN_JSAMPLE == 8
+ * JSAMPLE should be the smallest type that will hold the values 0..255.
  * You can use a signed char by having GETJSAMPLE mask it with 0xFF.
  *)
 

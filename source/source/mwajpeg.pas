@@ -327,7 +327,7 @@ type
                                                       var BitmapInfoHeader: TBitmapInfoHeader);
     procedure GetDIBSizes(Bitmap: HBITMAP; Resolution: TBitmapResolution; var InfoHeaderSize: Integer;
                          var ImageSize: TImageSize);
-    procedure WriteDIBitmap(const BitmapInfo: TBitmapInfo; bits: PChar);
+    procedure WriteDIBitmap(const BitmapInfo: TBitmapInfo; bits: PByte);
     procedure WriteBitmap(bitmap: TBitMap);
     procedure WriteStretchedBitmap(bitmap: TBitmap; width, height: integer);
     procedure WriteMetaFile(metafile: TMetaFile; width, height: longint);
@@ -402,7 +402,7 @@ type
     DefaultColoursIn8bitMode = 64;
 
   type
-  TJPEGCommentEvent = procedure(sender: TJPEGBase; comment: PChar) of object;
+  TJPEGCommentEvent = procedure(sender: TJPEGBase; comment: PAnsiChar) of object;
   TJPEGMarkerEvent = procedure(sender: TJPEGBase; Marker: int; var done: boolean) of object;
 
   TJPEGOutputType = (jp24bit,jp8bit,jp4bit,jpGrayscale);
@@ -477,7 +477,7 @@ type
     procedure SkipInputBytes(num_bytes : long); virtual; abstract;
     function ResyncToRestart(desired: int): boolean; virtual; abstract;
     procedure TermSource; virtual; abstract;
-    function DoJPEGComment(comment: PChar): boolean; virtual;
+    function DoJPEGComment(comment: PAnsiChar): boolean; virtual;
     procedure ReadDIBitmap(var BitMapInfo: TBitMapInfo; OutputType: TJPEGOutputType;
                                        bits: pointer);
     function ReadBitmap: TBitmap;
@@ -614,7 +614,7 @@ type
     procedure SaveStretchedBitMapToStream(bitmap: TBitmap; width,height: integer;
                      Stream: TStream);
     procedure SaveDIBitmapToStream(Stream: TStream; const BitmapInfo: TBitmapInfo;
-                                    bits: PChar);
+                                    bits: PByte);
     procedure SaveMetaFileToStream(metafile: TMetafile; Stream: TStream; width, height: integer);
     property BufSize: integer read FBufSize write SetBufSize default DefaultBufSize;
     property DefaultCompressor: boolean read FDefaultCompressor write FDefaultCompressor;
@@ -627,7 +627,7 @@ type
   TJPEGStreamDecompressor = class(TJPEGDecompressor)
   private
     FStream: TStream;
-    FBuffer: PChar;
+    FBuffer: PByte;
     FBufSize: integer;
     FDefaultDecompressor: boolean;
   protected
@@ -769,7 +769,7 @@ Events:
 
 OnJPEGComment: TJPEGCommentEvent
 
-  TJPEGCommentEvent = procedure(sender: TJPEGBase; comment: PChar) of object;
+  TJPEGCommentEvent = procedure(sender: TJPEGBase; comment: PByte) of object;
 
 This event occurs when a comment is found in the JPEG compressed image. The
 comment is extracted and provided as a parameter to the event handler.
@@ -953,7 +953,7 @@ procedure SaveBitMapToStream(bitmap: TBitmap; Stream: TStream);
 The bitmap is compressed to a JPEG and written out to the provided stream.
 
 procedure SaveDIBitmapToStream(Stream: TStream; const BitmapInfo: TBitmapInfo;
-                                bits: PChar);
+                                bits: PByte);
 
 The device independent bitmap held in the memory block given by "bits", is
 compressed to a JPEG and written out to the provided stream. Note that the
@@ -1111,7 +1111,7 @@ Utility function used to increment a pointer by a longint}
 
 procedure __AHSHIFT; far; external 'KERNEL' index 113;
 
-procedure IncPointer(var P: PChar; Ofs: Longint); assembler;
+procedure IncPointer(var P: PByte; Ofs: Longint); assembler;
 asm
         Mov     AX,Ofs.Word[0]
         Mov     DX,Ofs.Word[2]     {DX,AX is offset to add to P}
@@ -1310,10 +1310,10 @@ type
     FSize: longint;
     FPointer: pointer;
     FPosition: longint;
-    procedure Initialize(Instance: THandle; Name, ResType: PChar);
+    procedure Initialize(Instance: THandle; Name, ResType: PByte);
   public
-    constructor Create(Instance: THandle; const ResName: string; ResType: PChar);
-    constructor CreateFromID(Instance: THandle; ResID: Integer; ResType: PChar);
+    constructor Create(Instance: THandle; const ResName: string; ResType: PByte);
+    constructor CreateFromID(Instance: THandle; ResID: Integer; ResType: PByte);
     destructor Destroy; override;
     function Write(const Buffer; Count: Longint): Longint; override;
     function Read(var Buffer; Count: Longint): Longint; override;
@@ -1321,7 +1321,7 @@ type
   end;
 
 constructor TResourceStream.Create(Instance: THandle; const ResName: string;
-  ResType: PChar);
+  ResType: PByte);
 var S: array [0..256] of char;
 begin
   inherited Create;
@@ -1329,13 +1329,13 @@ begin
 end;
 
 constructor TResourceStream.CreateFromID(Instance: THandle; ResID: Integer;
-  ResType: PChar);
+  ResType: PByte);
 begin
   inherited Create;
-  Initialize(Instance, PChar(ResID), ResType);
+  Initialize(Instance, PByte(ResID), ResType);
 end;
 
-procedure TResourceStream.Initialize(Instance: THandle; Name, ResType: PChar);
+procedure TResourceStream.Initialize(Instance: THandle; Name, ResType: PByte);
 
   procedure Error;
   begin
@@ -1359,13 +1359,13 @@ begin
 end;
 
 function TResourceStream.Read(var Buffer; Count: Longint): Longint;
-var P: PChar;
+var P: PByte;
 begin
   if Count > FSize - FPosition then
     Result := FSize - FPosition
   else
     Result := Count;
-  P := PChar(FPointer);
+  P := PByte(FPointer);
   IncPointer(P,FPosition);
   Move(P^,Buffer,Result);
   Inc(FPosition,Result)
@@ -1823,18 +1823,18 @@ begin
      cinfo.dest^.free_in_buffer := value
 end;
 
-procedure TJPEGCompressor.WriteDIBitmap(const BitmapInfo: TBitmapInfo; bits: PChar);
+procedure TJPEGCompressor.WriteDIBitmap(const BitmapInfo: TBitmapInfo; bits: PByte);
 type
   PRGBQuadArray = ^TRGBQuadArray;
   TRGBQuadArray = array [0..255] of TRGBQuad;
 var RowSize: longint;
-    NextRow: PChar;
-    LineBuffer: PChar;
+    NextRow: PByte;
+    LineBuffer: PByte;
     ColourMap: PRGBQuadArray;
 
-  function Mapped16Colour(MappedBuffer: PChar; var LineBuffer: PChar): JSAMPARRAY;
+  function Mapped16Colour(MappedBuffer: PByte; var LineBuffer: PByte): JSAMPARRAY;
   var I: integer;
-      bufPtr: PChar;
+      bufPtr: PByte;
   begin
        Result := JSAMPARRAY(@LineBuffer);
        bufPtr:= LineBuffer;
@@ -1852,9 +1852,9 @@ var RowSize: longint;
        end
   end;
 
-  function Mapped256Colour(MappedBuffer: PChar; var LineBuffer: PChar): JSAMPARRAY;
+  function Mapped256Colour(MappedBuffer: PByte; var LineBuffer: PByte): JSAMPARRAY;
   var I: integer;
-      bufPtr: PChar;
+      bufPtr: PByte;
   begin
        Result := JSAMPARRAY(@LineBuffer);
        bufPtr:= LineBuffer;
@@ -1912,9 +1912,9 @@ begin
             end;
 
             {$IFDEF WIN32}
-            NextRow := PChar(bits) + RowSize * (ImageHeight - 1);
+            NextRow := PByte(bits) + RowSize * (ImageHeight - 1);
             {$ELSE}
-            NextRow := PChar(bits);
+            NextRow := PByte(bits);
             IncPointer(NExtRow,RowSize * (ImageHeight - 1));
             {$ENDIF}
             FAbortRequested := false;
@@ -2137,7 +2137,7 @@ end;
 
 procedure TJPEGCompressor.WriteBitmap(bitmap: TBitMap);
 var BitMapInfo: PBitmapInfo;
-    bits: PChar;
+    bits: PByte;
     ImageSize:  TImageSize;
     InfoHeaderSize: integer;
     mem: THandle;
@@ -2310,7 +2310,7 @@ end;
 
 procedure TJPEGStreamCompressor.SaveDIBitmapToStream(Stream: TStream;
                                     const BitmapInfo: TBitmapInfo;
-                                    bits: PChar);
+                                    bits: PByte);
 begin
      OpenStream(Stream);
      try
@@ -2652,13 +2652,13 @@ begin
         raise Exception.create(sReadOverFlow);
 
      Result := NextInputByte^;
-     NextInputByte := JOCTET_PTR(PChar(NextInputByte) + 1);
+     NextInputByte := JOCTET_PTR(PByte(NextInputByte) + 1);
      BytesInBuffer := BytesInBuffer - 1
 end;
 
 function TJPEGDecompressor.HandleJPEGComment: boolean;
 var length: word;
-    comment: PChar;
+    comment: PByte;
     I: word;
 begin
      Result := true;
@@ -2699,7 +2699,7 @@ begin
      Result := true
 end;
 
-function TJPEGDecompressor.DoJPEGComment(comment: PChar): boolean;
+function TJPEGDecompressor.DoJPEGComment(comment: PAnsiChar): boolean;
 begin
      if assigned(FOnJPEGComment) then OnJPEGComment(self,comment);
      Result := true
@@ -2776,14 +2776,14 @@ begin
           Destination^ :=  b or (ord(Source^) and $0f);
           Inc(Source);
           {$IFDEF VER80}
-          IncPointer(PChar(Destination),1)
+          IncPointer(PByte(Destination),1)
           {$ELSE}
           Inc(Destination)
           {$ENDIF}
      end
 end;
 
-procedure DegradeGrayscale(Row: PChar; Size: integer);
+procedure DegradeGrayscale(Row: PByte; Size: integer);
 var I: integer;
 begin
      for I := 1 to Size do
@@ -2845,7 +2845,7 @@ begin
 end;
 
 var RowSize: longint;
-    NextRow: PChar;
+    NextRow: PByte;
     ScanLine: JSAMPROW;
 begin
      ScanLine := nil;
@@ -2891,10 +2891,10 @@ begin
          RowSize := Round4(cinfo.output_width * cinfo.output_components);
 
        {$IFDEF VER80}
-       NextRow := PChar(bits);
+       NextRow := PByte(bits);
        IncPointer(NextRow,RowSize * (cinfo.output_height - 1));
        {$ELSE}
-       NextRow := PChar(bits) + RowSize * (cinfo.output_height - 1);
+       NextRow := PByte(bits) + RowSize * (cinfo.output_height - 1);
        {$ENDIF}
        FAbortRequested := false;
        while cinfo.output_scanline < cinfo.output_height do
@@ -3243,7 +3243,7 @@ begin
      end
      else
      begin
-          NextInputByte := JOCTET_PTR(PChar(NextInputByte) + num_bytes);
+          NextInputByte := JOCTET_PTR(PByte(NextInputByte) + num_bytes);
           BytesInBuffer := BytesInBuffer - num_bytes
      end
 end;
