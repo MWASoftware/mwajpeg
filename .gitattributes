@@ -1,0 +1,41 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.c text
+*.cpp text
+*.h text
+*.hp? text
+*.asm text
+*.bat text
+*.pas text
+*.inc text
+*.lpr text
+*.lpi text
+*.lps text
+*.dpk text
+*.dfm text
+*.dproj text
+*.bpr text
+*.cbproj text
+*.bdsproj text
+*.md text
+*.txt text
+*.wix text
+*.rtf text
+*.mak text
+*.cfg text
+*.rc text
+COPYING.* text
+
+#Binary files
+*.odt binary
+*.pdf binary
+*.com binary
+*.obj binary
+*.ico binary
+*.jpg binary
+*.dll binary
+*.lib binary
+*.bmp binary

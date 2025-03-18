@@ -1,0 +1,23 @@
+MWA JPEG Component Library - Building the Packages
+
+The scripts used to build the JPEG Component Library are also included in this distribution. You
+will not have to use these scripts if your only interest is to compile and use the MWA JPEG
+Component Library. They are used to compile and build the shareware and registered user version
+installation packages.
+
+* build-full-version.bat is used to build the registered user version of the software and is
+  usually run first.
+
+* build-evaluation-units.bat is used to build the evaluation (shareware) version of the software.
+
+* deploy.bat is used to generate the Windows Installer packages using the WIX toolset  
+  (https://www.firegiant.com/wixtoolset/).
+
+Both WIX and thr 7-zip compression utility are required dependencies for building the installation
+packages.
+
+The "setConfig.bat" script is not usually called directly. It is used to set configuration variables
+and paths to the installed versions of Delphi and C++Builder, and other utilities. 
+
+Before running these scripts you must also build the "buildno" and "updttext" utilities found in the tools
+subdirectory.

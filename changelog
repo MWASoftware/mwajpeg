@@ -1,0 +1,134 @@
+New In Version 1.10
+
+1. Support for CMYK Jpeg Images
+
+New in Version 1.9
+
+1. Support for Delphi 2005 (Win32)
+
+2. Support for Borland Developer Studio 2006 (both Delphi and C++Builder Win32)
+
+3. Support for Delphi 2007.
+
+New features in release 1.8b
+
+1. C++Builder Support has been added.
+
+New Features in Version 1.8a
+
+1. Delphi 7 support has been added
+
+1. To support Interbase Express, LoadPicture now also checks the JPEG image 
+field's Blobsize.
+
+2. Support for Delphi 6 has now been added.
+
+3. Version 6b of the IJG software is now used.
+
+New Features in version 1.7
+
+1. Support for C++Builder 5 has been added.
+
+2. With Delphi 3 or later, TJpegDecompressor.ReadBitmap now returns a DIB 
+bitmap  rather than a Device Dependent Bitmap. This is for improved and more 
+reliable  printing. Earlier verions of Delpbi and C++Builder 1 do not support 
+DIB bitmaps.  The Viewer example program has been amended to demonstrate this 
+new feature.
+
+New Features in version 1.6
+
+1. Support for C++Builder 4 has been added.
+
+2. The memory leak in LoadPictureFromStream is now fixed.
+
+3. Support for TDBCtrlGrid has been added to TDBJPEGImage, and a demo 
+application provided to illustrate this.
+
+4. References to TBlobstream in TDBJPEGImage have been replaced with calls to 
+the more generic TDataSet.CreateBlobStream. This should permit operation with 
+3rd party database components.
+
+5. If an error occurs during the decompression of a jpeg image from 
+TImage.Picture.LoadFromFile, the next call to the JPEG Decompressor should no 
+longer 
+risk an Access Violation.
+
+6. If an exception occurs during the processing of a progress report, Abort is 
+now called to reset the JPEG decompressor/compressor. This will avoid the "JPEG 
+decompressor/compressor not in correct state error messages on subsequent calls 
+to the jpeg code.
+
+New Features in Version 1.5
+
+1. This release is primarily for Delphi 4 support and to ensure a common 
+software base is maintained.
+
+2. Two new methods "LoadPictureFromResource" and "LoadPictureFromResID" are 
+provided so that JPEG images can be packaged with a program as 
+resources and then loaded at run-time. This can save considerable space 
+compared with loading an image into TImage at run-time. See the help for 
+information on how to use this feature and the Viewer Demo application, which 
+includes a JPEG resource in its about box.
+
+3. The Delphi 3 version should now install into the IDE without generating a "A 
+Device Attached to the System is not Working" error 
+message. This was due to the components having been compiled on a system with 
+Quick Reports Professional installed. This error message was 
+experienced by users that used the standard version shipped by Borland.
+
+New features in Version 1.4:
+
+1. Support for C++Builder 3.0. The component library now also supports 
+C++Builder 3.0. The functionality is identical to the other versions 
+and a common source base is still maintained.
+
+2. No DLL required for Delphi 3, and all versions of C++Builder. Version 1.3 
+required a separate dll for the JPEG compression software. 
+This is no longer true for Delphi 3 and C++Builder. By default the JPEG 
+software is linked into your program - dll support is still available as a 
+command line option.
+
+3. Dynamic dll loading. The Delphi 1 and Delphi 2 versions now load the JPEG 
+dll dynamically. This enables a more meaningful error message 
+to be returned if the library cannot be found. The version 1.3 static load is 
+still available as an option.
+
+4. A new visual component - TDBJPEGImage has been provided. This is a data 
+aware descendant of TImage that stores images in a database blob 
+field using JPEG compression.
+
+5. Quick Reports support: with Quick Reports version 1, the TDBJPEGImage may be 
+included on a report. For version 2, a new 
+component TQRJPEGImage is provided so that you can print JPEG images direct 
+from a database.
+
+Bug Fixes:
+
+1. Parameters to TStream.Seek in TJPEGCompressor.SkipInputBytes now the correct 
+way round :(    Why didn't Borland make the "ORigin" 
+parameter an enumerated type then this typo would have been a compile time 
+error!
+
+2. The error code returned from PlayEnhMetaFile is now returned in the error 
+messsage
+
+3. The decompressor now has a property (ColoursIn8bitMode) that allows the user 
+to  specify the actual numbers of discrete colours in the 
+image when decoding to a 256 colour image. This used to be 256. However, a 
+lower number can avoid a colour cast especially with Blank 
+and White images encoded as full colour images. The default is now 64.
+
+4. When the buffer size is changed the buffer will now be freed and reallocated.
+
+5. An event handler for warning messages has been added.
+
+6. You should now be able to correctly save JPEG images when working in the IDE 
+ and want to save an image as a JPEG at design time (but 
+only when the image  was loaded from a JPEG source - the IDE cannot be used to 
+convert JPEG's to  bitmaps, but it can be used to convert from JPEGs to bitmaps.
+
+7. OnProgressReport now spelt correctly! Note that uses upgrading from earlier 
+versions will experience an error message when loading 
+projects that use the JPEG Component Library reporting that the mis-spelt 
+property name cannot be found. Ignore this error and manually direct the 
+"OnProgressReport" to its event handler.
