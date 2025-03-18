@@ -1,7 +1,5 @@
-REM This script makes the JPEG Component Library
+REM This script makes the evaluation version of the JPEG Component Library
 Call SetConfig
-Buildno
-updttext version.txt source\mwajpg.rc %major% %minor% %step% @BuildNo.dat %year%
 IF ERRORLEVEL 1 goto Quit
 "%BRCC%\bin\brcc32" -i"%BRCC%\include" -dWIN32 source\mwajpg.rc
 IF ERRORLEVEL 1 goto Quit
@@ -10,10 +8,6 @@ IF ERRORLEVEL 1 goto Quit
 "%hhc%" help\cbuilder\mwajpeg.hhp
 IF ERRORLEVEL 1 goto Quit
 
-cd source
-del mwajpg.rc
-Call Build.bat
-IF ERRORLEVEL 1 goto QUIT1
 rem
 rem MAKE 16-bit DELPHI COMPONENTS
 rem

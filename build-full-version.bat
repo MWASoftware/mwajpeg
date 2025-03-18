@@ -1,21 +1,15 @@
-REM Build File for JPEG Component Library
+REM Build File for the full version of the JPEG Component Library
 @echo off
-set D1=c:\delphi
-set D2=c:\Program Files\Borland\Delphi 2.0
-set D3=c:\Program Files\Borland\Delphi 3
-set D4=c:\Program Files\Borland\Delphi4
-set D5=c:\Program Files\Borland\Delphi5
-set D6=c:\Program Files\Borland\Delphi6
-set D7=c:\Program Files\Borland\Delphi7
-set D9=C:\Program Files\Borland\BDS\3.0
-set D10=C:\Program Files\Borland\BDS\4.0
-Set D11=C:\Program Files\CodeGear\RAD Studio\5.0
-set CB1=c:\Program Files\Borland\cbuilder
-set CB3=c:\Program Files\Borland\cbuilder3
-set CB4=c:\Program Files\Borland\cbuilder4
-set CB5=c:\Program Files\Borland\cbuilder5
-set CB6=c:\Program Files\Borland\cbuilder6
 Set DEFS=
+Call SetConfig
+REM Update the Build No.
+Buildno
+IF ERRORLEVEL 1 goto Quit
+rem Update the Version Information source
+updttext version.txt source\mwajpg.rc %major% %minor% %step% @BuildNo.dat %year%
+IF ERRORLEVEL 1 goto Quit
+cd source
+
 touch source\cbuilder\mwaQRjpg.cpp
 touch source\*.pas
 
@@ -89,7 +83,7 @@ IF ERRORLEVEL 1 goto Quit
 
 rem MAKE Delphi 6
 
-:D6
+:D6IF ERRORLEVEL 1 goto Quit
 IF NOT EXIST "%D6%\bin\dcc32.exe" goto D7
 call :mkdir Units\d6
 call :mkdir Packages\d6

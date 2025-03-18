@@ -1,7 +1,10 @@
+rem
+rem This script is used to build the MWA JPEG Component Library install scripts using
+rem the WIX Toolset https://www.firegiant.com/wixtoolset/
+rem Note that the &-zip utility is used to make the final exe
+rem
 Call SetConfig
-Set WIX=\utils\wix
-Set ZIP7=\Program Files\7-Zip
-
+IF ERRORLEVEL 1 goto QUIT
 cd Examples\Viewer
 updttext version.txt jpegdemo.rc %major% %minor% %step% @..\..\BuildNo.dat %year%
 IF ERRORLEVEL 1 goto Quit2
@@ -22,13 +25,13 @@ pcopy source\source\mwajpeg.pas .
 
 "%WIX%\candle" setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
-copy docs\licence\Registrd\Licence.rtf license.rtf
+copy setup\COPYING.rtf license.rtf
 "%WIX%\light" -out release\full\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj source.wixobj OldProductsdlg.wixobj ..\customactions\mwaca.wixlib %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
 
 "%WIX%\candle" -dEVALUATION setup\src\*.wxs
 IF ERRORLEVEL 1 goto QUIT
-copy docs\licence\shrware\Licence.rtf license.rtf
+copy setup\COPYING.rtf license.rtf
 "%WIX%\light" -out release\evaluation\mwajpeg.msi install.wixobj examples.wixobj delphi6.wixobj delphi7.wixobj delphi2005.wixobj bds2006.wixobj delphi2007.wixobj cbuilder5.wixobj cbuilder6.wixobj OldProductsdlg.wixobj  ..\customactions\mwaca.wixlib  %WIX%\WixUI.wixlib -loc %WIX%\WixUI_en-us.wxl
 IF ERRORLEVEL 1 goto QUIT
 del license.rtf mwajpeg.pas
