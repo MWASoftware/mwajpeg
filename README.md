@@ -22,7 +22,7 @@ permitted its free use provided the source is acknowledged. The IJG code has
 been modified for use with Delphi and MS Windows and is provided as compiled 
 object files. Optionally, they may be separately compiled into a dll.
 
-#Installation
+# Building the Source Code
 
 For later versions of Delphi and C++Builder, a design time package "mwajpg" 
 is provided - see source\mwajpeg.dpk and mwajpg.mak. For older versions of Delphi, 
